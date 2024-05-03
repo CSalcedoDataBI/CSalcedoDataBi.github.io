@@ -17,7 +17,7 @@ timezone: America/Bogota
 
 title: CSalcedoDataBI # the main title
 
-tagline: Apasionado por la visualización de datos con Deneb usando Vega-Lite y VEGA la ingeniería de ETL con PySpark, Python, Power Query +. # it will display as the sub-title
+tagline: Apasionado por la visualización de datos con Deneb usando Vega-Lite y VEGA la ingeniería de ETL con PySpark, Python, Power Query +... # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   Un blog sobre Deneb usando Vega-Lite y VEGA, un poco de Microsoft Fabric, Power BI y mas...
@@ -35,7 +35,7 @@ github:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: Cristobal Salcedo Beltran
+  name: Cristobal Salcedo Beltran.
   email: csalcedo90@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link

@@ -11,7 +11,6 @@ lang: es-ES
 # Change to your timezone › https://kevinnovak.github.io/Time-Zone-Picker
 timezone: America/Bogota
 
-
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
@@ -46,13 +45,13 @@ social:
     - https://www.linkedin.com/in/cristobal-salcedo
 
 # Site Verification Settings
-webmaster_verifications:
-  google: # fill in your Google verification code
-  bing: # fill in your Bing verification code
-  alexa: # fill in your Alexa verification code
-  yandex: # fill in your Yandex verification code
-  baidu: # fill in your Baidu verification code
-  facebook: # fill in your Facebook verification code
+# webmaster_verifications:
+#   google: # fill in your Google verification code
+#   bing: # fill in your Bing verification code
+#   alexa: # fill in your Alexa verification code
+#   yandex: # fill in your Yandex verification code
+#   baidu: # fill in your Baidu verification code
+#   facebook: # fill in your Facebook verification code
 
 # ↑ --------------------------
 # The end of `jekyll-seo-tag` settings
@@ -148,7 +147,7 @@ baseurl: ""
 kramdown:
   syntax_highlighter: None # rouge
   syntax_highlighter_opts: # Rouge Options › https://github.com/jneen/rouge#full-options
-    disable : true
+    disable: true
     # css_class: highlight
     # default_lang: console
     span:

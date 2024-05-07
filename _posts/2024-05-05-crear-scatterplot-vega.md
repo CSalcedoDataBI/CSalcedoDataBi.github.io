@@ -42,10 +42,11 @@ Puedes consultar la siguiente imagen como referencia visual para estos subpasos:
 En este paso, vamos a copiar y pegar el código del Scatter Plot en el editor de Deneb que ya tienes preparado. Sigue estos subpasos:
 - `Haz clic en el siguiente enlace para acceder al código del Scatter Plot:`
    
-   [Labeled-ScatterPlot-Example-Vega](https://vega.github.io/vega/examples/labeled-scatter-plot/)
+   [Labeled-ScatterPlot-Example-Vega](https://vega.github.io/vega/examples/labeled-scatter-plot.vg.json)
 
-- `Copia todo el código tal cual se muestra en la página.`
-- `Ve al <kbd>editor de Deneb</kbd> que tienes abierto y pega el código copiado en el panel de edición.`
+
+- Copia todo el código tal cual se muestra en la página, puedes seleccionar todo con Ctrl + A.
+- Ve al <kbd>editor de Deneb</kbd> que tienes abierto y pega el código copiado en el panel de edición.
   
 >Asegúrate de que el código se pegue correctamente en el editor. Puedes consultar la siguiente imagen como referencia visual
 {: .prompt-info }
@@ -63,5 +64,416 @@ Reemplaza todas las apariciones de la palabra "<kbd>movies</kbd> por la palabra 
 >Verifica que la palabra "dataset" reemplace todas las apariciones de "<kbd>movies</kbd> en el código. Puedes consultar la siguiente imagen como referencia visual.
 {: .prompt-info }
 
-img_cdn:
-paso4: "/assets/img/post/paso4.png"
+![Paso 4 Ver](/assets/img/post/paso4.png){: width="700" height="400" }
+
+A continuación, puedes apreciar el resultado del Scatter Plot una vez que se han aplicado los cambios mencionados:
+
+![Paso 4 Ver](/assets/img/post/paso4_1.png){: width="700" height="400" }
+
+En la imagen, se puede observar el Scatter Plot actualizado con los datos del conjunto de datos de Power BI.
+
+## Paso 5: Habilitar Cross-Highlight y Cross-Filtering (Selection)
+En este paso, vamos a habilitar la funcionalidad de "<kbd>Cross-Highlight</kbd> y <kbd>Cross-Filtering</kbd> (Selection). Sigue los siguientes subpasos:
+* En el editor de Deneb, ve al panel de Configuración (Settings).
+* Busca y selecciona los botones correspondientes para habilitar Cross-Highlight y Cross-Filtering (Selection).
+  
+>Asegúrate de que los botones estén seleccionados correctamente en el panel de Configuración. Puedes consultar la siguiente imagen como referencia visual.
+{: .prompt-info }
+
+![Paso 4 Ver](/assets/img/post/paso5.png){: width="700" height="400" }
+
+## Paso 6: Codificar o declarar Cross-Highlight y Cross-Filtering (Selection)
+
+En este paso, vamos a insertar un código que contiene la propiedad <kbd>Opacity</kbd> para gestionar la visualización de los puntos seleccionados en el Scatter Plot. 
+
+Sigue el siguiente subpaso:
+
+Inserta el siguiente código dentro de la propiedad <kbd>enter</kbd> del código principal:
+
+```json
+ "opacity": [
+            {
+              "test": "datum.__selected__ == 'on'",
+              "value": 1
+            },
+            {
+              "test": "datum.__selected__ == 'off' || datum['Sum of IMDB Rating__highlight']==null",
+              "value": 0.1
+            },
+            {
+              "test": "datum.__selected__ == 'neutral'",
+              "value": 1
+            }
+          ] 
+```
+
+>Asegúrate de que el código se inserte correctamente en la ubicación indicada. Puedes consultar la siguiente imagen como referencia visual
+{: .prompt-info }
+
+![Paso 5 Ver](/assets/img/post/paso5_1.png){: width="700" height="400" }
+
+## Paso 7: Segmentar y colorear los puntos del Scatter Plot
+En este último paso, vamos a definir segmentos de colores para identificar cada punto en el Scatter Plot. Sigue los siguientes subpasos:
+* Primero, vamos a definir una escala <kbd>Scales</kbd> para asignar colores a los puntos basados en la variable <kbd>Major Genre</kbd>. Agrega el siguiente código:
+
+```json
+{
+      "name": "color",
+      "type": "ordinal",
+      "domain": {
+        "data": "dataset",
+        "field": "Major Genre",
+        "sort": {"order": "descending"}
+      },
+      "range": "category"
+    }
+```
+A continuación, vamos a utilizar la escala de color que hemos definido para colorear los puntos del Scatter Plot. Agrega el siguiente código dentro de la propiedad <kbd>fill</kbd>:
+
+```json
+{
+     "fill": 
+            "scale": "color",
+            "field": "Major Genre"
+          }
+
+```
+Este código asignará el color correspondiente a cada punto en función de la variable <kbd>Major Genre</kbd> utilizando la escala <kbd>scale</kbd> de color definida anteriormente.
+
+>Recuerda que puedes personalizar la escala de color y los campos utilizados según tus necesidades.
+¡Genial! Ahora has segmentado y coloreado los puntos en el Scatter Plot según la variable "Major Genre". Esto te permitirá identificar visualmente las diferentes categorías presentes en tus datos.
+{: .prompt-info }
+
+Además, habilitar el efecto de Cross-Filtering y Cross-Highlight te permitirá interactuar con los datos y obtener información más detallada. Puedes ver el resultado final y el efecto de Cross-Filtering en la siguiente imagen:
+
+![Paso 5 Ver](/assets/img/post/paso5_2.png){: width="700" height="400" }
+
+## Resultado Final:
+Para tener una mejor comprensión del poder de la visualización y las funcionalidades agregadas, a continuación se muestra el efecto de <kbd>Cross-Highlight</kbd> en relación a otro gráfico, así como una comparación entre el Scatter Plot nativo de Power BI y el creado en Deneb.
+Además, se ha incluido un gráfico de barras que representa la categoría "Major Genre" en el eje Y y la variable cuantitativa "IMDB Rating" en el eje X. Al seleccionar el gráfico de barras y dirigirse a la pestaña <kbd>Format</kbd> y luego <kbd>Editar interacciones</kbd>, se pueden apreciar los botones de interacción habilitados en ambos gráficos. Estos botones permiten explorar y obtener información más detallada al interactuar entre los gráficos.
+Para obtener más información sobre las interacciones de visualización en Power BI, puedes consultar la documentación de Microsoft aquí: 
+
+https://learn.microsoft.com/es-es/power-bi/create-reports/service-reports-visual-interactions?tabs=powerbi-desktop
+
+A continuación, se muestra una imagen que ilustra estas características:
+
+![Paso 5 Ver](/assets/img/post/paso5_3.png){: width="700" height="400" }
+
+Conclusión
+En conclusión, la integración de interacciones entre gráficos y la combinación de visualizaciones en Power BI potencian la capacidad de análisis y comprensión de los datos. La imagen presentada ejemplifica cómo el Cross-Highlighting y la comparación entre un Scatter Plot y un gráfico de barras enriquecen la exploración de los datos. Es importante tener en cuenta que la imagen es una representación visual y que la verdadera experiencia interactiva se vive en el entorno de Power BI. 
+Aprovecha estas herramientas avanzadas para obtener información valiosa y comunicar patrones de manera efectiva. Continúa explorando y disfruta del proceso de creación y análisis de tus visualizaciones en hashtag#PowerBI y hashtag#Deneb para maximizar el potencial de tus datos.
+
+Aprovecha estas herramientas avanzadas para obtener información valiosa y comunicar patrones de manera efectiva. Continúa explorando y disfruta del proceso de creación y análisis de tus visualizaciones en hashtag#PowerBI y hashtag#Deneb para maximizar el potencial de tus datos.
+
+Descarga los archivos utilizados en este artículo aquí:
+Archivo PBIX: Descargar
+Plantilla .json: Descargar
+
+Estos enlaces te proporcionarán acceso a los archivos PBIX y la plantilla .json utilizados en este artículo, permitiéndote explorar y adaptar los ejemplos a tus propias necesidades. ¡Buena suerte y diviértete explorando!
+
+🖋️ Escrito por Cristobal Salcedo Beltran con la ayuda de Pesante Analytics Llc
+
+## Referencias y recursos
+A continuación, se presenta el código completo utilizado para crear el Scatter Plot en Deneb utilizando hashtag#Vega en hashtag#PowerBI, así como algunas referencias bibliográficas relacionadas.
+Scatter Plot con etiquetas disponible en la documentación oficial de Vega: 
+
+[labeled-scatter-plot](htps://vega.github.io/vega/examples/labeled-scatter-plot/)
+
+Cross-Filtering (Selection): 
+
+[Cross-Highlighting](https://deneb-viz.github.io/interactivity-selection)
+
+Cross-Highlighting:
+
+[deneb](https://deneb-viz.github.io/interactivity-highlight)
+
+Código completo:
+
+```json
+{ 
+ "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "usermeta": {
+    "deneb": {
+      "build": "1.5.1.0",
+      "metaVersion": 1,
+      "provider": "vega",
+      "providerVersion": "5.23.0"
+    },
+    "interactivity": {
+      "tooltip": true,
+      "contextMenu": true,
+      "selection": true,
+      "highlight": true,
+      "dataPointLimit": 50
+    },
+    "information": {
+      "name": "Scatter Plot",
+      "description": "El visual es un Scatter Plot que muestra la relación entre dos conjuntos de datos. Permite visualizar cómo se distribuyen y correlacionan los valores en el plano. Es una representación gráfica efectiva para identificar patrones, tendencias o agrupaciones en los datos.",
+      "author": "Cristobal Salcedo",
+      "uuid": "e7136de1-dae5-48a8-8ec2-6b476779cbd3",
+      "generated": "2023-05-18T12:52:36.141Z"
+    },
+    "dataset": [
+      {
+        "key": "__0__",
+        "name": "Categoria",
+        "description": "Se utiliza para asignar colores a los puntos en el gráfico Scatter Plot",
+        "type": "text",
+        "kind": "column"
+      },
+      {
+        "key": "__1__",
+        "name": "SubCategoria",
+        "description": "Se utiliza para etiquetar los puntos en el gráfico de Scatter Plot",
+        "type": "text",
+        "kind": "column"
+      },
+      {
+        "key": "__2__",
+        "name": "Variable Y",
+        "description": "Se utiliza en el eje vertical del gráfico de Scatter Plot para ubicar los puntos",
+        "type": "numeric",
+        "kind": "measure"
+      },
+      {
+        "key": "__3__",
+        "name": "Variable X",
+        "description": "Se utiliza en el eje horizontal del gráfico de Scatter Plot para ubicar los puntos",
+        "type": "numeric",
+        "kind": "measure"
+      }
+    ]
+  },
+  "config": {
+    "autosize": {
+      "contains": "padding",
+      "type": "fit"
+    },
+    "view": {"stroke": "transparent"},
+    "font": "Segoe UI",
+    "arc": {},
+    "area": {
+      "line": true,
+      "opacity": 0.6
+    },
+    "bar": {},
+    "line": {
+      "strokeWidth": 3,
+      "strokeCap": "round",
+      "strokeJoin": "round"
+    },
+    "path": {},
+    "point": {
+      "filled": true,
+      "size": 75
+    },
+    "rect": {},
+    "shape": {},
+    "symbol": {
+      "strokeWidth": 1.5,
+      "size": 50
+    },
+    "text": {
+      "font": "Segoe UI",
+      "fontSize": 12,
+      "fill": "#605E5C"
+    },
+    "axis": {
+      "ticks": false,
+      "grid": false,
+      "domain": false,
+      "labelColor": "#605E5C",
+      "labelFontSize": 12,
+      "titleFont": "wf_standard-font, helvetica, arial, sans-serif",
+      "titleColor": "#252423",
+      "titleFontSize": 16,
+      "titleFontWeight": "normal"
+    },
+    "axisQuantitative": {
+      "tickCount": 3,
+      "grid": true,
+      "gridColor": "#C8C6C4",
+      "gridDash": [1, 5],
+      "labelFlush": false
+    },
+    "axisX": {"labelPadding": 5},
+    "axisY": {"labelPadding": 10},
+    "header": {
+      "titleFont": "wf_standard-font, helvetica, arial, sans-serif",
+      "titleFontSize": 16,
+      "titleColor": "#252423",
+      "labelFont": "Segoe UI",
+      "labelFontSize": 13.333333333333332,
+      "labelColor": "#605E5C"
+    },
+    "legend": {
+      "titleFont": "Segoe UI",
+      "titleFontWeight": "bold",
+      "titleColor": "#605E5C",
+      "labelFont": "Segoe UI",
+      "labelFontSize": 13.333333333333332,
+      "labelColor": "#605E5C",
+      "symbolType": "circle",
+      "symbolSize": 75
+    }
+  },
+  "description": "A labeled scatter plot or films showing rotten Tomatoes rarigs versus IMDB ratings,",
+  "padding": 5,
+  "width": 800,
+  "height": 500,
+  "autosize": "pad",
+  "data": [
+    {
+      "name": "dataset",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum['__3__'] != null && datum['__2__'] != null "
+        }
+      ]
+    },
+    {
+      "name": "fit",
+      "source": "dataset",
+      "transform": [
+        {
+          "type": "regression",
+          "method": "quad",
+          "x": "__3__",
+          "y": "__2__",
+          "as": ["u", "v"]
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "x",
+      "type": "linear",
+      "domain": {
+        "data": "dataset",
+        "field": "__3__"
+      },
+      "range": "width"
+    },
+    {
+      "name": "y",
+      "type": "linear",
+      "domain": {
+        "data": "dataset",
+        "field": "__2__"
+      },
+      "range": "height"
+    },
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": {
+        "data": "dataset",
+        "field": "__0__",
+        "sort": {"order": "descending"}
+      },
+      "range": "category"
+    }
+  ],
+  "axes": [
+    {
+      "orient": "left",
+      "scale": "y",
+      "title": ""
+    },
+    {
+      "orient": "bottom",
+      "scale": "x",
+      "title": ""
+    }
+  ],
+  "marks": [
+    {
+      "name": "points",
+      "type": "symbol",
+      "from": {"data": "dataset"},
+      "encode": {
+        "enter": {
+          "fill": {
+            "scale": "color",
+            "field": "__0__"
+          },
+          "x": {
+            "scale": "x",
+            "field": "__3__"
+          },
+          "y": {
+            "scale": "y",
+            "field": "__2__"
+          },
+          "size": {"value": 200},
+          "opacity": [
+            {
+              "test": "datum.__selected__ == 'on'",
+              "value": 1
+            },
+            {
+              "test": "datum.__selected__ == 'off' || datum['__2____highlight']==null",
+              "value": 0.1
+            },
+            {
+              "test": "datum.__selected__ == 'neutral'",
+              "value": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "trend",
+      "type": "line",
+      "from": {"data": "fit"},
+      "encode": {
+        "enter": {
+          "x": {
+            "scale": "x",
+            "field": "u"
+          },
+          "y": {
+            "scale": "y",
+            "field": "v"
+          },
+          "stroke": {
+            "value": "firebrick"
+          }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {"data": "points"},
+      "encode": {
+        "enter": {
+          "text": {
+            "field": "datum['__1__']"
+          },
+          "fontSize": {"value": 12}
+        }
+      },
+      "transform": [
+        {
+          "type": "label",
+          "avoidMarks": ["points"],
+          "anchor": [
+            "top",
+            "bottom",
+            "right",
+            "left"
+          ],
+          "offset": [1],
+          "size": {
+            "signal": "[width + 60, height + 1 ]"
+          }
+        }
+      ]
+    }
+  ]
+}
+
+```

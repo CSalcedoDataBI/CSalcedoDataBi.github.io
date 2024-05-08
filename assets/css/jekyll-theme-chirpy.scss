@@ -2,5 +2,9 @@
 ---
 
 @import 'main';
-
+img {
+  animation: none !important;
+  transform: none !important;
+  transition: none !important;
+}
 /* append your custom style below */

@@ -10,6 +10,7 @@
 <script type="text/javascript">
   (function () {
     const origin = 'https://utteranc.es';
+    const iframe = 'iframe.utterances-frame';
     const lightTheme = 'github-light';
     const darkTheme = 'github-dark';
     let initTheme = lightTheme;
@@ -25,12 +26,12 @@
     addEventListener('message', (event) => {
       let theme;
 
-      {%- comment -%} credit to <https://github.com/utterance/utterances/issues/170#issuecomment-594036347> {%- endcomment -%}
+      /* credit to <https://github.com/utterance/utterances/issues/170#issuecomment-594036347> */
       if (event.origin === origin) {
-        {%- comment -%} page initial {%- endcomment -%}
+        /* page initial */
         theme = initTheme;
       } else if (event.source === window && event.data && event.data.direction === ModeToggle.ID) {
-        {%- comment -%} global theme mode changed {%- endcomment -%}
+        /* global theme mode changed */
         const mode = event.data.message;
         theme = mode === ModeToggle.DARK_MODE ? darkTheme : lightTheme;
       } else {
@@ -42,7 +43,7 @@
         theme: theme
       };
 
-      const utterances = document.getElementsByClassName('utterances-frame')[0].contentWindow;
+      const utterances = document.querySelector(iframe).contentWindow;
       utterances.postMessage(message, origin);
     });
   })();

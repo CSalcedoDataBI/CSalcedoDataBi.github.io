@@ -10,44 +10,43 @@ En este artículo, quiero compartir una solución que encontramos mientras traba
 
 Bueno, para empezar, quiero trabajar con **Vega** de la manera más fácil y cómoda posible, incluso para aquellos con pocos conocimientos en este lenguaje, para que todos puedan disfrutar de las ventajas de **Deneb** y **Vega** en **PowerBi**. En este artículo, resumiré los pasos necesarios para crear un Scatter Plot. Para ello, he utilizado datos oficiales de Vega.
 
-## Paso 1: Preparar los datos en Power BI:
+## Paso 1: Preparar los datos en Power BI
 
 Utilice el conector web y pegue este enlace:
-https://raw.githubusercontent.com/vega/vega/main/docs/data/movies.json
+<https://raw.githubusercontent.com/vega/vega/main/docs/data/movies.json>
 
- - `Transforme los datos en una tabla y luego expanda todos los campos, dándoles el formato adecuado.`{: .filepath}
- - `Agregue una columna para el año.`{: .filepath}
+* Transforme los datos en una tabla y luego expanda todos los campos, dándoles el formato adecuado.
+* Agregue una columna para el año.
 
->El objetivo de este artículo no es enseñar cómo modelar datos en Power BI, así que si lo prefieres, puedes omitir todos los pasos anteriores y descargar el archivo .pbix con los datos ya preparados, descargar 
+>El objetivo de este artículo no es enseñar cómo modelar datos en Power BI, así que si lo prefieres, puedes omitir todos los pasos anteriores y descargar el archivo .pbix con los datos ya preparados, descargar
 {: .prompt-info }
-
 
 ## Paso 2: Crear un visual de Deneb e incorporar las variables necesarias
 
 En esta etapa, vamos a crear un visual utilizando `Deneb` y configurar las variables necesarias para nuestro Scatter Plot. Haz clic en "Visualizaciones" en la barra de herramientas de Power BI >> Selecciona la visualización de `Deneb`. Sigue los siguientes subpasos:
-1. Arrastra y suelta las dos variables categóricas y las dos variables cuantitativas en las áreas correspondientes del visual de `Deneb`. Asegúrate de que las variables estén asignadas correctamente así:
-- ` ✓  IMDB Rating`
-- ` ✓  Rotten Tomatoes Rating`
-- ` ✓  Title`
-- ` ✓  Major Genre`
+1.Arrastra y suelta las dos variables categóricas y las dos variables cuantitativas en las áreas correspondientes del visual de `Deneb`. Asegúrate de que las variables estén asignadas correctamente así:
 
-Haz clic en <kbd>Editar visual</kbd> en la parte superior del visual de <kbd>Deneb</kbd>. A continuación, se abrirá la ventana de edición del visual. Aquí es donde seleccionaremos <kbd>Vega</kbd> 
-Selecciona la plantilla vacía <kbd>(`*empty `)</kbd> para comenzar desde cero con nuestro visual. 
+* ✓  IMDB Rating.
+* ✓  Rotten Tomatoes Rating.
+* ✓  Title
+* ✓  Major Genre
+
+2.Haz clic en <kbd>Editar visual</kbd> en la parte superior del visual de <kbd>Deneb</kbd>. A continuación, se abrirá la ventana de edición del visual. Aquí es donde seleccionaremos <kbd>Vega</kbd>
+Selecciona la plantilla vacía <kbd>(`*empty`)</kbd> para comenzar desde cero con nuestro visual.
 Haz clic en el botón <kbd>Crear</kbd> para generar una plantilla vacía plantilla vacía.
 Puedes consultar la siguiente imagen como referencia visual para estos subpasos:
 
-<!-- [Imagen](https://raw.githubusercontent.com/CSalcedoDataBI/PowerBI-Deneb/main/Dispersion_Etiquetados/Files/Imagenes/Paso1.png) -->
+![Imagen](https://raw.githubusercontent.com/CSalcedoDataBI/PowerBI-Deneb/main/Dispersion_Etiquetados/Files/Imagenes/Paso1.png)
 
 ## Paso 3: Copiar y pegar el código del Scatter Plot
 
 En este paso, vamos a copiar y pegar el código del Scatter Plot en el editor de Deneb que ya tienes preparado. Sigue estos subpasos:
-- `Haz clic en el siguiente enlace para acceder al código del Scatter Plot:`
-   
+-Haz clic en el siguiente enlace para acceder al código del Scatter Plot:
+
    [Labeled-ScatterPlot-Example-Vega](https://vega.github.io/vega/examples/labeled-scatter-plot.vg.json)
 
-
-- Copia todo el código tal cual se muestra en la página, puedes seleccionar todo con Ctrl + A.
-- Ve al <kbd>editor de Deneb</kbd> que tienes abierto y pega el código copiado en el panel de edición.
+* Copia todo el código tal cual se muestra en la página, puedes seleccionar todo con Ctrl + A.
+* Ve al <kbd>editor de Deneb</kbd> que tienes abierto y pega el código copiado en el panel de edición.
   
 >Asegúrate de que el código se pegue correctamente en el editor. Puedes consultar la siguiente imagen como referencia visual
 {: .prompt-info }
@@ -57,6 +56,7 @@ En este paso, vamos a copiar y pegar el código del Scatter Plot en el editor de
 En esta etapa, vamos a modificar el código del Scatter Plot para que pueda leer el <kbd>dataset</kbd> de Power BI. Sigue los siguientes subpasos:
 
 Estando en el editor de Deneb, ve al <kbd>panel de especificación</kbd> (Specification) donde hemos pegado el código.
+
 * Selecciona la palabra <kbd>movies</kbd> en el código y presiona <kbd>Ctrl + F</kbd> para abrir el cuadro de diálogo de búsqueda.
 
 * Expande el cuadro de diálogo hacia abajo haciendo clic en el botón `*+` en el logotipo.
@@ -65,27 +65,29 @@ Reemplaza todas las apariciones de la palabra "<kbd>movies</kbd> por la palabra 
 >Verifica que la palabra "dataset" reemplace todas las apariciones de "<kbd>movies</kbd> en el código. Puedes consultar la siguiente imagen como referencia visual.
 {: .prompt-info }
 
-<!-- ![Paso 4 Ver](/assets/img/post/paso4.png){: width="700" height="400" } -->
+![Paso 4 Ver](/assets/img/post/paso4.png){: width="700" height="400" }
 
 A continuación, puedes apreciar el resultado del Scatter Plot una vez que se han aplicado los cambios mencionados:
 
-<!-- ![Paso 4 Ver](/assets/img/post/paso4_1.png){: width="700" height="400" } -->
+![Paso 4 Ver](/assets/img/post/paso4_1.png){: width="700" height="400" }
 
 En la imagen, se puede observar el Scatter Plot actualizado con los datos del conjunto de datos de Power BI.
 
 ## Paso 5: Habilitar Cross-Highlight y Cross-Filtering (Selection)
+
 En este paso, vamos a habilitar la funcionalidad de "<kbd>Cross-Highlight</kbd> y <kbd>Cross-Filtering</kbd> (Selection). Sigue los siguientes subpasos:
+
 * En el editor de Deneb, ve al panel de Configuración (Settings).
 * Busca y selecciona los botones correspondientes para habilitar Cross-Highlight y Cross-Filtering (Selection).
   
 >Asegúrate de que los botones estén seleccionados correctamente en el panel de Configuración. Puedes consultar la siguiente imagen como referencia visual.
 {: .prompt-info }
 
-<!-- ![Paso 4 Ver](/assets/img/post/paso5.png){: width="700" height="400" } -->
+![Paso 4 Ver](/assets/img/post/paso5.png){: width="700" height="400" }
 
 ## Paso 6: Codificar o declarar Cross-Highlight y Cross-Filtering (Selection)
 
-En este paso, vamos a insertar un código que contiene la propiedad <kbd>Opacity</kbd> para gestionar la visualización de los puntos seleccionados en el Scatter Plot. 
+En este paso, vamos a insertar un código que contiene la propiedad <kbd>Opacity</kbd> para gestionar la visualización de los puntos seleccionados en el Scatter Plot.
 
 Sigue el siguiente subpaso:
 
@@ -98,7 +100,8 @@ Inserta el siguiente código dentro de la propiedad <kbd>enter</kbd> del código
               "value": 1
             },
             {
-              "test": "datum.__selected__ == 'off' || datum['Sum of IMDB Rating__highlight']==null",
+              "test": "datum.__selected__ == 'off'
+               || datum['Sum of IMDB Rating__highlight']==null",
               "value": 0.1
             },
             {
@@ -111,14 +114,16 @@ Inserta el siguiente código dentro de la propiedad <kbd>enter</kbd> del código
 >Asegúrate de que el código se inserte correctamente en la ubicación indicada. Puedes consultar la siguiente imagen como referencia visual
 {: .prompt-info }
 
-<!-- ![Paso 5 Ver](/assets/img/post/paso5_1.png){: width="700" height="400" } -->
+![Paso 5 Ver](/assets/img/post/paso5_1.png){: width="700" height="400" }
 
 ## Paso 7: Segmentar y colorear los puntos del Scatter Plot
+
 En este último paso, vamos a definir segmentos de colores para identificar cada punto en el Scatter Plot. Sigue los siguientes subpasos:
+
 * Primero, vamos a definir una escala <kbd>Scales</kbd> para asignar colores a los puntos basados en la variable <kbd>Major Genre</kbd>. Agrega el siguiente código:
 
 ```json
-{
+    {
       "name": "color",
       "type": "ordinal",
       "domain": {
@@ -132,11 +137,11 @@ En este último paso, vamos a definir segmentos de colores para identificar cada
 A continuación, vamos a utilizar la escala de color que hemos definido para colorear los puntos del Scatter Plot. Agrega el siguiente código dentro de la propiedad <kbd>fill</kbd>:
 
 ```json
-{
+   {
      "fill": 
             "scale": "color",
             "field": "Major Genre"
-          }
+   }
 
 ```
 Este código asignará el color correspondiente a cada punto en función de la variable <kbd>Major Genre</kbd> utilizando la escala <kbd>scale</kbd> de color definida anteriormente.
@@ -147,21 +152,22 @@ Este código asignará el color correspondiente a cada punto en función de la v
 
 Además, habilitar el efecto de Cross-Filtering y Cross-Highlight te permitirá interactuar con los datos y obtener información más detallada. Puedes ver el resultado final y el efecto de Cross-Filtering en la siguiente imagen:
 
-<!-- ![Paso 5 Ver](/assets/img/post/paso5_2.png){: width="700" height="400" } -->
+![Paso 5 Ver](/assets/img/post/paso5_2.png){: width="700" height="400" }
 
-## Resultado Final:
+## Resultado Final
+
 Para tener una mejor comprensión del poder de la visualización y las funcionalidades agregadas, a continuación se muestra el efecto de <kbd>Cross-Highlight</kbd> en relación a otro gráfico, así como una comparación entre el Scatter Plot nativo de Power BI y el creado en Deneb.
 Además, se ha incluido un gráfico de barras que representa la categoría "Major Genre" en el eje Y y la variable cuantitativa "IMDB Rating" en el eje X. Al seleccionar el gráfico de barras y dirigirse a la pestaña <kbd>Format</kbd> y luego <kbd>Editar interacciones</kbd>, se pueden apreciar los botones de interacción habilitados en ambos gráficos. Estos botones permiten explorar y obtener información más detallada al interactuar entre los gráficos.
-Para obtener más información sobre las interacciones de visualización en Power BI, puedes consultar la documentación de Microsoft aquí: 
+Para obtener más información sobre las interacciones de visualización en Power BI, puedes consultar la documentación de Microsoft aquí:
 
-https://learn.microsoft.com/es-es/power-bi/create-reports/service-reports-visual-interactions?tabs=powerbi-desktop
+<https://learn.microsoft.com/es-es/power-bi/create-reports/service-reports-visual-interactions?tabs=powerbi-desktop>
 
 A continuación, se muestra una imagen que ilustra estas características:
 
-![Paso-Ver](/assets/img/image.png){: width="700" height="400" }
+![Paso 5 Ver](/assets/img/post/paso5_3.png){: width="700" height="400" }
 
 Conclusión
-En conclusión, la integración de interacciones entre gráficos y la combinación de visualizaciones en Power BI potencian la capacidad de análisis y comprensión de los datos. La imagen presentada ejemplifica cómo el Cross-Highlighting y la comparación entre un Scatter Plot y un gráfico de barras enriquecen la exploración de los datos. Es importante tener en cuenta que la imagen es una representación visual y que la verdadera experiencia interactiva se vive en el entorno de Power BI. 
+En conclusión, la integración de interacciones entre gráficos y la combinación de visualizaciones en Power BI potencian la capacidad de análisis y comprensión de los datos. La imagen presentada ejemplifica cómo el Cross-Highlighting y la comparación entre un Scatter Plot y un gráfico de barras enriquecen la exploración de los datos. Es importante tener en cuenta que la imagen es una representación visual y que la verdadera experiencia interactiva se vive en el entorno de Power BI.
 Aprovecha estas herramientas avanzadas para obtener información valiosa y comunicar patrones de manera efectiva. Continúa explorando y disfruta del proceso de creación y análisis de tus visualizaciones en hashtag#PowerBI y hashtag#Deneb para maximizar el potencial de tus datos.
 
 Aprovecha estas herramientas avanzadas para obtener información valiosa y comunicar patrones de manera efectiva. Continúa explorando y disfruta del proceso de creación y análisis de tus visualizaciones en hashtag#PowerBI y hashtag#Deneb para maximizar el potencial de tus datos.
@@ -175,12 +181,13 @@ Estos enlaces te proporcionarán acceso a los archivos PBIX y la plantilla .json
 🖋️ Escrito por Cristobal Salcedo Beltran con la ayuda de Pesante Analytics Llc
 
 ## Referencias y recursos
+
 A continuación, se presenta el código completo utilizado para crear el Scatter Plot en Deneb utilizando hashtag#Vega en hashtag#PowerBI, así como algunas referencias bibliográficas relacionadas.
-Scatter Plot con etiquetas disponible en la documentación oficial de Vega: 
+Scatter Plot con etiquetas disponible en la documentación oficial de Vega:
 
 [labeled-scatter-plot](htps://vega.github.io/vega/examples/labeled-scatter-plot/)
 
-Cross-Filtering (Selection): 
+Cross-Filtering (Selection):
 
 [Cross-Highlighting](https://deneb-viz.github.io/interactivity-selection)
 

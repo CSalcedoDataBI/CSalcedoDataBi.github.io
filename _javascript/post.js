@@ -7,11 +7,11 @@ import {
   toc
 } from './modules/plugins';
 
-loadImg();
-toc();
-imgPopup();
 initSidebar();
+initTopbar();
+loadImg();
+imgPopup();
 initLocaleDatetime();
 initClipboard();
-initTopbar();
+toc();
 basic();

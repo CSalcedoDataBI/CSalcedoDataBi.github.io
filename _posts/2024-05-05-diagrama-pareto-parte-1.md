@@ -10,7 +10,8 @@ image:
   alt: Cross-Filtering y Cross-Highlight Scatter Plot 
 ---
 
->"El principio de Pareto, también conocido como la regla del 80/20, puede aplicarse en diversos contextos, incluyendo el empresarial. Por ejemplo, puede ser útil para identificar qué productos, clientes, proveedores o regiones representan el 80% de las ventas totales de una empresa".{: .prompt-tip }
+>"El principio de Pareto, también conocido como la regla del 80/20, puede aplicarse en diversos contextos, incluyendo el empresarial. Por ejemplo, puede ser útil para identificar qué productos, clientes, proveedores o regiones representan el 80% de las ventas totales de una empresa".
+{: .prompt-tip }
 
  En este artículo, te guiaremos paso a paso para crear un diagrama de Pareto utilizando Deneb, una herramienta de visualización personalizada que se conecta con el lenguaje  o . Mostraremos dos enfoques, uno utilizando  y otro con transformaciones avanzadas en .
 
@@ -26,14 +27,14 @@ Antes de crear nuestro diagrama de Pareto, debemos preparar nuestros datos. Util
 
 -         Dar clic en "Cargar datos al modelo" y listo.
 
-Paso 2: Crear una medida DAX
-En este paso, nos basaremos en el blog escrito por Amal BEN REBAI, "How to find your best sub-categories of products that make up 80% of total sales?". Crearemos las medidas Total Ventas, Acumulado de Ventas Por Producto y % Acumulado de Ventas por Producto, utilizando el código proporcionado en el artículo, aquí presento una versión ajustada:
+## Paso 2: Crear una medida DAX
+En este paso, nos basaremos en el blog escrito por **Amal BEN REBAI**, [How to find your best sub-categories of products that make up 80% of total sales?](https://amalbenrebai.substack.com/p/how-to-identify-product-sub-categories). Crearemos las medidas Total Ventas, Acumulado de Ventas Por Producto y % Acumulado de Ventas por Producto, utilizando el código proporcionado en el artículo, aquí presento una versión ajustada:
 
 * Medida: Suma de las Ventas:
-
+  
+```dax
 Total Ventas = SUM ( financials[ Sales] )
-
-
+```
 
 * Medida: Acumulado de ventas por producto:
 
@@ -187,7 +188,7 @@ Editar imagen
 Borrar imagen
 No hay texto alternativo para esta imagen
 Imagen con cambios en la ordenación y quitando título del eje Y
-Paso 10: Agregar el gráfico de línea como una capa adicional en el array "layer"
+## Paso 10: Agregar el gráfico de línea como una capa adicional en el array "layer"
 Hasta ahora, si has seguido los pasos, te darás cuenta de que dentro del array "layer" existen dos objetos visuales, cada uno con un "mark" de tipo "bar" (gráfico de barras). A continuación, añadiremos un nuevo objeto para el gráfico de línea:
 
 

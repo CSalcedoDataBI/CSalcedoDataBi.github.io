@@ -95,20 +95,20 @@ Sigue el siguiente subpaso:
 Inserta el siguiente código dentro de la propiedad <kbd>enter</kbd> del código principal:
 
 ```json
- "opacity": [
-            {
-              "test": "datum.__selected__ == 'on'",
-              "value": 1
-            },
-            {
-              "test": "datum.__selected__ == 'off' || datum['Sum of IMDB Rating__highlight']==null",
-              "value": 0.1
-            },
-            {
-              "test": "datum.__selected__ == 'neutral'",
-              "value": 1
-            }
-          ] 
+"opacity":[
+   {
+      "test":"datum.__selected__ == 'on'",
+      "value":1
+   },
+   {
+      "test":"datum.__selected__ == 'off' || datum['Sum of IMDB Rating__highlight']==null",
+      "value":0.1
+   },
+   {
+      "test":"datum.__selected__ == 'neutral'",
+      "value":1
+   }
+]
 ```
 
 >Asegúrate de que el código se inserte correctamente en la ubicación indicada. Puedes consultar la siguiente imagen como referencia visual
@@ -122,24 +122,25 @@ En este último paso, vamos a definir segmentos de colores para identificar cada
 
 ```json
 {
-      "name": "color",
-      "type": "ordinal",
-      "domain": {
-        "data": "dataset",
-        "field": "Major Genre",
-        "sort": {"order": "descending"}
-      },
-      "range": "category"
-    }
+   "name":"color",
+   "type":"ordinal",
+   "domain":{
+      "data":"dataset",
+      "field":"Major Genre",
+      "sort":{
+         "order":"descending"
+      }
+   },
+   "range":"category"
+}
 ```
 A continuación, vamos a utilizar la escala de color que hemos definido para colorear los puntos del Scatter Plot. Agrega el siguiente código dentro de la propiedad <kbd>fill</kbd>:
 
 ```json
 {
-     "fill": 
-            "scale": "color",
-            "field": "Major Genre"
-          }
+   "fill":"scale":"color",
+   "field":"Major Genre"
+}
 
 ```
 Este código asignará el color correspondiente a cada punto en función de la variable <kbd>Major Genre</kbd> utilizando la escala <kbd>scale</kbd> de color definida anteriormente.
@@ -161,19 +162,20 @@ https://learn.microsoft.com/es-es/power-bi/create-reports/service-reports-visual
 
 A continuación, se muestra una imagen que ilustra estas características:
 
-![Paso 5 Ver](/assets/img/post-dispersion-etiquetados-vega/paso5_3.png){: width="700" height="400" }
+![Paso 5 Ver](https://raw.githubusercontent.com/CSalcedoDataBI/PowerBI-Deneb/main/Dispersion_Etiquetados/Files/Dispersion_Etiquetada.gif){: width="700" height="400" }
 
-Conclusión
-En conclusión, la integración de interacciones entre gráficos y la combinación de visualizaciones en Power BI potencian la capacidad de análisis y comprensión de los datos. La imagen presentada ejemplifica cómo el Cross-Highlighting y la comparación entre un Scatter Plot y un gráfico de barras enriquecen la exploración de los datos. Es importante tener en cuenta que la imagen es una representación visual y que la verdadera experiencia interactiva se vive en el entorno de Power BI. 
-Aprovecha estas herramientas avanzadas para obtener información valiosa y comunicar patrones de manera efectiva. Continúa explorando y disfruta del proceso de creación y análisis de tus visualizaciones en hashtag#PowerBI y hashtag#Deneb para maximizar el potencial de tus datos.
+## Conclusión
 
-Aprovecha estas herramientas avanzadas para obtener información valiosa y comunicar patrones de manera efectiva. Continúa explorando y disfruta del proceso de creación y análisis de tus visualizaciones en hashtag#PowerBI y hashtag#Deneb para maximizar el potencial de tus datos.
+En conclusión, la integración de interacciones entre gráficos y la combinación de visualizaciones en Power BI potencian la capacidad de análisis y comprensión de los datos. La imagen presentada ejemplifica cómo el Cross-Highlighting y la comparación entre un Scatter Plot y un gráfico de barras enriquecen la exploración de los datos. 
 
-Descarga los archivos utilizados en este artículo aquí:
-Archivo PBIX: Descargar
-Plantilla .json: Descargar
+Es importante tener en cuenta que la imagen es una representación visual y que la verdadera experiencia interactiva se vive en el entorno de Power BI. 
+Aprovecha estas herramientas avanzadas para obtener información valiosa y comunicar patrones de manera efectiva. Continúa explorando y disfruta del proceso de creación y análisis de tus visualizaciones en PowerBI y Deneb para maximizar el potencial de tus datos.
 
-Estos enlaces te proporcionarán acceso a los archivos PBIX y la plantilla .json utilizados en este artículo, permitiéndote explorar y adaptar los ejemplos a tus propias necesidades. ¡Buena suerte y diviértete explorando!
+Puedes descargar el archivo PBIX y la plantilla .json utilizados en este artículo aquí 👇:
+
+[🔽 Dispersion_Etiquetados.pbix](https://github.com/CSalcedoDataBI/PowerBI-Deneb/raw/main/Dispersion_Etiquetados/Files/Dispersion_Etiquetada.pbix) (1.88 MB)
+
+[🔽 Plantilla_Dispersion_Etiquetados.json:](https://github.com/CSalcedoDataBI/PowerBI-Deneb/blob/main/Dispersion_Etiquetados/Files/Dispersion_Etiquetada.json) (6.13 KB)
 
 🖋️ Escrito por Cristobal Salcedo Beltran con la ayuda de Pesante Analytics Llc
 
@@ -183,15 +185,11 @@ Scatter Plot con etiquetas disponible en la documentación oficial de Vega:
 
 [labeled-scatter-plot](htps://vega.github.io/vega/examples/labeled-scatter-plot/)
 
-Cross-Filtering (Selection): 
+[Cross-Filtering (Selection):](https://deneb-viz.github.io/interactivity-selection)
 
-[Cross-Highlighting](https://deneb-viz.github.io/interactivity-selection)
+[Cross-Highlighting-Deneb](https://deneb-viz.github.io/interactivity-highlight)
 
-Cross-Highlighting:
-
-[deneb](https://deneb-viz.github.io/interactivity-highlight)
-
-Plantilla:
+## Plantilla:
 
 ```json
 {

@@ -162,7 +162,7 @@ Imagen con cambios en las etiquetas de los ejes X e Y aquí
 ## Paso 9: Ordenar el gráfico de mayor a menor según la variable "Total Venta"
 Para ordenar el gráfico de acuerdo con la variable "Total Venta" de mayor a menor, sigue estos pasos:
 
-Regresa al panel de especificaciones en el editor de Deneb (si deseas conocer todos los botones y paneles de la versión de Deneb 1.5, puedes ver este video donde se explico cada uno de sus componentes : https://youtu.be/odIYzsS11Qg.
+Regresa al panel de especificaciones en el editor de Deneb (si deseas conocer todos los botones y paneles de la versión de Deneb 1.5, puedes ver este video donde se explico cada uno de sus componentes : <https://youtu.be/odIYzsS11Qg>.
 
 Agrega la propiedad <kbd>"sort"</kbd> en el eje X, de la siguiente manera:
 

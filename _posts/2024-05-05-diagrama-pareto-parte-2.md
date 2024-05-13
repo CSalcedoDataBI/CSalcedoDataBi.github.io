@@ -6,7 +6,7 @@ categories: [Blogging, Tutorial]
 tags: [Deneb, Vega, Pareto]
 pin: false
 image:
-  path: assets/img/post-diagrama-pareto-parte-2/image_1.png
+  path: https://raw.githubusercontent.com/CSalcedoDataBI/PowerBI-Deneb/752fca72da2d872e8b6c5c64288a5e6b2ad12247/Diagramas_Pareto/FIles/Pareto_Dinamico_Deneb_VegaLite_P2.gif
   alt: Cross-Filtering y Cross-Highlight Scatter Plot 
 ---
 Imagina un mundo donde no tienes que lidiar con la complejidad de las variables necesarias para crear un gráfico de Pareto cada vez que lo necesitas. En lugar de eso, simplemente utilizas una plantilla predefinida que incorpora todas las características y mejoras estéticas que has definido previamente. Esta plantilla puede ser reutilizada en múltiples informes, simplemente asignando las dos variables principales: tu categoría X y tu valor o medida Y. Así de sencillo, así de eficiente 🚀.

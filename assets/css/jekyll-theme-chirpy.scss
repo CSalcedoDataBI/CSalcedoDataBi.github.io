@@ -8,3 +8,25 @@ img {
   transition: none !important;
 }
 /* append your custom style below */
+.copy-code-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  padding: 5px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.copy-code-button:hover {
+  background: #45a049;
+}
+
+.highlight {
+  position: relative;
+  padding-top: 40px; /* Ajustar según sea necesario */
+}

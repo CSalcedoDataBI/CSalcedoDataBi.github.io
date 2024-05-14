@@ -1,15 +1,14 @@
 ---
-title: Diagrama de pareto con Deneb y Vega-Lite en Power Bi Guía paso a paso (parte 1).
-author: Cristobal Salcedo Beltran
+title: "Diagrama de Pareto con Deneb y Vega-Lite en Power BI: Guía paso a paso (Parte 1)"
+author: "Cristobal Salcedo Beltran"
 date: 2024-05-03 23:34:00 +0800
 categories: [Blogging, Tutorial]
 tags: [Deneb, Vega, Pareto]
 pin: false
 image:
-  path: assets/img/post-dispersion-etiquetados-vega/dispersion-etiquetados.png
-  alt: Cross-Filtering y Cross-Highlight Scatter Plot 
-scripts:
-  - https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js
+  path: /assets/img/post-dispersion-etiquetados-vega/dispersion-etiquetados.png
+  alt: "Cross-Filtering y Cross-Highlight Scatter Plot"
+description: "Una guía detallada para crear un diagrama de Pareto usando Deneb y Vega-Lite en Power BI. Esta es la primera parte de la serie."
 ---
 
 
@@ -20,7 +19,7 @@ scripts:
 
 ## Paso 1: Preparación de datos
 
-Antes de crear nuestro diagrama de Pareto, debemos preparar nuestros datos. Utilizaremos los datos de muestra suministrados por Power Bi en su sitio web, que puedes descargar desde este enlace: https://go.microsoft.com/fwlink/?LinkID=521962. También puedes acceder a estos datos siguiendo estos pasos:
+Antes de crear nuestro diagrama de Pareto, debemos preparar nuestros datos. Utilizaremos los datos de muestra suministrados por Power Bi en su sitio web, que puedes descargar desde este enlace: <https://go.microsoft.com/fwlink/?LinkID=521962>. También puedes acceder a estos datos siguiendo estos pasos:
 
 -         Iniciar Power Bi.
 
@@ -31,16 +30,18 @@ Antes de crear nuestro diagrama de Pareto, debemos preparar nuestros datos. Util
 -         Dar clic en "Cargar datos al modelo" y listo.
 
 ## Paso 2: Crear una medida DAX
+
 En este paso, nos basaremos en el blog escrito por **Amal BEN REBAI**, [How to find your best sub-categories of products that make up 80% of total sales?](https://amalbenrebai.substack.com/p/how-to-identify-product-sub-categories). Crearemos las medidas Total Ventas, Acumulado de Ventas Por Producto y % Acumulado de Ventas por Producto, utilizando el código proporcionado en el artículo, aquí presento una versión ajustada:
 
-* Medida: Suma de las Ventas:
-  
+- Medida: Suma de las Ventas:
+
+<pre class="highlight"><code>/*  
 ```dax
 Total Ventas = SUM ( financials[ Sales] )
 ```
+*/</code></pre>
 
-* Medida: Acumulado de ventas por producto:
-
+- Medida: Acumulado de ventas por producto:
 
 ```dax
 Acumulado de ventas Por Producto =
@@ -57,7 +58,7 @@ SUMX (
 )
 ```
 
- * Medida: % Acumulado de ventas por producto:
+- Medida: % Acumulado de ventas por producto:
   
 ```dax
 % Acumulado de Ventas por Producto =
@@ -75,6 +76,7 @@ RETURN
 ```
 
 ## Paso 3: Creación de un visual de tabla
+
 Para facilitar la comprensión, crearemos un visual de tabla con las columnas Product, Total Ventas, Acumulado de Ventas Por Producto y % Acumulado de Ventas por Producto. El visual debe verse como en la imagen proporcionada.
 
 Minimizar imagen
@@ -83,6 +85,7 @@ Borrar imagen
 No hay texto alternativo para esta imagen
 
 ## Paso 4: Cambiar el visual de tabla a Deneb
+
 Después de haber agregado el visual Deneb a la colección de visuales en Power Bi, seleccionaremos nuestro visual de tabla y lo cambiaremos a Deneb. Se debe ver como en la imagen proporcionada.
 
 Minimizar imagen
@@ -91,6 +94,7 @@ Borrar imagen
 No hay texto alternativo para esta imagen
 
 ## Paso 5: Editar el visual de Deneb
+
 Haz clic en los tres puntos suspensivos y elige "Editar visual de Deneb". Verás la imagen proporcionada en el artículo.
 
 Minimizar imagen
@@ -99,6 +103,7 @@ Borrar imagen
 No hay texto alternativo para esta imagen
 
 ## Paso 6: Seleccionar plantilla y ajustar código
+
 Dejamos seleccionado Vega-Lite por defecto y elegimos la plantilla "Simple Bar Chart". Asignamos la categoría "Product" al campo categórico y "Total Venta" al campo cuantitativo. Al hacerlo, se activará el botón "Crear", así:
 
 Minimizar imagen
@@ -109,6 +114,7 @@ No hay texto alternativo para esta imagen
 Ya tenemos gran parte del código necesario para nuestro visual. Es una buena práctica comenzar con una plantilla y realizar pequeños ajustes para obtener el resultado deseado. No es necesario ser un experto en Vega o Vega-Lite para crear visuales personalizados. Al finalizar este artículo, te mostraremos una técnica para reutilizar el visual creado sin tener que repetir el proceso cada vez que lo necesites. Por ahora, realicemos los ajustes necesarios para crear nuestro diagrama de Pareto.
 
 ## Paso 7: Cambiar los ejes X e Y
+
 Para cambiar el eje X al categórico "Product" y el eje Y a la variable cuantitativa "Total Ventas", modifica el fragmento de código de la siguiente manera:
 
 Código original:
@@ -147,6 +153,7 @@ Borrar imagen
 No hay texto alternativo para esta imagen
 
 ## Paso 8: Limpiar y ordenar etiquetas en los ejes X e Y
+
 Para cambiar la orientación de las etiquetas de la categoría en el eje X de vertical a horizontal y ocultar las etiquetas en el eje Y, sigue estos pasos en el editor de Deneb:
 
 Haz clic en el panel de configuración.
@@ -162,7 +169,9 @@ Editar imagen
 Borrar imagen
 No hay texto alternativo para esta imagen
 Imagen con cambios en las etiquetas de los ejes X e Y aquí
+
 ## Paso 9: Ordenar el gráfico de mayor a menor según la variable "Total Venta"
+
 Para ordenar el gráfico de acuerdo con la variable "Total Venta" de mayor a menor, sigue estos pasos:
 
 Regresa al panel de especificaciones en el editor de Deneb (si deseas conocer todos los botones y paneles de la versión de Deneb 1.5, puedes ver este video donde se explico cada uno de sus componentes : <https://youtu.be/odIYzsS11Qg>.
@@ -191,9 +200,10 @@ Editar imagen
 Borrar imagen
 No hay texto alternativo para esta imagen
 Imagen con cambios en la ordenación y quitando título del eje Y
-## Paso 10: Agregar el gráfico de línea como una capa adicional en el array "layer"
-Hasta ahora, si has seguido los pasos, te darás cuenta de que dentro del array "layer" existen dos objetos visuales, cada uno con un "mark" de tipo "bar" (gráfico de barras). A continuación, añadiremos un nuevo objeto para el gráfico de línea:
 
+## Paso 10: Agregar el gráfico de línea como una capa adicional en el array "layer"
+
+Hasta ahora, si has seguido los pasos, te darás cuenta de que dentro del array "layer" existen dos objetos visuales, cada uno con un "mark" de tipo "bar" (gráfico de barras). A continuación, añadiremos un nuevo objeto para el gráfico de línea:
 
 ```json
 "mark":{
@@ -223,7 +233,7 @@ Este objeto define un gráfico de línea con las siguientes características:
 
 <kbd>"point":{...}</kbd> Define la apariencia de los puntos en la línea, con un color de borde azul, sin relleno y con un relleno blanco.
 
-La propiedad "encoding" en este objeto especifica que el eje Y del gráfico de línea utilizará el campo "% Acumulado de Ventas por Producto" como valor. 
+La propiedad "encoding" en este objeto especifica que el eje Y del gráfico de línea utilizará el campo "% Acumulado de Ventas por Producto" como valor.
 
 Mira la siguiente imagen y observa que la línea está justo a nivel cero:
 
@@ -253,6 +263,7 @@ No hay texto alternativo para esta imagen
 Al agregar este nuevo objeto y el segundo eje Y, el gráfico de línea mostrará el porcentaje acumulado de ventas por producto, facilitando la identificación de las categorías de productos que representan el 80% de las ventas totales. También puede ver en la imagen anterior los métodos de interpolación que se pueden usar en el gráfico de línea.
 
 ## Paso 11: Agregar capas de etiquetas al gráfico de líneas y al gráfico de barras dentro del array "layer"
+
 A continuación, añadiremos dos nuevos objetos dentro del array "layer" para agregar etiquetas a los gráficos de líneas y barras. Estas etiquetas proporcionarán información adicional sobre el porcentaje acumulado de ventas por producto y el total de ventas.
 
 Etiquetas para el gráfico de líneas:
@@ -327,7 +338,7 @@ Aplicar color condicional al primer gráfico de barras:
    }
 }
 ```
- 
+
 En el objeto de marca, hemos agregado la propiedad "color" con la siguiente expresión:
 
 "expr": "datum['% Acumulado de Ventas por Producto'] <=0.8 ?' ': ''": Esta expresión asigna un color gris () a las barras que representan hasta el 80% de las ventas acumuladas y un color rojo () a las barras restantes.
@@ -386,7 +397,7 @@ Al igual que en el primer gráfico de barras, hemos agregado la propiedad "color
 
 <kbd>"condition": { ... }"</kbd> La condición especifica qué sucede cuando se cumple un cierto criterio. En este caso, el criterio está relacionado con la selección de las barras en el gráfico.
 
-<kbd>"test": { "field": "__selected__", "equal": "off" }"</kbd> Este objeto de prueba verifica si la barra seleccionada está en estado "off" (es decir, no seleccionada). Si la barra no está seleccionada, la condición se cumple y se aplica el valor de opacidad especificado.
+<kbd>"test": { "field": "**selected**", "equal": "off" }"</kbd> Este objeto de prueba verifica si la barra seleccionada está en estado "off" (es decir, no seleccionada). Si la barra no está seleccionada, la condición se cumple y se aplica el valor de opacidad especificado.
 
 <kbd>"value": 0</kbd> Cuando la condición se cumple (la barra no está seleccionada), la opacidad de la barra se establece en 0, lo que hace que la barra sea transparente.
 
@@ -409,20 +420,16 @@ Dado que este artículo se ha vuelto bastante extenso, nos detendremos aquí y c
 Descarga de la Plantilla y Visualización
 Para facilitar la implementación de esta funcionalidad en tu propio proyecto, ponemos a tu disposición la plantilla de visualización en Deneb. Puedes descargar el archivo PBIX desde el siguiente enlace:
 
-https://github.com/cristobalsalcedo90/PowerBI-Deneb/raw/main/Pareto%20Vega%20lite.pbix
+<https://github.com/cristobalsalcedo90/PowerBI-Deneb/raw/main/Pareto%20Vega%20lite.pbix>
 
 Plantilla .json edesde el siguiente enlace:
 
 cristobalsalcedo90/PowerBI-Deneb (github.com)
 
-
-
 Agradecimientos
 Para concluir, quisiera expresar mi más profundo agradecimiento a mi equipo en Pesante Analytics Llc quienes me brindaron la oportunidad de aprender este lenguaje declarativo, bajo la experta guía de Daniel Marsh-Patrick. Gracias a esta capacitación, hemos podido aportar un gran valor a los proyectos de nuestros clientes. No olvides seguir a Pesante Analytics Llc en  para estar al tanto de nuestras últimas actualizaciones y publicaciones.
 
 Esperamos que este artículo te haya sido de utilidad e inspirado a descubrir y aprovechar al máximo las capacidades de Deneb y Vega-Lite en tus propias visualizaciones de datos.
-
-                  
 
 Plantilla:
 

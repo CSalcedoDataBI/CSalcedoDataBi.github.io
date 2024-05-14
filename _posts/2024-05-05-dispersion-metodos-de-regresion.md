@@ -1,22 +1,21 @@
 ---
-title: Selección Dinámica de Métodos de Regresión en Deneb para Power BI
-author: Cristobal Salcedo Beltran
+title: "Selección Dinámica de Métodos de Regresión en Deneb para Power BI"
+author: "Cristobal Salcedo Beltran"
 date: 2024-05-03 23:34:00 +0800
 categories: [Blogging, Tutorial]
 tags: [Deneb, Vega]
 pin: false
 image:
-  path: assets/img/post-dispersion-etiquetados-vega/dispersion-etiquetados.png
-  alt: Cross-Filtering y Cross-Highlight Scatter Plot
-scripts:
-  - https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js 
+  path: /assets/img/post-dispersion-etiquetados-vega/dispersion-etiquetados.png
+  alt: "Cross-Filtering y Cross-Highlight Scatter Plot"
+description: "Descubre cómo seleccionar dinámicamente métodos de regresión en Deneb para Power BI con esta guía detallada."
 ---
+
 ## Introducción
 
 En este artículo, nos adentraremos en una funcionalidad innovadora que hemos integrado en nuestro scatter plot, desarrollado previamente con **Deneb** en **Power BI**. Si aún no has tenido la oportunidad de ver cómo se crea, te invito a visitar el siguiente enlace:
 
 Nuestro objetivo es enriquecer la visualización al permitir la selección del método de regresión. A continuación, detallaremos los pasos necesarios para implementar esta función y mejorar aún más nuestra visualización.
-
 
 ## Selección de Métodos de Regresión
 
@@ -35,7 +34,7 @@ Mas información acerca de esto aquí: Regression Transform | Vega
 
 A continuación, te presentamos los pasos necesarios para incorporar la selección de métodos de regresión en tu visualización en Deneb:
 
-## Paso 1: Descarga el archivo PBIX 
+## Paso 1: Descarga el archivo PBIX
 
 [🔽 Dispersion_Etiquetados.pbix](https://github.com/CSalcedoDataBI/PowerBI-Deneb/raw/main/Dispersion_Etiquetados/Files/Dispersion_Etiquetada.pbix) (1.88 MB)
 
@@ -62,14 +61,11 @@ SELECTCOLUMNS (
 )
 ```
 
-
 Medida relacionada:
 
 ```dax
 GroupbySelected  = SELECTEDVALUE ( 'OptionsGroupby'[Index], 1 )
 ```
-
-
 
 Tabla Calculada "OptionsMethod"
 
@@ -96,10 +92,9 @@ Medida relacionada:
 MethodSelected = SELECTEDVALUE ( 'OptionsMethod'[Index], 1 )
 ```
 
-
 Tabla Calculada "PolyOrder"
 
-Esta tabla define el orden del polinomio en caso de seleccionar el método polinomial. Puedes establecer un rango de 1 a 10, por ejemplo. 
+Esta tabla define el orden del polinomio en caso de seleccionar el método polinomial. Puedes establecer un rango de 1 a 10, por ejemplo.
 ```dax
 PolyOrder = GENERATESERIES ( 1, 10, 1 )
 ```
@@ -107,7 +102,6 @@ Medida relacionada:
 ```dax
 PolyValue = SELECTEDVALUE('PolyOrder'[PolyOrder], 1)
 ```
-
 
 ## Paso 3: Agregar Medidas y Filtros
 
@@ -305,6 +299,7 @@ PowerBI-Deneb/Selected Method Regression (ScatterPlot).json at main · cristobal
  Al utilizar esta plantilla, podrás visualizar directamente cómo se aplica la selección de métodos de regresión en un ejemplo práctico.
 
 ## Conclusiones
+
 La incorporación de la selección de métodos de regresión en nuestra visualización en Deneb representa un avance significativo en la exploración y análisis de datos. Gracias a la adaptación de la biblioteca , hemos logrado ofrecerte una herramienta más potente y flexible para investigar patrones y tendencias en tus datos.
 
 Recuerda que la plantilla de visualización en Deneb está disponible para su descarga, lo que te permitirá comprender mejor la implementación de esta funcionalidad y explorar las posibilidades de personalización. ¡Esperamos que esta mejora en la visualización en  en  sea de gran utilidad en tus proyectos de análisis de datos!
@@ -320,13 +315,14 @@ Scatter Plot con etiquetas disponible en la documentación oficial de Vega: htps
 
 Cross-Filtering (Selection):
 
-https://deneb-viz.github.io/interactivity-selection
+<https://deneb-viz.github.io/interactivity-selection>
 
 Cross-Highlighting:
 
-https://deneb-viz.github.io/interactivity-highlight
+<https://deneb-viz.github.io/interactivity-highlight>
 
-## Plantillla:
+## Plantillla
+
 ```json
 
 {  "$schema": "https://vega.github.io/schema/vega/v5.json",
@@ -630,20 +626,3 @@ https://deneb-viz.github.io/interactivity-highlight
   ]
 }
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

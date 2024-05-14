@@ -1,16 +1,16 @@
 ---
-title: Diagrama de pareto con Deneb y Vega-Lite en Power Bi (parte 2).
-author: Cristobal Salcedo Beltran
+title: "Diagrama de Pareto con Deneb y Vega-Lite en Power BI (Parte 2)"
+author: "Cristobal Salcedo Beltran"
 date: 2024-05-03 23:34:00 +0800
 categories: [Blogging, Tutorial]
 tags: [Deneb, Vega, Pareto]
 pin: false
 image:
   path: https://raw.githubusercontent.com/CSalcedoDataBI/PowerBI-Deneb/752fca72da2d872e8b6c5c64288a5e6b2ad12247/Diagramas_Pareto/FIles/Pareto_Dinamico_Deneb_VegaLite_P2.gif
-  alt: Cross-Filtering y Cross-Highlight Scatter Plot 
-scripts:
-  - https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js
+  alt: "Cross-Filtering y Cross-Highlight Scatter Plot"
+description: "Continúa la guía para crear un diagrama de Pareto usando Deneb y Vega-Lite en Power BI. Esta es la segunda parte de la serie."
 ---
+
 Imagina un mundo donde no tienes que lidiar con la complejidad de las variables necesarias para crear un gráfico de Pareto cada vez que lo necesitas. En lugar de eso, simplemente utilizas una plantilla predefinida que incorpora todas las características y mejoras estéticas que has definido previamente. Esta plantilla puede ser reutilizada en múltiples informes, simplemente asignando las dos variables principales: tu categoría X y tu valor o medida Y. Así de sencillo, así de eficiente 🚀.
 
 ## Uso de DAX y Vega-lite
@@ -90,7 +90,7 @@ A continuación, te mostramos una imagen que ilustra cómo se ve el código inse
 
 En la imagen anterior, puedes observar cómo las secciones de código están enumeradas y corresponden a las columnas agregadas en un nuevo flujo de datos. Este flujo de datos se transforma a nivel de visualización, lo que demuestra el increíble poder de Deneb y Vega-Lite. Es similar a realizar una referencia en Power Query y luego aplicar transformaciones adicionales a partir de ella.
 
-Esta potencia también se ve reflejada en la valiosa característica de Deneb de poder copiar nuestras visualizaciones como plantillas JSON, facilitando su reutilización en futuros proyectos. 
+Esta potencia también se ve reflejada en la valiosa característica de Deneb de poder copiar nuestras visualizaciones como plantillas JSON, facilitando su reutilización en futuros proyectos.
 
 ## Conclusión
 
@@ -105,8 +105,6 @@ Puedes descargar el archivo PBIX y la plantilla .json utilizados en este artícu
 Estos enlaces te proporcionarán acceso a los archivos PBIX y la plantilla .json utilizados en este artículo, permitiéndote explorar y adaptar los ejemplos a tus propias necesidades. ¡Buena suerte y diviértete explorando!
 
 🖋️ Escrito por Cristobal Salcedo Beltran con la ayuda de Pesante Analytics Llc
-
-
 
 ## Plantilla
 

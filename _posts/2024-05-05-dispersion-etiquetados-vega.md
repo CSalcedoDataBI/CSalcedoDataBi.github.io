@@ -7,7 +7,9 @@ tags: [Deneb, Vega]
 pin: false
 image:
   path: assets/img/post-dispersion-etiquetados-vega/dispersion-etiquetados.png
-  alt: Cross-Filtering y Cross-Highlight Scatter Plot 
+  alt: Cross-Filtering y Cross-Highlight Scatter Plot
+scripts:
+  - https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js
 ---
 En este artículo, quiero compartir una solución que encontramos mientras trabajábamos en un proyecto con Pesante Analytics LlC para un cliente. Durante nuestro trabajo, nos dimos cuenta de que el visual <kbd>Scatter Plot</kbd> de **PowerBI** era bastante limitado, ya que carecía de la funcionalidad de <kbd>Cross-highlight.</kbd> Por esta razón, decidimos utilizar **Deneb** y **Vega**.
 

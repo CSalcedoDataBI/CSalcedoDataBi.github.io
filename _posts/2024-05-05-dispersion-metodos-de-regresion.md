@@ -7,7 +7,9 @@ tags: [Deneb, Vega]
 pin: false
 image:
   path: assets/img/post-dispersion-etiquetados-vega/dispersion-etiquetados.png
-  alt: Cross-Filtering y Cross-Highlight Scatter Plot 
+  alt: Cross-Filtering y Cross-Highlight Scatter Plot
+scripts:
+  - https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js 
 ---
 ## Introducción
 

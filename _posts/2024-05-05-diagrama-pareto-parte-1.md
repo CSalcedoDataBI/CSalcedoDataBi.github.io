@@ -8,7 +8,10 @@ pin: false
 image:
   path: assets/img/post-dispersion-etiquetados-vega/dispersion-etiquetados.png
   alt: Cross-Filtering y Cross-Highlight Scatter Plot 
+scripts:
+  - https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js
 ---
+
 
 >"El principio de Pareto, también conocido como la regla del 80/20, puede aplicarse en diversos contextos, incluyendo el empresarial. Por ejemplo, puede ser útil para identificar qué productos, clientes, proveedores o regiones representan el 80% de las ventas totales de una empresa".
 {: .prompt-tip }

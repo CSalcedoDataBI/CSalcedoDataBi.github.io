@@ -19,29 +19,30 @@ description: "Una guía detallada para crear un diagrama de Pareto usando Deneb 
 
 ## Paso 1: Preparación de datos
 
-Antes de crear nuestro diagrama de Pareto, debemos preparar nuestros datos. Utilizaremos los datos de muestra suministrados por Power Bi en su sitio web, que puedes descargar desde este enlace: <https://go.microsoft.com/fwlink/?LinkID=521962>. También puedes acceder a estos datos siguiendo estos pasos:
+Antes de crear nuestro diagrama de Pareto, debemos preparar nuestros datos. Utilizaremos los datos de muestra suministrados por Power Bi en su sitio web, que puedes descargar desde este enlace: 
+<https://go.microsoft.com/fwlink/?LinkID=521962>.
+
+**También puedes acceder a estos datos siguiendo estos pasos:**
 
 -         Iniciar Power Bi.
+-         Dar clic en el último botón que está en el lienzo del informe y dice `"Probar    datos de ejemplo"`.
+-         Elegir la tabla ``"Financials". ``
+-         Dar clic en ``"Cargar datos al modelo"`` y listo.
 
--         Dar clic en el último botón que está en el lienzo del informe y dice "Probar    datos de ejemplo".
+## Paso 2: Crear tres medidas DAX
 
--         Elegir la tabla "Financials".
+En este paso, nos basaremos en el blog escrito por **Amal BEN REBAI** [How to find your best sub-categories of products that make up 80% of total sales?](https://amalbenrebai.substack.com/p/how-to-identify-product-sub-categories). Crearemos las medidas ``Total Ventas``, ``Acumulado de Ventas Por Producto`` y ``% Acumulado de Ventas por Producto``, utilizando el código proporcionado en el artículo, aquí presento una versión ajustada:
 
--         Dar clic en "Cargar datos al modelo" y listo.
-
-## Paso 2: Crear una medida DAX
-
-En este paso, nos basaremos en el blog escrito por **Amal BEN REBAI**, [How to find your best sub-categories of products that make up 80% of total sales?](https://amalbenrebai.substack.com/p/how-to-identify-product-sub-categories). Crearemos las medidas Total Ventas, Acumulado de Ventas Por Producto y % Acumulado de Ventas por Producto, utilizando el código proporcionado en el artículo, aquí presento una versión ajustada:
-
-- Medida: Suma de las Ventas:
+ ``1.`` **Medida: Suma de las Ventas:**
 
 <pre class="highlight"><code>
 Total Ventas = SUM ( financials[ Sales] )
 </code></pre>
 
-- Medida: Acumulado de ventas por producto:
+``2.`` **Medida: Acumulado de ventas por producto:**
 
 <pre class="highlight"><code>
+
 Acumulado de ventas Por Producto =
 SUMX (
     WINDOW (
@@ -56,7 +57,7 @@ SUMX (
 )
 </code></pre>
 
-- Medida: % Acumulado de ventas por producto:
+``3.`` **Medida: % Acumulado de ventas por producto:**
   
 <pre class="highlight"><code>
 % Acumulado de Ventas por Producto =
@@ -77,78 +78,29 @@ RETURN
 
 Para facilitar la comprensión, crearemos un visual de tabla con las columnas Product, Total Ventas, Acumulado de Ventas Por Producto y % Acumulado de Ventas por Producto. El visual debe verse como en la imagen proporcionada.
 
-Minimizar imagen
-Editar imagen
-Borrar imagen
-No hay texto alternativo para esta imagen
+![Datos](/assets/img/post-diagrama-pareto-parte-1/image_1.png)
 
 ## Paso 4: Cambiar el visual de tabla a Deneb
 
-Después de haber agregado el visual Deneb a la colección de visuales en Power Bi, seleccionaremos nuestro visual de tabla y lo cambiaremos a Deneb. Se debe ver como en la imagen proporcionada.
+Después de haber agregado el visual Deneb a la colección de visuales en Power Bi, seleccionaremos nuestro visual de tabla y lo cambiaremos a Deneb. Se debe ver como en la imagen.gif proporcionada.
 
-Minimizar imagen
-Editar imagen
-Borrar imagen
-No hay texto alternativo para esta imagen
+![TablaADeneb](/assets/img/post-diagrama-pareto-parte-1/TablaADeneb.gif)
 
-## Paso 5: Editar el visual de Deneb
+## Paso 5: Seleccionar plantilla y ajustar código
 
-Haz clic en los tres puntos suspensivos y elige "Editar visual de Deneb". Verás la imagen proporcionada en el artículo.
+- Haz clic en los tres puntos suspensivos y elige ``"Editar visual de Deneb"``.
+- Dejamos seleccionado **Vega-Lite** por defecto y elegimos la plantilla <kbd>."Simple Bar Chart"</kbd>. Asignamos la categoría ``"Product"`` al campo categórico y ``"Total Venta"`` al campo cuantitativo. Al hacerlo, se activará el botón <kbd>"Crear"</kbd>, así:
 
-Minimizar imagen
-Editar imagen
-Borrar imagen
-No hay texto alternativo para esta imagen
+![Paso 5](/assets/img/post-diagrama-pareto-parte-1/Paso_5.gif)
 
-## Paso 6: Seleccionar plantilla y ajustar código
+>Ya tenemos gran parte del código necesario para nuestro visual. Es una buena práctica comenzar con una plantilla y realizar pequeños ajustes para obtener el resultado deseado. No es necesario ser un experto en Vega o Vega-Lite para crear visuales personalizados.
+{: .prompt-tip }
 
-Dejamos seleccionado Vega-Lite por defecto y elegimos la plantilla "Simple Bar Chart". Asignamos la categoría "Product" al campo categórico y "Total Venta" al campo cuantitativo. Al hacerlo, se activará el botón "Crear", así:
+## Paso 6: **Cambiar los ejes X e Y**
 
-Minimizar imagen
-Editar imagen
-Borrar imagen
-No hay texto alternativo para esta imagen
+Para cambiar el eje X al categórico ``"Product"`` y el eje Y a la variable cuantitativa ``"Total Ventas"``, modifica el fragmento de código de la siguiente manera:
 
-Ya tenemos gran parte del código necesario para nuestro visual. Es una buena práctica comenzar con una plantilla y realizar pequeños ajustes para obtener el resultado deseado. No es necesario ser un experto en Vega o Vega-Lite para crear visuales personalizados. Al finalizar este artículo, te mostraremos una técnica para reutilizar el visual creado sin tener que repetir el proceso cada vez que lo necesites. Por ahora, realicemos los ajustes necesarios para crear nuestro diagrama de Pareto.
-
-## Paso 7: Cambiar los ejes X e Y
-
-Para cambiar el eje X al categórico "Product" y el eje Y a la variable cuantitativa "Total Ventas", modifica el fragmento de código de la siguiente manera:
-
-Código original:
-<pre class="highlight"><code>
-"encoding":{
-   "x":{
-      "field":"Product",
-      "type":"nominal"
-   },
-   "y":{
-      "field":"Total Ventas",
-      "type":"quantitative"
-   }
-}
-</code></pre>
-
-Código modificado:
-
-<pre class="highlight"><code>
-"encoding":{
-   "y":{
-      "field":"Product",
-      "type":"nominal"
-   },
-   "x":{
-      "field":"Total Ventas",
-      "type":"quantitative"
-   }
-}
-</code></pre>
-A continuación, se muestra la imagen completa con las modificaciones necesarias para cambiar los ejes X e Y:
-
-Minimizar imagen
-Editar imagen
-Borrar imagen
-No hay texto alternativo para esta imagen
+![Paso 6](/assets/img/post-diagrama-pareto-parte-1/Paso_6.gif)
 
 ## Paso 8: Limpiar y ordenar etiquetas en los ejes X e Y
 
@@ -247,7 +199,7 @@ El problema aquí es que estamos usando un eje Y a una escala mayor que la del p
    "scale":{
       "y":"independent"
    }
-}, 
+},
 </code></pre>
 La propiedad "resolve" y su atributo "scale" indican que el eje Y utilizará escalas independientes para cada capa. De esta manera, el gráfico de línea usará una escala adecuada para representar el porcentaje acumulado de ventas por producto.
 
@@ -395,7 +347,7 @@ Al igual que en el primer gráfico de barras, hemos agregado la propiedad "color
 
 <kbd>"condition": { ... }"</kbd> La condición especifica qué sucede cuando se cumple un cierto criterio. En este caso, el criterio está relacionado con la selección de las barras en el gráfico.
 
-<kbd>"test": { "field": "__selected__", "equal": "off" }"</kbd> Este objeto de prueba verifica si la barra seleccionada está en estado "off" (es decir, no seleccionada). Si la barra no está seleccionada, la condición se cumple y se aplica el valor de opacidad especificado.
+<kbd>"test": { "field": "**selected**", "equal": "off" }"</kbd> Este objeto de prueba verifica si la barra seleccionada está en estado "off" (es decir, no seleccionada). Si la barra no está seleccionada, la condición se cumple y se aplica el valor de opacidad especificado.
 
 <kbd>"value": 0</kbd> Cuando la condición se cumple (la barra no está seleccionada), la opacidad de la barra se establece en 0, lo que hace que la barra sea transparente.
 

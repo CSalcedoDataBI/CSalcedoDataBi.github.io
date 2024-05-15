@@ -17,7 +17,7 @@ description: "Una guía detallada para crear un diagrama de Pareto usando Deneb 
 
  En este artículo, te guiaremos paso a paso para crear un diagrama de Pareto utilizando Deneb, una herramienta de visualización personalizada que se conecta con el lenguaje  o . Mostraremos dos enfoques, uno utilizando  y otro con transformaciones avanzadas en .
 
-## Paso 1: Preparación de datos
+## Paso 1: **Preparación de datos**
 
 Antes de crear nuestro diagrama de Pareto, debemos preparar nuestros datos. Utilizaremos los datos de muestra suministrados por Power Bi en su sitio web, que puedes descargar desde este enlace: 
 <https://go.microsoft.com/fwlink/?LinkID=521962>.
@@ -29,7 +29,7 @@ Antes de crear nuestro diagrama de Pareto, debemos preparar nuestros datos. Util
 -         Elegir la tabla ``"Financials". ``
 -         Dar clic en ``"Cargar datos al modelo"`` y listo.
 
-## Paso 2: Crear tres medidas DAX
+## Paso 2: **Crear tres medidas DAX**
 
 En este paso, nos basaremos en el blog escrito por **Amal BEN REBAI** [How to find your best sub-categories of products that make up 80% of total sales?](https://amalbenrebai.substack.com/p/how-to-identify-product-sub-categories). Crearemos las medidas ``Total Ventas``, ``Acumulado de Ventas Por Producto`` y ``% Acumulado de Ventas por Producto``, utilizando el código proporcionado en el artículo, aquí presento una versión ajustada:
 
@@ -74,19 +74,19 @@ RETURN
     )
 </code></pre>
 
-## Paso 3: Creación de un visual de tabla
+## Paso 3: **Creación de un visual de tabla**
 
 Para facilitar la comprensión, crearemos un visual de tabla con las columnas Product, Total Ventas, Acumulado de Ventas Por Producto y % Acumulado de Ventas por Producto. El visual debe verse como en la imagen proporcionada.
 
 ![Datos](/assets/img/post-diagrama-pareto-parte-1/image_1.png)
 
-## Paso 4: Cambiar el visual de tabla a Deneb
+## Paso 4: **Cambiar el visual de tabla a Deneb**
 
 Después de haber agregado el visual Deneb a la colección de visuales en Power Bi, seleccionaremos nuestro visual de tabla y lo cambiaremos a Deneb. Se debe ver como en la imagen.gif proporcionada.
 
 ![TablaADeneb](/assets/img/post-diagrama-pareto-parte-1/TablaADeneb.gif)
 
-## Paso 5: Seleccionar plantilla y ajustar código
+## Paso 5: **Seleccionar plantilla y ajustar código**
 
 - Haz clic en los tres puntos suspensivos y elige ``"Editar visual de Deneb"``.
 - Dejamos seleccionado **Vega-Lite** por defecto y elegimos la plantilla <kbd>."Simple Bar Chart"</kbd>. Asignamos la categoría ``"Product"`` al campo categórico y ``"Total Venta"`` al campo cuantitativo. Al hacerlo, se activará el botón <kbd>"Crear"</kbd>, así:
@@ -102,11 +102,41 @@ Para cambiar el eje X al categórico ``"Product"`` y el eje Y a la variable cuan
 
 ![Paso 6](/assets/img/post-diagrama-pareto-parte-1/Paso_6.gif)
 
-## Paso 8: Limpiar y ordenar etiquetas en los ejes X e Y
+## Paso 7: Limpiar y ordenar etiquetas en los ejes X e Y
 
 Para cambiar la orientación de las etiquetas de la categoría en el eje X de vertical a horizontal y ocultar las etiquetas en el eje Y, sigue estos pasos en el editor de Deneb:
 
-Haz clic en el panel de configuración.
+Haz clic en el panel de configuración he inserta el siguiente codigo.
+<pre class="highlight"><code>
+{
+  "view": {"stroke": "transparent"},
+  "line": {
+    "strokeWidth": 3,
+    "strokeCap": "round",
+    "strokeJoin": "round"
+  },
+  "text": {
+    "font": "Segoe UI",
+    "fontSize": 18,
+    "fill": "#605E5C"
+  },
+  "axis": {
+    "ticks": false,
+    "grid": false,
+    "domain": false,
+    "labelColor": "#605E5C",
+    "labelFontSize": 18
+  },
+  "axisX": {
+    "labelPadding": 5,
+    "labelAngle": 0
+  },
+  "axisY": {
+    "labelPadding": 10,
+    "labels": false
+  }
+}
+</code></pre>
 
 Cambia la orientación de la etiqueta en el eje X agregando <kbd>"labelAngle": 0</kbd> a la propiedad <kbd>"axisX": {}</kbd>. De esta manera, la orientación de la etiqueta cambiará a horizontal o al ángulo que desees.
 
@@ -114,11 +144,7 @@ Cambia la orientación de la etiqueta en el eje X agregando <kbd>"labelAngle": 0
 
  A continuación, se muestra la imagen con el panorama completo de los cambios realizados en las etiquetas de los ejes X e Y:
 
-Minimizar imagen
-Editar imagen
-Borrar imagen
-No hay texto alternativo para esta imagen
-Imagen con cambios en las etiquetas de los ejes X e Y aquí
+![Paso 7](/assets/img/post-diagrama-pareto-parte-1/Paso_7.gif)
 
 ## Paso 9: Ordenar el gráfico de mayor a menor según la variable "Total Venta"
 

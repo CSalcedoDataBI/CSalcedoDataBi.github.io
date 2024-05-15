@@ -35,15 +35,13 @@ En este paso, nos basaremos en el blog escrito por **Amal BEN REBAI**, [How to f
 
 - Medida: Suma de las Ventas:
 
-<pre class="highlight"><code>/*  
-```dax
+<pre class="highlight"><code>
 Total Ventas = SUM ( financials[ Sales] )
-```
-*/</code></pre>
+</code></pre>
 
 - Medida: Acumulado de ventas por producto:
 
-```dax
+<pre class="highlight"><code>
 Acumulado de ventas Por Producto =
 SUMX (
     WINDOW (
@@ -56,7 +54,7 @@ SUMX (
     ),
     [Total Ventas]
 )
-```
+</code></pre>
 
 - Medida: % Acumulado de ventas por producto:
   

@@ -1,12 +1,12 @@
 ---
-title: "Diagrama de Pareto con Deneb y Vega-Lite en Power BI: Guía paso a paso (Parte 1)"
+title: "Diagrama de Pareto con Deneb y Vega-Lite en Power BI (Parte 1)"
 author: "Cristobal Salcedo Beltran"
 date: 2024-05-03 23:34:00 +0800
 categories: [Blogging, Tutorial]
 tags: [Deneb, Vega, Pareto]
 pin: false
 image:
-  path: /assets/img/post-dispersion-etiquetados-vega/dispersion-etiquetados.png
+  path: https://raw.githubusercontent.com/CSalcedoDataBI/PowerBI-Deneb/main/Diagramas_Pareto/FIles/Pareto_Dinamico_Deneb_VegaLite_P1_Encabezado.gif
   alt: "Cross-Filtering y Cross-Highlight Scatter Plot"
 description: "Una guía detallada para crear un diagrama de Pareto usando Deneb y Vega-Lite en Power BI. Esta es la primera parte de la serie."
 ---
@@ -58,7 +58,7 @@ SUMX (
 
 - Medida: % Acumulado de ventas por producto:
   
-```dax
+<pre class="highlight"><code>
 % Acumulado de Ventas por Producto =
 VAR __TotalVentas =
     CALCULATE (
@@ -71,7 +71,7 @@ RETURN
         __Acumulado,
         __TotalVentas
     )
-```
+</code></pre>
 
 ## Paso 3: Creación de un visual de tabla
 
@@ -116,7 +116,7 @@ Ya tenemos gran parte del código necesario para nuestro visual. Es una buena pr
 Para cambiar el eje X al categórico "Product" y el eje Y a la variable cuantitativa "Total Ventas", modifica el fragmento de código de la siguiente manera:
 
 Código original:
-```json
+<pre class="highlight"><code>
 "encoding":{
    "x":{
       "field":"Product",
@@ -127,11 +127,11 @@ Código original:
       "type":"quantitative"
    }
 }
-```
+</code></pre>
 
 Código modificado:
 
-```json
+<pre class="highlight"><code>
 "encoding":{
    "y":{
       "field":"Product",
@@ -142,7 +142,7 @@ Código modificado:
       "type":"quantitative"
    }
 }
-```
+</code></pre>
 A continuación, se muestra la imagen completa con las modificaciones necesarias para cambiar los ejes X e Y:
 
 Minimizar imagen
@@ -176,13 +176,13 @@ Regresa al panel de especificaciones en el editor de Deneb (si deseas conocer to
 
 Agrega la propiedad <kbd>"sort"</kbd> en el eje X, de la siguiente manera:
 
-```json
+<pre class="highlight"><code>
 "sort":{
    "field":"Total Ventas",
    "op":"sum",
    "order":"descending"
 }
-```
+</code></pre>
 <kbd>"field": "Total Ventas"</kbd> Especifica el campo (columna) del conjunto de datos que se utilizará como criterio de ordenación. En este caso, se utiliza la columna <kbd>"Total Ventas"</kbd>.
 
 <kbd>"op": "sum"</kbd> Define la operación de agregación que se aplicará a los datos antes de ordenarlos. En este caso, se utiliza la función sum para sumar los valores de <kbd>"Total Ventas"</kbd>.
@@ -203,7 +203,7 @@ Imagen con cambios en la ordenación y quitando título del eje Y
 
 Hasta ahora, si has seguido los pasos, te darás cuenta de que dentro del array "layer" existen dos objetos visuales, cada uno con un "mark" de tipo "bar" (gráfico de barras). A continuación, añadiremos un nuevo objeto para el gráfico de línea:
 
-```json
+<pre class="highlight"><code>
 "mark":{
    "type":"line",
    "interpolate":"linear",
@@ -219,7 +219,7 @@ Hasta ahora, si has seguido los pasos, te darás cuenta de que dentro del array 
       "field":"% Acumulado de Ventas por Producto"
    }
 }
-```
+</code></pre>
 
 Este objeto define un gráfico de línea con las siguientes características:
 
@@ -242,13 +242,13 @@ No hay texto alternativo para esta imagen
 imagen con gráfico de línea justo a nivel cero
 El problema aquí es que estamos usando un eje Y a una escala mayor que la del porcentaje. Debemos activar un segundo eje Y para graficar el porcentaje, que generalmente está a una escala de 0 a 1. Para ello, agrega el siguiente código después del array <kbd>"layer":</kbd>
 
-```json
+<pre class="highlight"><code>
 "resolve":{
    "scale":{
       "y":"independent"
    }
 }, 
-```
+</code></pre>
 La propiedad "resolve" y su atributo "scale" indican que el eje Y utilizará escalas independientes para cada capa. De esta manera, el gráfico de línea usará una escala adecuada para representar el porcentaje acumulado de ventas por producto.
 
 Esto resuelve el problema, y lo puedes ver en la siguiente imagen:
@@ -279,7 +279,7 @@ La propiedad "encoding" en este objeto especifica que el contenido de las etique
 
 Etiquetas para el gráfico de barras:
 
-```json
+<pre class="highlight"><code>
 {
    "mark":{
       "type":"text",
@@ -297,7 +297,7 @@ Etiquetas para el gráfico de barras:
       }
    }
 }
-```
+</code></pre>
 
 Este objeto define otra capa de etiquetas con las siguientes características:
 
@@ -320,7 +320,7 @@ Paso 12: Agregar color condicional a los gráficos de barras
 Para mejorar la visualización, agregaremos un color condicional a los gráficos de barras. Esto permitirá resaltar las barras que representan el 80% de las ventas acumuladas en un color diferente al de las barras restantes.
 
 Aplicar color condicional al primer gráfico de barras:
-```json
+<pre class="highlight"><code>
    "mark":{
       "type":"bar",
       "opacity":0.3,
@@ -335,7 +335,7 @@ Aplicar color condicional al primer gráfico de barras:
       }
    }
 }
-```
+</code></pre>
 
 En el objeto de marca, hemos agregado la propiedad "color" con la siguiente expresión:
 
@@ -343,7 +343,7 @@ En el objeto de marca, hemos agregado la propiedad "color" con la siguiente expr
 
   1. Aplicar color condicional al segundo gráfico de barras:
 
-```json
+<pre class="highlight"><code>
 {
    "mark":{
       "type":"bar",
@@ -368,9 +368,9 @@ En el objeto de marca, hemos agregado la propiedad "color" con la siguiente expr
       }
    }
 }
-```
+</code></pre>
 Al igual que en el primer gráfico de barras, hemos agregado la propiedad "color" con la misma expresión para asignar colores condicionales. En este caso, estamos usando esta capa adicional para destacar las barras seleccionadas en el gráfico de barras. La documentación de Deneb menciona cómo las selecciones se pueden utilizar para resaltar elementos en la visualización, por lo que no queremos pasar por alto una breve explicación, de lo que pasa aquí:
-```json
+<pre class="highlight"><code>
 {
    "encoding":{
       "y":{
@@ -388,14 +388,14 @@ Al igual que en el primer gráfico de barras, hemos agregado la propiedad "color
       }
    }
 }
-```
+</code></pre>
 <kbd>"field": "Total Ventas__highlight"</kbd> Este campo representa los valores de las ventas totales que se deben destacar cuando se selecciona otro gráfico, en el contexto.
 
 <kbd>"opacity": { ... }"</kbd> Esta propiedad de codificación controla la opacidad de las barras en función de si están seleccionadas o no.
 
 <kbd>"condition": { ... }"</kbd> La condición especifica qué sucede cuando se cumple un cierto criterio. En este caso, el criterio está relacionado con la selección de las barras en el gráfico.
 
-<kbd>"test": { "field": "**selected**", "equal": "off" }"</kbd> Este objeto de prueba verifica si la barra seleccionada está en estado "off" (es decir, no seleccionada). Si la barra no está seleccionada, la condición se cumple y se aplica el valor de opacidad especificado.
+<kbd>"test": { "field": "__selected__", "equal": "off" }"</kbd> Este objeto de prueba verifica si la barra seleccionada está en estado "off" (es decir, no seleccionada). Si la barra no está seleccionada, la condición se cumple y se aplica el valor de opacidad especificado.
 
 <kbd>"value": 0</kbd> Cuando la condición se cumple (la barra no está seleccionada), la opacidad de la barra se establece en 0, lo que hace que la barra sea transparente.
 
@@ -431,15 +431,15 @@ Esperamos que este artículo te haya sido de utilidad e inspirado a descubrir y 
 
 Plantilla:
 
-```json
+<pre class="highlight"><code>
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "usermeta": {
     "deneb": {
-      "build": "1.5.0.0",
+      "build": "1.6.2.1",
       "metaVersion": 1,
       "provider": "vegaLite",
-      "providerVersion": "5.6.1"
+      "providerVersion": "5.16.3"
     },
     "interactivity": {
       "tooltip": true,
@@ -449,37 +449,43 @@ Plantilla:
       "dataPointLimit": 50
     },
     "information": {
-      "name": "Pareto",
-      "description": "[No Description Provided]",
-      "author": "Cristobal Salcedo",
-      "uuid": "a236726a-0d2a-4cdc-9963-44f0bf1dc803",
-      "generated": "2023-05-03T18:47:49.498Z",
-      "previewImageBase64PNG": ""
+      "name": "Gráfico de Pareto Dinámico",
+      "description": "Gráfico de Pareto Dinámico",
+      "author": "Gráfico de Pareto Dinámico",
+      "uuid": "0fdc2305-7a56-4227-b162-f841a2064494",
+      "generated": "2024-05-15T04:10:07.835Z"
     },
     "dataset": [
       {
         "key": "__0__",
-        "name": "Product",
+        "name": "Product Category",
         "description": "",
         "type": "text",
         "kind": "column"
       },
       {
         "key": "__1__",
-        "name": "% Acumulado de Ventas por Producto",
+        "name": "Total  Sales",
         "description": "",
         "type": "numeric",
         "kind": "measure"
       },
       {
         "key": "__2__",
-        "name": "Acumulado de ventas Por Producto",
+        "name": "% Acumulado de Ventas por Producto",
         "description": "",
         "type": "numeric",
         "kind": "measure"
       },
       {
         "key": "__3__",
+        "name": "Acumulado de ventas Por Producto",
+        "description": "",
+        "type": "numeric",
+        "kind": "measure"
+      },
+      {
+        "key": "__4__",
         "name": "Total Ventas",
         "description": "",
         "type": "numeric",
@@ -487,32 +493,78 @@ Plantilla:
       }
     ]
   },
-  "config": {},
-  "data": { "name": "dataset" },
+  "config": {
+    "view": {"stroke": "transparent"},
+    "line": {
+      "strokeWidth": 3,
+      "strokeCap": "round",
+      "strokeJoin": "round"
+    },
+    "point": {
+      "filled": true,
+      "size": 75
+    },
+    "text": {
+      "font": "Segoe UI",
+      "fontSize": 18,
+      "fill": "#605E5C"
+    },
+    "axis": {
+      "ticks": false,
+      "grid": false,
+      "domain": false,
+      "labelColor": "#605E5C",
+      "labelFontSize": 18
+    },
+    "axisQuantitative": {
+      "tickCount": 3,
+      "grid": true,
+      "gridColor": "#C8C6C4",
+      "gridDash": [1, 5],
+      "labelFlush": false
+    },
+    "axisX": {
+      "labelPadding": 5,
+      "labelAngle": 0
+    },
+    "axisY": {
+      "labelPadding": 10,
+      "labels": false
+    }
+  },
+  "description": "Explora la distribución de ventas por producto con nuestro Gráfico de Pareto Dinámico en Deneb/Vega-Lite, ideal para analistas y especialistas en visualización de datos. Esta herramienta te permite identificar productos clave para maximizar ingresos eficazmente. Contacto: Cristóbal Salcedo (csalcedo90@mail.com).",
+  "data": {"name": "dataset"},
   "title": {
     "text": "Ventas por producto (Principio de Pareto)",
     "subtitle": "'Muestra la contribución de los productos al total de ventas",
-    "fontSize": 20,
+    "fontSize": 25,
     "color": "#333333"
   },
   "layer": [
     {
-      "mark": { "type": "bar" },
+      "mark": {"type": "bar"},
       "encoding": {
-        "y": { "field": "__3__" },
+        "y": {"field": "__4__"},
         "color": {
-          "field": "__1__",
+          "field": "__2__",
           "type": "nominal",
           "scale": {
-            "domain": ["0% - 80%", "80% - 100%"],
-            "range": ["#7F7F7F", "#D62728"]
+            "domain": [
+              "0% - 80%",
+              "80% - 100%"
+            ],
+            "range": [
+              "#7F7F7F",
+              "#D62728"
+            ]
           },
           "legend": {
             "title": "Principio de Pareto",
+            "titleFontSize": 18,
             "orient": "top",
             "padding": 10,
-            "labelFont": "Helvetica Neue, Arial",
-            "labelFontSize": 14
+            "labelFont": "Arial",
+            "labelFontSize": 16
           }
         }
       }
@@ -523,24 +575,24 @@ Plantilla:
         "opacity": 0.3,
         "tooltip": true,
         "color": {
-          "expr": "datum['__1__']<=0.8?'#7F7F7F': '#D62728'"
+          "expr": "datum['__2__']<=0.8?'#7F7F7F': '#D62728'"
         }
       },
       "encoding": {
-        "y": { "field": "__3__" }
+        "y": {"field": "__4__"}
       }
     },
     {
       "mark": {
         "type": "bar",
         "color": {
-          "expr": "datum['__1__']<=0.8?'#7F7F7F': '#D62728'"
+          "expr": "datum['__2__']<=0.8?'#7F7F7F': '#D62728'"
         },
         "tooltip": true
       },
       "encoding": {
         "y": {
-          "field": "__3____highlight"
+          "field": "__4____highlight"
         },
         "opacity": {
           "condition": {
@@ -566,7 +618,7 @@ Plantilla:
         }
       },
       "encoding": {
-        "y": { "field": "__1__" }
+        "y": {"field": "__2__"}
       }
     },
     {
@@ -577,11 +629,11 @@ Plantilla:
       },
       "encoding": {
         "text": {
-          "field": "__1__",
+          "field": "__2__",
           "format": "0.0%",
           "formatType": "pbiFormat"
         },
-        "y": { "field": "__1__" }
+        "y": {"field": "__2__"}
       }
     },
     {
@@ -592,40 +644,40 @@ Plantilla:
       },
       "encoding": {
         "text": {
-          "field": "__3__",
+          "field": "__4__",
           "format": "$#0,0",
           "formatType": "pbiFormat"
         },
-        "y": { "field": "__3__" }
+        "y": {"field": "__4__"}
       }
     }
   ],
   "resolve": {
-    "scale": { "y": "independent" }
+    "scale": {"y": "independent"}
   },
   "encoding": {
     "x": {
       "field": "__0__",
       "type": "nominal",
       "sort": {
-        "field": "__3__",
+        "field": "__4__",
         "op": "sum",
         "order": "descending"
       }
     },
     "y": {
       "type": "quantitative",
-      "axis": { "title": "" }
+      "axis": {"title": ""}
     },
     "tooltip": [
       {
-        "field": "__3__",
+        "field": "__4__",
         "title": "Monto de Venta |",
         "format": "$#0,,0",
         "formatType": "pbiFormat"
       },
       {
-        "field": "__1__",
+        "field": "__2__",
         "title": "Porcentaje |",
         "format": "0.0%",
         "formatType": "pbiFormat"
@@ -633,4 +685,4 @@ Plantilla:
     ]
   }
 }
-```
+</code></pre>

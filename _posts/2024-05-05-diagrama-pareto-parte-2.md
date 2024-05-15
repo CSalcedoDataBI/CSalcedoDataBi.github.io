@@ -25,7 +25,7 @@ Para lograr esto, agregaremos un nuevo flujo de transformaciones de datos justo 
 
 A continuación, mostraremos el código para estas transformaciones:
 
-```json
+<pre class="highlight"><code>
   "transform":[
    {
       "sort":[
@@ -66,7 +66,7 @@ A continuación, mostraremos el código para estas transformaciones:
       "as":"%_Acumulado"
    }
 ]
-```
+</code></pre>
 
 ### Explicación de las Transformaciones
 
@@ -108,7 +108,7 @@ Estos enlaces te proporcionarán acceso a los archivos PBIX y la plantilla .json
 
 ## Plantilla
 
-```json
+<pre class="highlight"><code>
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "usermeta": {
@@ -380,4 +380,4 @@ Estos enlaces te proporcionarán acceso a los archivos PBIX y la plantilla .json
     ]
   }
 }
-```
+</code></pre>

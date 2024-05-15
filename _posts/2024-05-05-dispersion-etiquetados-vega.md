@@ -198,7 +198,7 @@ Scatter Plot con etiquetas disponible en la documentación oficial de Vega:
 
 ## Plantilla
 
-```json
+<pre class="highlight"><code>
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "usermeta": {
@@ -431,5 +431,4 @@ Scatter Plot con etiquetas disponible en la documentación oficial de Vega:
     }
   ]
 }
-
-```
+</code></pre>

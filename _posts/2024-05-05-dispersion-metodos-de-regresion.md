@@ -49,7 +49,7 @@ Tabla Calculada la he llamado "OptionsGroupby", pero puedes colocarles en nombre
 
 Esta tabla permite seleccionar la categoría de agrupamiento. Puedes incluir opciones como “none” (Ninguna) o “genre” (Género) para agrupar los datos, ver el correspondiente código DAX:
 
-```dax
+<pre class="highlight"><code>
 OptionsGroupby =
 SELECTCOLUMNS (
     {
@@ -59,19 +59,19 @@ SELECTCOLUMNS (
     "Index", [Value1],
     "Groupby", [Value2]
 )
-```
+</code></pre>
 
 Medida relacionada:
 
-```dax
+<pre class="highlight"><code>
 GroupbySelected  = SELECTEDVALUE ( 'OptionsGroupby'[Index], 1 )
-```
+</code></pre>
 
 Tabla Calculada "OptionsMethod"
 
 Esta tabla te permite seleccionar el método de regresión que deseas aplicar. Incluye opciones como "Lineal", "Logarítmico", "Exponencial", entre otros. Ver el siguiente código:
 
-```dax
+<pre class="highlight"><code>
 OptionsMethod =
 SELECTCOLUMNS (
     {
@@ -85,23 +85,23 @@ SELECTCOLUMNS (
     "Index", [Value1],
     "Method", [Value2]
 )
-```
+</code></pre>
 
 Medida relacionada:
-```dax
+<pre class="highlight"><code>
 MethodSelected = SELECTEDVALUE ( 'OptionsMethod'[Index], 1 )
-```
+</code></pre>
 
 Tabla Calculada "PolyOrder"
 
 Esta tabla define el orden del polinomio en caso de seleccionar el método polinomial. Puedes establecer un rango de 1 a 10, por ejemplo.
-```dax
+<pre class="highlight"><code>
 PolyOrder = GENERATESERIES ( 1, 10, 1 )
-```
+</code></pre>
 Medida relacionada:
-```dax
+<pre class="highlight"><code>
 PolyValue = SELECTEDVALUE('PolyOrder'[PolyOrder], 1)
-```
+</code></pre>
 
 ## Paso 3: Agregar Medidas y Filtros
 
@@ -119,7 +119,7 @@ Dentro de la visualización, haz clic en los puntos suspensivos y selecciona "Ed
 El siguiente fragmento de código nos permitirá establecer una traducción de los parámetros dinámicos creados en DAX y declararlos internamente en VEGA como "signals" (señales). En otros lenguajes de programación, estas señales se considerarían variables, pero en VEGA se definen de esta manera.
 
 A continuación, se muestra el código correspondiente:
-```json
+<pre class="highlight"><code>
 "signals":[
    {
       "name":"methodValue",
@@ -146,7 +146,7 @@ A continuación, se muestra el código correspondiente:
       "update":"groupbySelected === 1 ? 'none' : 'genre' "
    }
 ]
-```
+</code></pre>
 
 Utilizando este código, establecemos las señales correspondientes a los parámetros dinámicos creados en DAX. Estas señales nos permitirán controlar la selección del método de regresión, determinar el orden polinomial y definir la agrupación. Ver la siguiente imagen para mayor comprensión.
 
@@ -156,7 +156,7 @@ Borrar imagen
 No hay texto alternativo para esta imagen
 
 Además, es necesario realizar una modificación en la transformación de la regresión lineal. En el código del visual anterior, buscamos la transformación denominada "fit" dentro de "data" y la cambiamos a "trend". También modificamos la matriz de transformación de la siguiente manera:
-```json
+<pre class="highlight"><code>
 {
    "name":"trend",
    "source":"dataset",
@@ -186,7 +186,7 @@ Además, es necesario realizar una modificación en la transformación de la reg
       }
    ]
 }
-```
+</code></pre>
 
 Al realizar estos cambios, creamos una capa dinámica de regresión que se ajusta al filtro externo. La transformación ahora utiliza la señal de agrupación seleccionada para determinar si se agrupa por "Major Genre" o por otro criterio. Además, el método de regresión seleccionado y el orden polinomial se toman en cuenta en el cálculo de la regresión.
 
@@ -202,7 +202,7 @@ No hay texto alternativo para esta imagen
 En la sección de Mark:[], vamos a insertar el siguiente fagmento de código el cual va hacer uso de la variable o señal (signal ) creada anteriormente “ currentMethod” el cual nos devuelve la formula del método de regresión usado, y nos lo va a crear como una marca de agua dentro de las coordenadas declaradas, cabe mencionar que solo es con fines educativos, pero este texto puede ser con respecto al análisis que se esté realizado.
 
 Ver código:
-```json
+<pre class="highlight"><code>
 "marks":{
    "type":"text",
    "encode":{
@@ -228,7 +228,7 @@ Ver código:
       }
    }
 }
-```
+</code></pre>
 Como se muestra en la siguiente imagen:
 
 Minimizar imagen
@@ -240,7 +240,7 @@ Paso 6: Agregar la Capa de Regresión
 
 Utiliza el código proporcionado para agregar la capa de regresión a tu visualización. Esto permitirá visualizar la línea de regresión según el método seleccionado.
 
-```json
+<pre class="highlight"><code>
 {
    "type":"group",
    "from":{
@@ -274,7 +274,7 @@ Utiliza el código proporcionado para agregar la capa de regresión a tu visuali
       }
    ]
 }
-```
+</code></pre>
 Como se muestra en la siguiente imagen:
 
 Minimizar imagen
@@ -323,7 +323,7 @@ Cross-Highlighting:
 
 ## Plantillla
 
-```json
+<pre class="highlight"><code>
 
 {  "$schema": "https://vega.github.io/schema/vega/v5.json",
   "usermeta": {
@@ -625,4 +625,4 @@ Cross-Highlighting:
     }
   ]
 }
-```
+</code></pre>

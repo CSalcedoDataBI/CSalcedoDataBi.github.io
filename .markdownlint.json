@@ -3,6 +3,6 @@
   "blanks-around-fences": false,
   "line-length": false,
   "no-inline-html": {
-    "allowed_elements": ["kbd", "sub"]
+    "allowed_elements": ["kbd", "sub","b", "i", "code"]
   }
 }

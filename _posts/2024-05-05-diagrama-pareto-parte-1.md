@@ -1,8 +1,8 @@
 ---
 title: "Diagrama de Pareto con Deneb y Vega-Lite en Power BI (Parte 1)"
 author: "Cristobal Salcedo Beltran"
-date: 2024-05-03 23:34:00 +0800
-categories: [Blogging, Tutorial]
+date: 2024-07-03 23:34:00 +0800
+categories: [Deneb, Tutorial]
 tags: [Deneb, Vega, Pareto]
 pin: false
 image:
@@ -89,7 +89,7 @@ Después de haber agregado el visual Deneb a la colección de visuales en Power 
 ## Paso 5: **Seleccionar plantilla y ajustar código**
 
 - Haz clic en los tres puntos suspensivos y elige ``"Editar visual de Deneb"``.
-- Dejamos seleccionado **Vega-Lite** por defecto y elegimos la plantilla <kbd>."Simple Bar Chart"</kbd>. Asignamos la categoría ``"Product"`` al campo categórico y ``"Total Venta"`` al campo cuantitativo. Al hacerlo, se activará el botón <kbd>"Crear"</kbd>, así:
+- Dejamos seleccionado **Vega-Lite** por defecto y elegimos la plantilla <kbd>."Simple Bar Chart"</kbd>. Asignamos la categoría ``"Product"`` al campo categórico y ``"Total Ventas"`` al campo cuantitativo. Al hacerlo, se activará el botón <kbd>"Crear"</kbd>, así:
 
 ![Paso 5](/assets/img/post-diagrama-pareto-parte-1/Paso_5.gif)
 
@@ -102,7 +102,7 @@ Para cambiar el eje X al categórico ``"Product"`` y el eje Y a la variable cuan
 
 ![Paso 6](/assets/img/post-diagrama-pareto-parte-1/Paso_6.gif)
 
-## Paso 7: Limpiar y ordenar etiquetas en los ejes X e Y
+## Paso 7: **Limpiar y ordenar etiquetas en los ejes X e Y**
 
 Para cambiar la orientación de las etiquetas de la categoría en el eje X de vertical a horizontal y ocultar las etiquetas en el eje Y, sigue estos pasos en el editor de Deneb:
 
@@ -146,9 +146,9 @@ Cambia la orientación de la etiqueta en el eje X agregando <kbd>"labelAngle": 0
 
 ![Paso 7](/assets/img/post-diagrama-pareto-parte-1/Paso_7.gif)
 
-## Paso 9: Ordenar el gráfico de mayor a menor según la variable "Total Venta"
+## Paso 8: **Ordenar el gráfico de mayor a menor según la variable "Total Ventas"**
 
-Para ordenar el gráfico de acuerdo con la variable "Total Venta" de mayor a menor, sigue estos pasos:
+Para ordenar el gráfico de acuerdo con la variable "Total Ventas" de mayor a menor, sigue estos pasos:
 
 Regresa al panel de especificaciones en el editor de Deneb (si deseas conocer todos los botones y paneles de la versión de Deneb 1.5, puedes ver este video donde se explico cada uno de sus componentes : <https://youtu.be/odIYzsS11Qg>.
 

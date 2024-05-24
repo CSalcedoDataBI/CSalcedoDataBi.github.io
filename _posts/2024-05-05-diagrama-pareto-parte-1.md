@@ -15,7 +15,7 @@ description: "Una guía detallada para crear un diagrama de Pareto usando Deneb 
 >"El principio de Pareto, también conocido como la regla del 80/20, puede aplicarse en diversos contextos, incluyendo el empresarial. Por ejemplo, puede ser útil para identificar qué productos, clientes, proveedores o regiones representan el 80% de las ventas totales de una empresa".
 {: .prompt-tip }
 
- En este artículo, te guiaremos paso a paso para crear un diagrama de Pareto utilizando Deneb, una herramienta de visualización personalizada que se conecta con el lenguaje  o . Mostraremos dos enfoques, uno utilizando  y otro con transformaciones avanzadas en .
+ En este artículo, te guiaremos paso a paso para crear un diagrama de Pareto utilizando Deneb, una herramienta de visualización personalizada que se conecta con el lenguaje **Vega-Lite** o **Vega**.
 
 ## Paso 1: **Preparación de datos**
 

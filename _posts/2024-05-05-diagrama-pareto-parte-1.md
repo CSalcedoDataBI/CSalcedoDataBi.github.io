@@ -1,7 +1,7 @@
 ---
 title: "Diagrama de Pareto con Deneb y Vega-Lite en Power BI (Parte 1)"
 author: "Cristobal Salcedo Beltran"
-date: 2024-07-03 23:34:00 +0800
+date: 2024-04-03 23:34:00 +0800
 categories: [Deneb, Tutorial]
 tags: [Deneb, Vega, Pareto]
 pin: false
@@ -10,7 +10,7 @@ image:
   alt: "Cross-Filtering y Cross-Highlight Scatter Plot"
 description: "Una guía detallada para crear un diagrama de Pareto usando Deneb y Vega-Lite en Power BI. Esta es la primera parte de la serie."
 ---
-
+## **Introducción**
 
 >"El principio de Pareto, también conocido como la regla del 80/20, puede aplicarse en diversos contextos, incluyendo el empresarial. Por ejemplo, puede ser útil para identificar qué productos, clientes, proveedores o regiones representan el 80% de las ventas totales de una empresa".
 {: .prompt-tip }
@@ -171,13 +171,9 @@ Al agregar este código, el gráfico se ordenará de acuerdo con la suma de "Tot
 
 Aprovecha para quitar el título del eje Y. A continuación, se muestra la imagen con las modificaciones realizadas para ordenar el gráfico y quitar el título del eje Y:
 
-Minimizar imagen
-Editar imagen
-Borrar imagen
-No hay texto alternativo para esta imagen
-Imagen con cambios en la ordenación y quitando título del eje Y
+![Paso 8](/assets/img/post-diagrama-pareto-parte-1/Paso_8.png)
 
-## Paso 10: Agregar el gráfico de línea como una capa adicional en el array "layer"
+## Paso 9: **Agregar el gráfico de línea como una capa adicional en el array "layer"**
 
 Hasta ahora, si has seguido los pasos, te darás cuenta de que dentro del array "layer" existen dos objetos visuales, cada uno con un "mark" de tipo "bar" (gráfico de barras). A continuación, añadiremos un nuevo objeto para el gráfico de línea:
 
@@ -201,7 +197,7 @@ Hasta ahora, si has seguido los pasos, te darás cuenta de que dentro del array 
 
 Este objeto define un gráfico de línea con las siguientes características:
 
-<kbd>"type": "line</kbd> Establece que el tipo de marca será una línea.
+<kbd>"type": "line</kbd> Establece que el tipo de marca o grafico será, en este caso es de línea.
 
 <kbd>"interpolate": "linear"</kbd> Define que la interpolación de la línea será lineal.
 
@@ -213,12 +209,10 @@ La propiedad "encoding" en este objeto especifica que el eje Y del gráfico de l
 
 Mira la siguiente imagen y observa que la línea está justo a nivel cero:
 
-Minimizar imagen
-Editar imagen
-Borrar imagen
-No hay texto alternativo para esta imagen
-imagen con gráfico de línea justo a nivel cero
-El problema aquí es que estamos usando un eje Y a una escala mayor que la del porcentaje. Debemos activar un segundo eje Y para graficar el porcentaje, que generalmente está a una escala de 0 a 1. Para ello, agrega el siguiente código después del array <kbd>"layer":</kbd>
+![Paso 8](/assets/img/post-diagrama-pareto-parte-1/Paso_9.png)
+
+>El problema aquí es que estamos usando un eje Y a una escala mayor que la del porcentaje. Debemos activar un segundo eje Y para graficar el porcentaje, que generalmente está a una escala de 0 a 1. Para ello, agrega el siguiente código después del array <kbd>"layer":</kbd>
+{: .prompt-warning }
 
 <pre class="highlight"><code>
 "resolve":{
@@ -227,31 +221,48 @@ El problema aquí es que estamos usando un eje Y a una escala mayor que la del p
    }
 },
 </code></pre>
-La propiedad "resolve" y su atributo "scale" indican que el eje Y utilizará escalas independientes para cada capa. De esta manera, el gráfico de línea usará una escala adecuada para representar el porcentaje acumulado de ventas por producto.
+
+La propiedad <kbd>resolve</kbd> y su atributo <kbd>scale</kbd> indican que el eje Y utilizará escalas independientes para cada capa. De esta manera, el gráfico de línea usará una escala adecuada para representar el porcentaje acumulado de ventas por producto.
 
 Esto resuelve el problema, y lo puedes ver en la siguiente imagen:
 
-Minimizar imagen
-Editar imagen
-Borrar imagen
-No hay texto alternativo para esta imagen
+![Paso 8](/assets/img/post-diagrama-pareto-parte-1/Paso_9_1.png)
 
 Al agregar este nuevo objeto y el segundo eje Y, el gráfico de línea mostrará el porcentaje acumulado de ventas por producto, facilitando la identificación de las categorías de productos que representan el 80% de las ventas totales. También puede ver en la imagen anterior los métodos de interpolación que se pueden usar en el gráfico de línea.
 
-## Paso 11: Agregar capas de etiquetas al gráfico de líneas y al gráfico de barras dentro del array "layer"
+## Paso 10: **Agregar capas de etiquetas al gráfico de líneas y al gráfico de barras dentro del array "layer"**
 
 A continuación, añadiremos dos nuevos objetos dentro del array "layer" para agregar etiquetas a los gráficos de líneas y barras. Estas etiquetas proporcionarán información adicional sobre el porcentaje acumulado de ventas por producto y el total de ventas.
 
 Etiquetas para el gráfico de líneas:
 
-.......
+<pre class="highlight"><code>
+{
+    "mark":{
+        "type":"text",
+        "color":"#333333",
+        "yOffset":-16
+    },
+    "encoding":{
+        "text":{
+            "field":"% Acumulado de Ventas por Producto",
+            "format":"0.0%",
+            "formatType":"pbiFormat"
+        },
+        "y":{
+            "field":"% Acumulado de Ventas por Producto"
+        }
+    }
+}
+</code></pre>
+
 Este objeto define una capa de etiquetas con las siguientes características:
 
-"type": "text": Establece que el tipo de marca será texto.
+<kbd>"type": "text":</kbd> Establece que el tipo de marca será texto.
 
-"color": "#333333": Establece el color del texto en gris oscuro.
+<kbd>"color": "#333333":</kbd> Establece el color del texto en gris oscuro.
 
-"yOffset": -16: Desplaza las etiquetas hacia arriba en 16 unidades para evitar solapamientos con los puntos de la línea.
+</kbd>"yOffset": -16: Desplaza las etiquetas hacia arriba en 16 unidades para evitar solapamientos con los puntos de la línea.
 
 La propiedad "encoding" en este objeto especifica que el contenido de las etiquetas será el porcentaje acumulado de ventas por producto, con un formato de porcentaje (0.0%) utilizando el tipo de formato "pbiFormat".
 
@@ -285,20 +296,21 @@ Este objeto define otra capa de etiquetas con las siguientes características:
 
 <kbd>"yOffset": -8</kbd> Desplaza las etiquetas hacia arriba en 8 unidades para evitar solapamientos con las barras.
 
-La propiedad <kbd>"encoding"</kbd> en este objeto especifica que el contenido de las etiquetas será el total de ventas, con un formato de moneda <kbd>($#0,0)</kbd> utilizando el tipo de formato "pbiFormat".
+La propiedad <kbd>"encoding"</kbd> en este objeto especifica que el contenido de las etiquetas será el total de ventas, con un formato de moneda <kbd>($#0,0)</kbd> utilizando el tipo de formato <kbd>"pbiFormat"</kbd>.
 
-Al agregar estas capas de etiquetas, el gráfico de Pareto se vuelve más informativo y fácil de interpretar, mostrando valores exactos para cada punto de la línea y cada barra en el gráfico. Ver la siguiente Imagen:
+>Al agregar estas capas de etiquetas, el gráfico de Pareto se vuelve más informativo y fácil de interpretar, mostrando valores exactos para cada punto de la línea y cada barra en el gráfico. Ver la siguiente Imagen:
+{: .prompt-info }
 
-Minimizar imagen
-Editar imagen
-Borrar imagen
-No hay texto alternativo para esta imagen
+![Paso 10](/assets/img/post-diagrama-pareto-parte-1/Paso_10.png)
 Imagen del gráfico de Pareto con etiquetas😍
-Paso 12: Agregar color condicional a los gráficos de barras
+
+## Paso 11: **Agregar color condicional a los gráficos de barras**
+
 Para mejorar la visualización, agregaremos un color condicional a los gráficos de barras. Esto permitirá resaltar las barras que representan el 80% de las ventas acumuladas en un color diferente al de las barras restantes.
 
 Aplicar color condicional al primer gráfico de barras:
 <pre class="highlight"><code>
+  { 
    "mark":{
       "type":"bar",
       "opacity":0.3,
@@ -315,9 +327,9 @@ Aplicar color condicional al primer gráfico de barras:
 }
 </code></pre>
 
-En el objeto de marca, hemos agregado la propiedad "color" con la siguiente expresión:
+En el objeto de marca, hemos agregado la propiedad <kbd>"color"</kbd> con la siguiente expresión:
 
-"expr": "datum['% Acumulado de Ventas por Producto'] <=0.8 ?' ': ''": Esta expresión asigna un color gris () a las barras que representan hasta el 80% de las ventas acumuladas y un color rojo () a las barras restantes.
+<kbd>"expr": "datum['% Acumulado de Ventas por Producto'] <=0.8 ?' ': ''"</kbd> Esta expresión asigna un color gris () a las barras que representan hasta el 80% de las ventas acumuladas y un color rojo () a las barras restantes.
 
   1. Aplicar color condicional al segundo gráfico de barras:
 
@@ -347,7 +359,9 @@ En el objeto de marca, hemos agregado la propiedad "color" con la siguiente expr
    }
 }
 </code></pre>
-Al igual que en el primer gráfico de barras, hemos agregado la propiedad "color" con la misma expresión para asignar colores condicionales. En este caso, estamos usando esta capa adicional para destacar las barras seleccionadas en el gráfico de barras. La documentación de Deneb menciona cómo las selecciones se pueden utilizar para resaltar elementos en la visualización, por lo que no queremos pasar por alto una breve explicación, de lo que pasa aquí:
+
+Al igual que en el primer gráfico de barras, hemos agregado la propiedad <kbd>"color"</kbd> con la misma expresión para asignar colores condicionales. En este caso, estamos usando esta capa adicional para destacar las barras seleccionadas en el gráfico de barras. La documentación de **Deneb** menciona cómo las selecciones se pueden utilizar para resaltar elementos en la visualización, por lo que no queremos pasar por alto una breve explicación, de lo que pasa aquí:
+
 <pre class="highlight"><code>
 {
    "encoding":{
@@ -367,6 +381,7 @@ Al igual que en el primer gráfico de barras, hemos agregado la propiedad "color
    }
 }
 </code></pre>
+
 <kbd>"field": "Total Ventas__highlight"</kbd> Este campo representa los valores de las ventas totales que se deben destacar cuando se selecciona otro gráfico, en el contexto.
 
 <kbd>"opacity": { ... }"</kbd> Esta propiedad de codificación controla la opacidad de las barras en función de si están seleccionadas o no.
@@ -380,34 +395,24 @@ Al igual que en el primer gráfico de barras, hemos agregado la propiedad "color
 <kbd>"value": 1</kbd> Este es el valor predeterminado de opacidad para las barras cuando no se cumple la condición (es decir, cuando una barra está seleccionada). En este caso, la opacidad se establece en 1, lo que hace que la barra sea completamente visible.
 
 Ver imagen final:
+![Pareto](https://raw.githubusercontent.com/CSalcedoDataBI/PowerBI-Deneb/main/Diagramas_Pareto/FIles/Pareto_Dinamico_Deneb_VegaLite_P1_Encabezado.gif)
 
-Minimizar imagen
-Editar imagen
-Borrar imagen
-No hay texto alternativo para esta imagen
-Color condicional a los gráficos de barras
-Conclusión
-En este artículo, hemos explorado cómo crear un gráfico de Pareto utilizando Deneb y Vega-Lite, y hemos examinado varios aspectos clave de la visualización, como la incorporación de capas, la interacción y la selección de elementos, y la personalización de colores y leyendas.
 
-Hemos llegado hasta el punto en el que, al seleccionar una barra en el gráfico o cualquier otro gráfico en el contexto, las barras no seleccionadas o no filtradas por el contexto se vuelven transparentes, mientras que las seleccionadas o filtradas se destacan. Esto permite a los usuarios centrarse en los elementos seleccionados y analizarlos con mayor detalle.
+## **Conclusión**
 
-Dado que este artículo se ha vuelto bastante extenso, nos detendremos aquí y continuaremos explorando más características y posibilidades de Deneb y Vega-Lite en un próximo artículo. Estén atentos para obtener más información y consejos sobre cómo aprovechar al máximo estas potentes herramientas de visualización de datos.
+En este artículo, hemos creado un gráfico de Pareto con Deneb y **Vega-Lite**, destacando la incorporación de capas, la interacción y selección de elementos, y la personalización de colores y leyendas.
 
-Descarga de la Plantilla y Visualización
-Para facilitar la implementación de esta funcionalidad en tu propio proyecto, ponemos a tu disposición la plantilla de visualización en Deneb. Puedes descargar el archivo PBIX desde el siguiente enlace:
+Seleccionar una barra en el gráfico hace que las no seleccionadas se vuelvan transparentes, permitiendo un análisis detallado.
 
-<https://github.com/cristobalsalcedo90/PowerBI-Deneb/raw/main/Pareto%20Vega%20lite.pbix>
+Agradecemos a Pesante Analytics Llc y a **Daniel Marsh-Patrick** por su guía experta.
 
-Plantilla .json edesde el siguiente enlace:
+## Descarga los archivos utilizados aquí:
 
-cristobalsalcedo90/PowerBI-Deneb (github.com)
+[🔽 Pareto_Dinamico_Deneb_VegaLite_P1.pbix](https://github.com/CSalcedoDataBI/PowerBI-Deneb/raw/752fca72da2d872e8b6c5c64288a5e6b2ad12247/Diagramas_Pareto/FIles/Pareto_Dinamico_Deneb_VegaLite_P1.pbix) (1.88 MB)
 
-Agradecimientos
-Para concluir, quisiera expresar mi más profundo agradecimiento a mi equipo en Pesante Analytics Llc quienes me brindaron la oportunidad de aprender este lenguaje declarativo, bajo la experta guía de Daniel Marsh-Patrick. Gracias a esta capacitación, hemos podido aportar un gran valor a los proyectos de nuestros clientes. No olvides seguir a Pesante Analytics Llc en  para estar al tanto de nuestras últimas actualizaciones y publicaciones.
+[🔽 Plantilla_Pareto_Dinamico_Deneb_VegaLite_P1.json:](https://github.com/CSalcedoDataBI/PowerBI-Deneb/blob/752fca72da2d872e8b6c5c64288a5e6b2ad12247/Diagramas_Pareto/FIles/Pareto_Dinamico_Deneb_VegaLite_P1.json) (7.66 KB)
 
-Esperamos que este artículo te haya sido de utilidad e inspirado a descubrir y aprovechar al máximo las capacidades de Deneb y Vega-Lite en tus propias visualizaciones de datos.
-
-Plantilla:
+### Copiar Plantilla:
 
 <pre class="highlight"><code>
 {

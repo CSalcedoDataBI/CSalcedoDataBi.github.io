@@ -146,6 +146,10 @@ Cambia la orientación de la etiqueta en el eje X agregando <kbd>"labelAngle": 0
 
 ![Paso 7](/assets/img/post-diagrama-pareto-parte-1/Paso_7.gif)
 
+Por utimo para continuar con los siguiente paso es necesario envolver esta capa en un array de objetos visuales o en un "layer", para pode adiconar otras capas, para ello hacemos lo siguiente:
+
+![Paso 7.1](/assets/img/post-diagrama-pareto-parte-1/Paso_7_1.png)
+
 ## Paso 8: **Ordenar el gráfico de mayor a menor según la variable "Total Ventas"**
 
 Para ordenar el gráfico de acuerdo con la variable "Total Ventas" de mayor a menor, sigue estos pasos:
@@ -170,8 +174,8 @@ Agrega la propiedad <kbd>"sort"</kbd> en el eje X, de la siguiente manera:
 Al agregar este código, el gráfico se ordenará de acuerdo con la suma de "Total Ventas" para cada categoría en el eje X, mostrando los valores en orden descendente. Esto facilita la identificación visual de las categorías de productos que generan la mayor parte de las ventas.
 
 Aprovecha para quitar el título del eje Y. A continuación, se muestra la imagen con las modificaciones realizadas para ordenar el gráfico y quitar el título del eje Y:
+* Imagen final finalizada
 
-![Paso 8](/assets/img/post-diagrama-pareto-parte-1/Paso_8.png)
 
 ## Paso 9: **Agregar el gráfico de línea como una capa adicional en el array "layer"**
 

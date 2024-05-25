@@ -154,8 +154,6 @@ Por utimo para continuar con los siguiente paso es necesario envolver esta capa 
 
 Para ordenar el gráfico de acuerdo con la variable "Total Ventas" de mayor a menor, sigue estos pasos:
 
-Regresa al panel de especificaciones en el editor de Deneb (si deseas conocer todos los botones y paneles de la versión de Deneb 1.5, puedes ver este video donde se explico cada uno de sus componentes : <https://youtu.be/odIYzsS11Qg>.
-
 Agrega la propiedad <kbd>"sort"</kbd> en el eje X, de la siguiente manera:
 
 <pre class="highlight"><code>
@@ -165,40 +163,46 @@ Agrega la propiedad <kbd>"sort"</kbd> en el eje X, de la siguiente manera:
    "order":"descending"
 }
 </code></pre>
+
+Ver imagen .gif para ver como agregar:
+
+![Paso 8](/assets/img/post-diagrama-pareto-parte-1/Paso_8.gif)
+### Explicación del código
 <kbd>"field": "Total Ventas"</kbd> Especifica el campo (columna) del conjunto de datos que se utilizará como criterio de ordenación. En este caso, se utiliza la columna <kbd>"Total Ventas"</kbd>.
 
 <kbd>"op": "sum"</kbd> Define la operación de agregación que se aplicará a los datos antes de ordenarlos. En este caso, se utiliza la función sum para sumar los valores de <kbd>"Total Ventas"</kbd>.
 
 <kbd>"order": "descending"</kbd> Establece el orden de clasificación. En este caso, se utiliza "descending" para ordenar los datos de mayor a menor.
 
-Al agregar este código, el gráfico se ordenará de acuerdo con la suma de "Total Ventas" para cada categoría en el eje X, mostrando los valores en orden descendente. Esto facilita la identificación visual de las categorías de productos que generan la mayor parte de las ventas.
-
-Aprovecha para quitar el título del eje Y. A continuación, se muestra la imagen con las modificaciones realizadas para ordenar el gráfico y quitar el título del eje Y:
-* Imagen final finalizada
-
+>Al agregar este código, el gráfico se ordenará de acuerdo con la suma de "Total Ventas" para cada categoría en el eje X, mostrando los valores en orden descendente. Esto facilita la identificación visual de las categorías de productos que generan la mayor parte de las ventas.
+{: .prompt-tip }
 
 ## Paso 9: **Agregar el gráfico de línea como una capa adicional en el array "layer"**
 
-Hasta ahora, si has seguido los pasos, te darás cuenta de que dentro del array "layer" existen dos objetos visuales, cada uno con un "mark" de tipo "bar" (gráfico de barras). A continuación, añadiremos un nuevo objeto para el gráfico de línea:
+Hasta ahora, si has seguido los pasos, te darás cuenta de que dentro del array "layer" existen un objeto visual, con un "mark" de tipo "bar" (gráfico de barras). A continuación, añadiremos un nuevo objeto para el gráfico de línea:
 
 <pre class="highlight"><code>
-"mark":{
-   "type":"line",
-   "interpolate":"linear",
-   "color":"red",
-   "point":{
-      "color":"#1F77B4",
-      "filled":false,
-      "fill":"white"
-   }
-},
-"encoding":{
-   "y":{
-      "field":"% Acumulado de Ventas por Producto"
-   }
+{
+    "mark":{
+        "type":"line",
+        "interpolate":"linear",
+        "color":"red",
+        "point":{
+            "color":"#1F77B4",
+            "filled":false,
+            "fill":"white"
+        }
+    },
+    "encoding":{
+        "y":{
+            "field":"% Acumulado de Ventas por Producto",
+            "title":""
+        }
+    }
 }
 </code></pre>
 
+### Explicación del código
 Este objeto define un gráfico de línea con las siguientes características:
 
 <kbd>"type": "line</kbd> Establece que el tipo de marca o grafico será, en este caso es de línea.
@@ -213,7 +217,7 @@ La propiedad "encoding" en este objeto especifica que el eje Y del gráfico de l
 
 Mira la siguiente imagen y observa que la línea está justo a nivel cero:
 
-![Paso 8](/assets/img/post-diagrama-pareto-parte-1/Paso_9.png)
+![Paso 9](/assets/img/post-diagrama-pareto-parte-1/Paso_9.png)
 
 >El problema aquí es que estamos usando un eje Y a una escala mayor que la del porcentaje. Debemos activar un segundo eje Y para graficar el porcentaje, que generalmente está a una escala de 0 a 1. Para ello, agrega el siguiente código después del array <kbd>"layer":</kbd>
 {: .prompt-warning }
@@ -228,9 +232,9 @@ Mira la siguiente imagen y observa que la línea está justo a nivel cero:
 
 La propiedad <kbd>resolve</kbd> y su atributo <kbd>scale</kbd> indican que el eje Y utilizará escalas independientes para cada capa. De esta manera, el gráfico de línea usará una escala adecuada para representar el porcentaje acumulado de ventas por producto.
 
-Esto resuelve el problema, y lo puedes ver en la siguiente imagen:
+Esto resuelve el problema, y lo puedes ver en la siguiente imagen.gif:
 
-![Paso 8](/assets/img/post-diagrama-pareto-parte-1/Paso_9_1.png)
+![Paso 9-1](/assets/img/post-diagrama-pareto-parte-1/Paso_9_1.gif)
 
 Al agregar este nuevo objeto y el segundo eje Y, el gráfico de línea mostrará el porcentaje acumulado de ventas por producto, facilitando la identificación de las categorías de productos que representan el 80% de las ventas totales. También puede ver en la imagen anterior los métodos de interpolación que se pueden usar en el gráfico de línea.
 
@@ -259,7 +263,7 @@ Etiquetas para el gráfico de líneas:
     }
 }
 </code></pre>
-
+### Explicación del código
 Este objeto define una capa de etiquetas con las siguientes características:
 
 <kbd>"type": "text":</kbd> Establece que el tipo de marca será texto.
@@ -274,23 +278,24 @@ Etiquetas para el gráfico de barras:
 
 <pre class="highlight"><code>
 {
-   "mark":{
-      "type":"text",
-      "color":"#333333",
-      "yOffset":-16
-   },
-   "encoding":{
-      "text":{
-         "field":"% Acumulado de Ventas por Producto",
-         "format":"0.0%",
-         "formatType":"pbiFormat"
-      },
-      "y":{
-         "field":"% Acumulado de Ventas por Producto"
-      }
-   }
+    "mark":{
+        "type":"text",
+        "color":"#333333",
+        "yOffset":-8
+    },
+    "encoding":{
+        "text":{
+            "field":"Total Ventas",
+            "format":"$#0,0",
+            "formatType":"pbiFormat"
+        },
+        "y":{
+            "field":"Total Ventas"
+        }
+    }
 }
 </code></pre>
+### Explicación del código
 
 Este objeto define otra capa de etiquetas con las siguientes características:
 
@@ -305,29 +310,18 @@ La propiedad <kbd>"encoding"</kbd> en este objeto especifica que el contenido de
 >Al agregar estas capas de etiquetas, el gráfico de Pareto se vuelve más informativo y fácil de interpretar, mostrando valores exactos para cada punto de la línea y cada barra en el gráfico. Ver la siguiente Imagen:
 {: .prompt-info }
 
-![Paso 10](/assets/img/post-diagrama-pareto-parte-1/Paso_10.png)
+![Paso 10](/assets/img/post-diagrama-pareto-parte-1/Paso_10.gif)
 Imagen del gráfico de Pareto con etiquetas😍
 
 ## Paso 11: **Agregar color condicional a los gráficos de barras**
 
-Para mejorar la visualización, agregaremos un color condicional a los gráficos de barras. Esto permitirá resaltar las barras que representan el 80% de las ventas acumuladas en un color diferente al de las barras restantes.
+Para mejorar la visualización, agregaremos un color condicional al gráfico de barras. Esto permitirá resaltar las barras que representan el 80% de las ventas acumuladas en un color diferent al de las barras restantes.
 
-Aplicar color condicional al primer gráfico de barras:
+Aplicar color condicional al gráfico de barras:
 <pre class="highlight"><code>
-  { 
-   "mark":{
-      "type":"bar",
-      "opacity":0.3,
-      "tooltip":true,
-      "color":{
-         "expr":"datum['% Acumulado de Ventas por Producto']<=0.8?'#7F7F7F':'#D62728'"
-      }
-   },
-   "encoding":{
-      "y":{
-         "field":"Total Ventas"
-      }
-   }
+,
+"color":{
+    "expr":"datum['% Acumulado de Ventas por Producto']<=0.8?'#7F7F7F':'#D62728'"
 }
 </code></pre>
 
@@ -335,71 +329,67 @@ En el objeto de marca, hemos agregado la propiedad <kbd>"color"</kbd> con la sig
 
 <kbd>"expr": "datum['% Acumulado de Ventas por Producto'] <=0.8 ?' ': ''"</kbd> Esta expresión asigna un color gris () a las barras que representan hasta el 80% de las ventas acumuladas y un color rojo () a las barras restantes.
 
-  1. Aplicar color condicional al segundo gráfico de barras:
+## Paso 12: **Agregar Cross-Filtering y Tooltip**
+
+En este paso, implementaremos una característica que destaca a Deneb como un visual personalizado poderoso: la capacidad de Cross-Filtering y Tooltip. Esta propiedad permite que los visuales de Deneb se comporten de manera similar a los visuales nativos de Power BI, resaltando las barras seleccionadas en un gráfico de barras. Esta interacción permite que los visuales cobren vida y puedan interactuar con otros visuales en el informe.
+
+Para activar esta propiedad en Deneb, debemos ir al Editor y en el panel de Configuración (Settings) activar el botón 'Cross-filtering (selection) of data points'. Para más información, puedes consultar la documentación de **Deneb**. Una vez activado, es importante entender brevemente lo que sucede en los siguientes fragmentos de código:
+
+### Código para la capa del gráfico de barras
+Este código da opacidad a la capa del gráfico de barras y activa el tooltip:
+
+<pre class="highlight"><code>
+"opacity": 0.3,
+"tooltip": true,
+</code></pre>
+
+### Código para resaltar solo lo seleccionado
+Agregamos otra capa de gráfico de barras para resaltar solo las barras seleccionadas:
 
 <pre class="highlight"><code>
 {
-   "mark":{
-      "type":"bar",
-      "tooltip":true,
-      "color":{
-         "expr":"datum['% Acumulado de Ventas por Producto']<=0.8?'#7F7F7F': '#D62728'"
-      }
-   },
-   "encoding":{
-      "y":{
-         "field":"Total Ventas__highlight"
+  "mark": {
+    "type": "bar",
+    "color": {
+      "expr": "datum['% Acumulado de Ventas por Producto']<=0.8?'#7F7F7F': '#D62728'"
+    },
+    "tooltip": true
+  },
+  "encoding": {
+    "y": {
+      "field": "Total Ventas"
+    },
+    "opacity": {
+      "condition": {
+        "test": {
+          "field": "__selected__",
+          "equal": "off"
+        },
+        "value": 0
       },
-      "opacity":{
-         "condition":{
-            "test":{
-               "field":"__selected__",
-               "equal":"off"
-            },
-            "value":0
-         },
-         "value":1
-      }
-   }
+      "value": 1
+    }
+  }
 }
 </code></pre>
 
-Al igual que en el primer gráfico de barras, hemos agregado la propiedad <kbd>"color"</kbd> con la misma expresión para asignar colores condicionales. En este caso, estamos usando esta capa adicional para destacar las barras seleccionadas en el gráfico de barras. La documentación de **Deneb** menciona cómo las selecciones se pueden utilizar para resaltar elementos en la visualización, por lo que no queremos pasar por alto una breve explicación, de lo que pasa aquí:
+### Explicación del código
 
-<pre class="highlight"><code>
-{
-   "encoding":{
-      "y":{
-         "field":"Total Ventas__highlight"
-      },
-      "opacity":{
-         "condition":{
-            "test":{
-               "field":"__selected__",
-               "equal":"off"
-            },
-            "value":0
-         },
-         "value":1
-      }
-   }
-}
-</code></pre>
+- **"field": "Total Ventas"**: Este campo representa los valores de las ventas totales que se deben destacar cuando se selecciona otro gráfico en el contexto.
 
-<kbd>"field": "Total Ventas__highlight"</kbd> Este campo representa los valores de las ventas totales que se deben destacar cuando se selecciona otro gráfico, en el contexto.
+- **"opacity": { ... }**: Esta propiedad de codificación controla la opacidad de las barras en función de si están seleccionadas o no.
 
-<kbd>"opacity": { ... }"</kbd> Esta propiedad de codificación controla la opacidad de las barras en función de si están seleccionadas o no.
+- **"condition": { ... }**: La condición especifica qué sucede cuando se cumple un cierto criterio. En este caso, el criterio está relacionado con la selección de las barras en el gráfico.
 
-<kbd>"condition": { ... }"</kbd> La condición especifica qué sucede cuando se cumple un cierto criterio. En este caso, el criterio está relacionado con la selección de las barras en el gráfico.
+- **"test": { "field": "__selected__", "equal": "off" }**: Este objeto de prueba verifica si la barra seleccionada está en estado "off" (es decir, no seleccionada). Si la barra no está seleccionada, la condición se cumple y se aplica el valor de opacidad especificado.
 
-<kbd>"test": { "field": "**selected**", "equal": "off" }"</kbd> Este objeto de prueba verifica si la barra seleccionada está en estado "off" (es decir, no seleccionada). Si la barra no está seleccionada, la condición se cumple y se aplica el valor de opacidad especificado.
+- **"value": 0**: Cuando la condición se cumple (la barra no está seleccionada), la opacidad de la barra se establece en 0, lo que hace que la barra sea transparente.
 
-<kbd>"value": 0</kbd> Cuando la condición se cumple (la barra no está seleccionada), la opacidad de la barra se establece en 0, lo que hace que la barra sea transparente.
+- **"value": 1**: Este es el valor predeterminado de opacidad para las barras cuando no se cumple la condición (es decir, cuando una barra está seleccionada). En este caso, la opacidad se establece en 1, lo que hace que la barra sea completamente visible.
 
-<kbd>"value": 1</kbd> Este es el valor predeterminado de opacidad para las barras cuando no se cumple la condición (es decir, cuando una barra está seleccionada). En este caso, la opacidad se establece en 1, lo que hace que la barra sea completamente visible.
-
+### Resultado Final
 Ver imagen final:
-![Pareto](https://raw.githubusercontent.com/CSalcedoDataBI/PowerBI-Deneb/main/Diagramas_Pareto/FIles/Pareto_Dinamico_Deneb_VegaLite_P1_Encabezado.gif)
+![Paso 10](/assets/img/post-diagrama-pareto-parte-1/Paso_12.gif)
 
 
 ## **Conclusión**

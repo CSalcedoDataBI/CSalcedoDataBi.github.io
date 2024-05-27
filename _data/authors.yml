@@ -1,16 +1,15 @@
-## Template › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/advanced-usage.md#setting-author-url
-# -------------------------------------
-# {author_id}:
-#   name: {full name}
-#   twitter: {twitter_of_author}
-#   url: {homepage_of_author}
-# -------------------------------------
+## Template for author details
+## Documentation on how to set author details: https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/advanced-usage.md#setting-author-url
 
 cotes:
   name: Cristobal Salcedo Beltran
-  #  twitter: cotes2020
   url: https://github.com/CSalcedoDataBI/
-# sille_bille:
-#   name: Dinesh Prasanth Moluguwan Krishnamoorthy
-#   twitter: dinesh_MKD
-#   url: https://github.com/SilleBille/
+  linkedin: [https://www.linkedin.com/in/cristobal-salcedo/]  # Cambia esto por tu URL de LinkedIn real si deseas incluirlo
+
+# Puedes añadir más autores siguiendo el mismo formato.
+# otro_autor:
+#   name: Nombre Completo del Otro Autor
+#   url: https://github.com/username_del_otro_autor
+#   linkedin: [Inserte su URL de LinkedIn del otro autor aquí]
+
+

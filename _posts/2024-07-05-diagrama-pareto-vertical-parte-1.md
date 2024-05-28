@@ -1,6 +1,6 @@
 ---
 title: "Diagrama de Pareto Vertical en Power BI con Deneb y Vega Lite (Parte: 1)"
-author: "Cristobal Salcedo Beltran"
+author: csalcedodatabi
 date: 2024-07-03 23:34:00 +0800
 categories: [Blogging, Tutorial]
 tags: [Deneb, Vega-Lite, Pareto]
@@ -12,14 +12,13 @@ description: "Una guía detallada para crear un diagrama de Pareto usando Deneb 
 ---
 
 
-En este artículo, me complace continuar explorando el fascinante mundo del diagrama de Pareto vertical. Esta técnica, presentada inicialmente por Jon Peltier en su blog (https://peltiertech.com/pareto-charts/), ha sido ampliada y refinada por carlos barboza, quien ha creado una versión llamativa y única en . Agradezco sinceramente a ambos expertos por sus contribuciones valiosas en este campo.
+En este artículo, me complace continuar explorando el fascinante mundo del diagrama de Pareto vertical. Esta técnica, presentada inicialmente por Jon Peltier en su blog (<https://peltiertech.com/pareto-charts/>), ha sido ampliada y refinada por carlos barboza, quien ha creado una versión llamativa y única en . Agradezco sinceramente a ambos expertos por sus contribuciones valiosas en este campo.
 
 Hoy, deseo presentarles una emocionante variante del diagrama de Pareto vertical utilizando  en combinación con las potentes herramientas  y . Esta combinación nos permitirá obtener resultados sorprendentes y flexibles al visualizar y analizar datos. Asimismo, me gustaría adoptar un lema que guiará todos mis futuros artículos, siempre y cuando la voluntad divina así lo permita: "Con Deneb en Power BI, ¡todo es posible!"
 
 Implementación Paso a Paso:
 Paso 1: Descargar el archivo PBIX que se utilizará pa este tuturial.
 Comenzaremos descargando el archivo PBIX que utilizaremos para este tutorial. Pueden encontrar el enlace de descarga al final del artículo anterior:
-
 
 o acceder directamente a él aquí.
 
@@ -79,7 +78,7 @@ Editar imagen
 Borrar imagen
 No hay texto alternativo para esta imagen
 Limpiando Ejes
-Estas configuraciones establecen que el segundo eje X se ubique en la parte inferior del gráfico. Además, aplicamos el formato de porcentaje con un decimal utilizando "formatType" y "format". Especificamos los valores que deseamos mostrar en el eje utilizando el arreglo [0, 0.4, 0.8, 1]. Por último, con "tickCount" definimos el número de divisiones del eje, estableciéndolo en 4. 
+Estas configuraciones establecen que el segundo eje X se ubique en la parte inferior del gráfico. Además, aplicamos el formato de porcentaje con un decimal utilizando "formatType" y "format". Especificamos los valores que deseamos mostrar en el eje utilizando el arreglo [0, 0.4, 0.8, 1]. Por último, con "tickCount" definimos el número de divisiones del eje, estableciéndolo en 4.
 
 Paso 4: Calcular el porcentaje de participación y generar las etiquetas correspondientes.
  Dentro de la matriz de transformación, agregamos el siguiente código:
@@ -90,11 +89,9 @@ Paso 4: Calcular el porcentaje de participación y generar las etiquetas corresp
      "as": "PCT"
 
    }
-Con este código, calculamos la variable "PCT" que representa el porcentaje de participación. Dividimos el valor de "Total Ventas" entre el valor total de ventas acumuladas (datum._GranTotal_Ventas) para obtener el porcentaje correspondiente. 
+Con este código, calculamos la variable "PCT" que representa el porcentaje de participación. Dividimos el valor de "Total Ventas" entre el valor total de ventas acumuladas (datum._GranTotal_Ventas) para obtener el porcentaje correspondiente.
 
 En la capa visual, dentro de la propiedad "layer", encontramos dos capas anidadas. En el segundo "layer", en la última capa, añadimos el siguiente código:
-
-
 
      {
          "mark": {"type": "text"},
@@ -118,7 +115,7 @@ En la capa visual, dentro de la propiedad "layer", encontramos dos capas anidada
        }
 Con esta configuración, utilizamos la marca de texto para mostrar el valor de "PCT" como una etiqueta en el gráfico. Especificamos el campo "PCT" como fuente de texto y aplicamos el formato "0.0%" para mostrar el porcentaje con un decimal. Además, establecemos la posición horizontal (x) en -25 para ajustar la ubicación de la etiqueta:
 
- { "axis": 
+ { "axis":
         "labels": true,
         "title": "",
         "labelFontSize": 14,
@@ -132,9 +129,9 @@ Borrar imagen
 No hay texto alternativo para esta imagen
 
 Paso 5: Ajustar el desplazamiento y el formato de las etiquetas utilizando la biblioteca D3.
-En la capa visual donde mostramos las etiquetas de "Total Ventas", realizaremos cambios en el formato y el desplazamiento de las mismas. En lugar de utilizar el formato proporcionado por Power BI, utilizaremos la biblioteca D3 para lograr el formato deseado y aplicar ajustes personalizados. A continuación, se detallan los cambios necesarios: 
+En la capa visual donde mostramos las etiquetas de "Total Ventas", realizaremos cambios en el formato y el desplazamiento de las mismas. En lugar de utilizar el formato proporcionado por Power BI, utilizaremos la biblioteca D3 para lograr el formato deseado y aplicar ajustes personalizados. A continuación, se detallan los cambios necesarios:
 
-En la misma capa visual, modificaremos las propiedades de formato de la siguiente manera: 
+En la misma capa visual, modificaremos las propiedades de formato de la siguiente manera:
 
 Reemplazamos:
 
@@ -150,7 +147,7 @@ Esto cambiará el formato de las etiquetas de "Total Ventas" a una representaci�
 
  Luego, cambiaremos "yOffset" por "xOffset" en la misma capa visual:
 
-"xOffset": 20 
+"xOffset": 20
 
 Adicionalmente, en la capa de "%_Acumulado", también ajustaremos el desplazamiento:
 
@@ -222,7 +219,7 @@ Editar imagen
 Borrar imagen
 No hay texto alternativo para esta imagen
 
-Conclusión 
+Conclusión
 En conclusión, hemos explorado el fascinante mundo del diagrama de Pareto vertical utilizando Power BI, Deneb y Vega Lite. A través de los pasos detallados, hemos aprendido a convertir un diagrama de Pareto de horizontal a vertical, personalizar los ejes y calcular variables de porcentaje. Sin embargo, aún hay más por descubrir. En la próxima entrega, continuaremos explorando nuevas técnicas y conceptos, incluyendo la incorporación de parámetros dinámicos para obtener categorías personalizables y estilos flexibles en el gráfico. ¡Mantente atento para no perderte la segunda parte de este emocionante artículo!
 
 Es importante destacar que este artículo se ha centrado principalmente en los aspectos técnicos de la implementación. Si deseas profundizar en el análisis de datos y explorar nuevas técnicas y conceptos, te invitamos a consultar nuestros artículos adicionales y seguirnos en Pesante Analytics Llc. Nuestra plataforma proporciona recursos valiosos y materiales de aprendizaje para ayudarte a aprovechar al máximo ,  y  en Power BI.
@@ -234,7 +231,7 @@ Aprovecha las infinitas posibilidades que estas herramientas ofrecen para visual
 Descarga de la Plantilla y Visualización
 Para facilitar la implementación de esta funcionalidad en tu propio proyecto, ponemos a tu disposición la plantilla de visualización en Deneb. Puedes descargar el archivo PBIX desde el siguiente enlace:
 
-https://github.com/cristobalsalcedo90/PowerBI-Deneb/raw/main/Diagrama%20de%20Pareto%20Vertical%20en%20Power%20BI%20con%20Deneb%20y%20Vega%20Lite%20(Parte%201).pbix
+<https://github.com/cristobalsalcedo90/PowerBI-Deneb/raw/main/Diagrama%20de%20Pareto%20Vertical%20en%20Power%20BI%20con%20Deneb%20y%20Vega%20Lite%20(Parte%201).pbix>
 
 Plantilla .json edesde el siguiente enlace:
 
@@ -243,11 +240,11 @@ PowerBI-Deneb/Diagrama de Pareto Vertical en Power BI con Deneb y Vega Lite (Par
 Referencias y Recursos
 Aquí tienes algunas referencias útiles que puedes consultar para obtener más información sobre el diagrama de Pareto vertical en Power BI utilizando Deneb y Vega Lite:
 
-Documentación de D3.js: https://github.com/d3/d3-format#locale_format
+Documentación de D3.js: <https://github.com/d3/d3-format#locale_format>
 
-Blog de Jon Peltier: https://peltiertech.com/pareto-charts/
+Blog de Jon Peltier: <https://peltiertech.com/pareto-charts/>
 
-Contribuciones de Carlos Barboza: https://lnkd.in/eSwKQnSk
+Contribuciones de Carlos Barboza: <https://lnkd.in/eSwKQnSk>
 
 Estas fuentes te proporcionarán información adicional y te ayudarán a explorar más a fondo el tema del diagrama de Pareto vertical.
 

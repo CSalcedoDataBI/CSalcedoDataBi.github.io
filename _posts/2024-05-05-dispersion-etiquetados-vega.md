@@ -1,6 +1,6 @@
 ---
 title: "Cómo crear un impresionante Scatter Plot en Deneb con Vega en Power BI"
-author: "Cristobal Salcedo Beltran"
+author: csalcedodatabi
 date: 2024-07-03 23:34:00 +0800
 categories: [Blogging, Tutorial]
 tags: [Deneb, Vega]
@@ -63,6 +63,7 @@ En este paso, vamos a copiar y pegar el código del Scatter Plot en el editor de
 En esta etapa, vamos a modificar el código del Scatter Plot para que pueda leer el <kbd>dataset</kbd> de Power BI. Sigue los siguientes subpasos:
 
 Estando en el editor de Deneb, ve al <kbd>panel de especificación</kbd> (Specification) donde hemos pegado el código.
+
 - Selecciona la palabra <kbd>movies</kbd> en el código y presiona <kbd>Ctrl + F</kbd> para abrir el cuadro de diálogo de búsqueda.
 
 - Expande el cuadro de diálogo hacia abajo haciendo clic en el botón `*+` en el logotipo.
@@ -82,6 +83,7 @@ En la imagen, se puede observar el Scatter Plot actualizado con los datos del co
 ## Paso 5: Habilitar Cross-Highlight y Cross-Filtering (Selection)
 
 En este paso, vamos a habilitar la funcionalidad de "<kbd>Cross-Highlight</kbd> y <kbd>Cross-Filtering</kbd> (Selection). Sigue los siguientes subpasos:
+
 - En el editor de Deneb, ve al panel de Configuración (Settings).
 - Busca y selecciona los botones correspondientes para habilitar Cross-Highlight y Cross-Filtering (Selection).
   
@@ -123,6 +125,7 @@ Inserta el siguiente código dentro de la propiedad <kbd>enter</kbd> del código
 ## Paso 7: Segmentar y colorear los puntos del Scatter Plot
 
 En este último paso, vamos a definir segmentos de colores para identificar cada punto en el Scatter Plot. Sigue los siguientes subpasos:
+
 - Primero, vamos a definir una escala <kbd>Scales</kbd> para asignar colores a los puntos basados en la variable <kbd>Major Genre</kbd>. Agrega el siguiente código:
 
 ```json

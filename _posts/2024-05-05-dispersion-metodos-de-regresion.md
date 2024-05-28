@@ -1,6 +1,6 @@
 ---
 title: "Selección Dinámica de Métodos de Regresión en Deneb para Power BI"
-author: "Cristobal Salcedo Beltran"
+author: csalcedodatabi
 date: 2024-07-03 23:34:00 +0800
 categories: [Blogging, Tutorial]
 tags: [Deneb, Vega]

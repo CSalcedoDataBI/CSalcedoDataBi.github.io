@@ -1,6 +1,6 @@
 ---
 title: "Cómo crear un gráfico de tarjeta dinámica con líneas de tendencia en Power BI utilizando Vega-Lite y Deneb"
-author: "Cristobal Salcedo Beltran"
+author: csalcedodatabi
 date: 2024-07-03 23:34:00 +0800
 categories: [Blogging, Tutorial]
 tags: [Deneb, Vega-Lite, Pareto]
@@ -19,7 +19,6 @@ Paso 1: Configuración inicial
 Comenzaremos con la configuración inicial, donde utilizaremos el código compartido por Brian Julius en Power Query. Lo utilizaremos en una consulta en blanco y eliminaremos los dos pasos finales que requieren paquetes de R. Además, normalizaremos los datos realizando un unpivot para tener una sola columna de categoría y otra con el valor del precio. Aquí puede ver los datos preparados: DatosPreparados.pbix
 
 Puedes encontrar el proyecto inicial de Brian aquí:
-
 
 Paso 2: Crear Medidas en DAX y Transformaciones de datos en Vega-Lite
 En este paso, crearemos una medida en DAX llamada "Price__Total" utilizando la función SUM para sumar los valores de la columna "Price". Puedes utilizar otro nombre de medida si lo deseas.
@@ -299,7 +298,7 @@ Espero que este artículo te haya ayudado a crear tu gráfico de tarjeta dinámi
 Descarga de la Plantilla y Visualización
 Para facilitar la implementación de esta funcionalidad en tu propio proyecto, ponemos a tu disposición la plantilla de visualización en Deneb. Puedes descargar el archivo PBIX desde el siguiente enlace:
 
-https://github.com/cristobalsalcedo90/PowerBI-Deneb/raw/main/Gr%C3%A1fico%20de%20tarjeta%20din%C3%A1mico%20con%20l%C3%ADneas%20de%20tendencia%20en%20Power%20BI%20utilizando%20Vega-Lite%20y%20Deneb.pbix
+<https://github.com/cristobalsalcedo90/PowerBI-Deneb/raw/main/Gr%C3%A1fico%20de%20tarjeta%20din%C3%A1mico%20con%20l%C3%ADneas%20de%20tendencia%20en%20Power%20BI%20utilizando%20Vega-Lite%20y%20Deneb.pbix>
 
 Plantilla .json edesde el siguiente enlace:
 
@@ -308,7 +307,7 @@ PowerBI-Deneb/Gráfico de tarjeta dinámico con líneas de tendencia en Power BI
 Referencias y Recursos
 Aquí tienes algunas referencias útiles que puedes consultar para obtener más información sobre el diagrama de Pareto vertical en Power BI utilizando Deneb y Vega Lite:
 
-Documentación de D3.js: https://github.com/d3/d3-format#locale_format
+Documentación de D3.js: <https://github.com/d3/d3-format#locale_format>
 
 Post Brian: Publicación | Feed | LinkedIn
 
@@ -339,7 +338,7 @@ Juan David Bohorquez Giraldo
 
 Imran Haq
 
-Quiero expresar mi sincero agradecimiento por su contribución y por ser una fuente constante de aprendizaje. 
+Quiero expresar mi sincero agradecimiento por su contribución y por ser una fuente constante de aprendizaje.
 
 Plantilla:
 {
@@ -681,7 +680,7 @@ Plantilla:
       "timeUnit": "monthdate",
       "type": "nominal",
       "axis": {
-        "labelExpr": "[datum.label[0] + '-' +split(datum.label,' ')[1]]",
+        "labelExpr": "[datum.label[0] + '-' +split[datum.label,' '](1)]",
         "title": "",
         "labelFontSize": 8,
         "labelSeparation": 1,

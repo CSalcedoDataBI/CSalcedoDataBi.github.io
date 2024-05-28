@@ -1,10 +1,10 @@
 ---
 title: "Diagrama de Pareto con Deneb y Vega-Lite en Power BI (Parte 1)"
-author: "Cristobal Salcedo Beltran"
+author: csalcedodatabi
 date: 2024-05-28 07:30:00 +0800
 categories: [Deneb, Tutorial]
 tags: [Deneb, Vega-Lite, Pareto]
-pin: false
+pin: true
 image:
   path: /assets/img/post-diagrama-pareto-parte-1/Paso_12.gif
   alt: "Diagrama de Pareto Dinámico con Cross-Filtering + etiqueta"

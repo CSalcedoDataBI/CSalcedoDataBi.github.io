@@ -1,6 +1,6 @@
 ---
 title: "Crea un Diagrama de Pareto Vertical en Power BI con Deneb y Vega Lite (Parte 2)"
-author: "Cristobal Salcedo Beltran"
+author: csalcedodatabi
 date: 2024-07-03 23:34:00 +0800
 categories: [Blogging, Tutorial]
 tags: [Deneb, Vega-Lite, Pareto]
@@ -11,7 +11,7 @@ image:
 description: "Potencia tu Análisis de Datos con Diagramas de Pareto Verticales en Power BI"
 ---
 
-# ¡Hola a todos!
+# ¡Hola a todos
 
 ¡Espero que estén tan emocionados como yo por seguir explorando el fascinante mundo del Diagrama de Pareto Vertical en Power BI! En la primera parte de este artículo, aprendimos a convertir un diagrama de Pareto de horizontal a vertical, personalizar los ejes, calcular variables de porcentaje y aplicar estilos y colores llamativos.
 
@@ -51,7 +51,6 @@ Para implementar esto, accedemos al editor de Deneb y eliminamos la categoría "
 
 ![Inserta aquí la imagen y el código](https://raw.githubusercontent.com/CSalcedoDataBI/PowerBI-Deneb/main/Diagramas_Pareto/FIles/Pareto_Dinamico_Deneb_VegaLite_P1_Encabezado.gif)
 
-
 Agregando Fieds Parameter a Deneb
 Como puedes ver, ahora tienes Field Parameter disponible en tu visualización.
 
@@ -59,7 +58,7 @@ Como puedes ver, ahora tienes Field Parameter disponible en tu visualización.
 
 Hasta este punto, hemos cubierto todos los aspectos necesarios. Sin embargo, si deseas ir aún más allá, podemos agregar otro parámetro para permitir la personalización de los estilos del gráfico de manera dinámica. Sigue los siguientes pasos:
 
-## Paso 7: Implementar el parámetro "Numeric Range" para permitir la personalización dinámica de estilos en el gráfico:
+## Paso 7: Implementar el parámetro "Numeric Range" para permitir la personalización dinámica de estilos en el gráfico
 
 En este paso, utilizaremos la opción "Numeric Range" del parámetro de Fields Parameter para permitir la personalización dinámica de estilos en nuestro gráfico. Sigue estos pasos para implementarlo:
 
@@ -86,11 +85,10 @@ IF (
 )
 </code></pre>
 
- Utilizaremos esta columna calculada como filtro de selección única. 
+ Utilizaremos esta columna calculada como filtro de selección única.
 
+## Paso 8: Utilizar las variables de estilo en la capa de color para lograr un estilo dinámico en los visuales
 
-
-## Paso 8: Utilizar las variables de estilo en la capa de color para lograr un estilo dinámico en los visuales.
 En este paso, utilizaremos las variables de estilo que hemos definido para lograr un estilo dinámico en la capa de color de nuestro gráfico. Sigue estos pasos para implementarlo:
 
 Trae la medida "ParameterValue" que hemos creado en el Paso 7 a tu visual.
@@ -121,7 +119,7 @@ Declara los parámetros necesarios para traducir y crear condiciones que produzc
  En este código, hemos declarado las variables de estilo como "color1", "color2" y "color3". Cada una de estas variables tiene una expresión condicional que determina el color según el valor de la medida "ParameterValue".
 
  1. Utiliza estas variables de estilo en la capa de color de tu visual para lograr un estilo dinámico. Aquí tienes un ejemplo de cómo hacerlo:
-   
+
 <pre class="highlight"><code>
 "color":{
     "field":"%_Acumulado",
@@ -152,18 +150,17 @@ En este ejemplo, hemos utilizado las variables de estilo en el rango de colores 
 Continúa explorando y experimentando con diferentes valores en el parámetro "Numeric Range" para ver cómo se reflejan en el estilo de tu gráfico. ¡Disfruta de la personalización dinámica de estilos en tus visuales!
 
 ## Conclusión
+
 Hemos explorado en este artículo la creación del Diagrama de Pareto Vertical en  utilizando herramientas como  y . A lo largo de este proceso, hemos aprendido a personalizar los ejes, calcular variables de porcentaje, aplicar estilos y colores llamativos, e incluso incorporar parámetros dinámicos para lograr categorías personalizables y estilos flexibles. Estas técnicas nos permiten visualizar y analizar los datos de una manera más efectiva, identificando rápidamente los factores clave y tomando decisiones fundamentadas.
 
 El Diagrama de Pareto Vertical es una valiosa herramienta para el análisis de datos, ya que nos brinda una representación clara y concisa de la distribución y relevancia de los diferentes elementos en un conjunto de datos. Al utilizar estas técnicas y herramientas en Power BI, podemos potenciar nuestras visualizaciones y obtener información más significativa para la toma de decisiones. ¡Sigue explorando y experimentando con estas técnicas para aprovechar al máximo el potencial de tus datos en Power BI!
-
-
 
 🖋️ Escrito por Cristobal Salcedo Beltran con la ayuda de Pesante Analytics Llc
 
 Descarga de la Plantilla y Visualización
 Para facilitar la implementación de esta funcionalidad en tu propio proyecto, ponemos a tu disposición la plantilla de visualización en Deneb. Puedes descargar el archivo PBIX desde el siguiente enlace:
 
-https://github.com/cristobalsalcedo90/PowerBI-Deneb/raw/main/Diagrama%20de%20Pareto%20Vertical%20en%20Power%20BI%20con%20Deneb%20y%20Vega%20Lite%20(Parte%202%20).pbix
+<https://github.com/cristobalsalcedo90/PowerBI-Deneb/raw/main/Diagrama%20de%20Pareto%20Vertical%20en%20Power%20BI%20con%20Deneb%20y%20Vega%20Lite%20(Parte%202%20).pbix>
 
 Plantilla .json edesde el siguiente enlace:
 
@@ -172,15 +169,15 @@ PowerBI-Deneb/Diagrama de Pareto Vertical en Power BI con Deneb y Vega Lite (Par
 Referencias y Recursos
 Aquí tienes algunas referencias útiles que puedes consultar para obtener más información sobre el diagrama de Pareto vertical en Power BI utilizando Deneb y Vega Lite:
 
-Documentación de D3.js: https://github.com/d3/d3-format#locale_format
+Documentación de D3.js: <https://github.com/d3/d3-format#locale_format>
 
 Documentación Fields Parameter: Permita que los lectores de informes usen parámetros de campo para cambiar objetos visuales (versión preliminar) - Power BI | Microsoft Learn
 
 Documentacion de Deneb: Declarative Visualization in Power BI | Deneb (deneb-viz.github.io)
 
-Blog de Jon Peltier: https://peltiertech.com/pareto-charts/
+Blog de Jon Peltier: <https://peltiertech.com/pareto-charts/>
 
-Contribuciones de Carlos Barboza: https://lnkd.in/eSwKQnSk
+Contribuciones de Carlos Barboza: <https://lnkd.in/eSwKQnSk>
 
 Estas fuentes te proporcionarán información adicional y te ayudarán a explorar más a fondo el tema del diagrama de Pareto vertical.
 
@@ -569,7 +566,3 @@ Platilla:
   }
 }
 </code></pre>
-
-
-
- 

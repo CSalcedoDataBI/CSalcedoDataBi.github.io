@@ -11,11 +11,12 @@ image:
 description: "Continúa la guía para crear un diagrama de Pareto usando Deneb y Vega-Lite en Power BI. Esta es la segunda parte de la serie."
 ---
 
-Imagina un mundo donde no tienes que lidiar con la complejidad de las variables necesarias para crear un gráfico de Pareto cada vez que lo necesitas. En lugar de eso, simplemente utilizas una plantilla predefinida que incorpora todas las características y mejoras estéticas que has definido previamente. Esta plantilla puede ser reutilizada en múltiples informes, simplemente asignando las dos variables principales: tu categoría X y tu valor o medida Y. Así de sencillo, así de eficiente 🚀.
+Imagina un mundo donde no tienes que lidiar con la complejidad de las variables necesarias para crear un gráfico de Pareto cada vez que lo necesitas. En lugar de eso, simplemente utilizas una plantilla de Deneb, predefinida que incorpora todas las características y mejoras estéticas que has definido previamente. Esta plantilla puede ser reutilizada en múltiples informes, simplemente asignando las dos variables principales: tu categoría X y tu valor o medida Y. Así de sencillo, así de eficiente 🚀.
 
 ## Uso de DAX y Vega-lite
 
-En la primera parte de este artículo, utilizamos **DAX** y **Vega-lite**.
+En la primera parte de este artículo, utilizamos **DAX** y **Vega-lite**,
+aqui esta el enlace a la [versión combinada con DAX](https://csalcedodatabi.github.io/posts/diagrama-pareto-parte-1/).
 
 ## Alternativa con Vega-Lite
 

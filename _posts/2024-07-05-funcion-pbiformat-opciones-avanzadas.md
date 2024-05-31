@@ -11,7 +11,34 @@ image:
 description: "Una guía detallada para crear un diagrama de Pareto usando Deneb y Vega-Lite en Power BI. Esta es la primera parte de la serie."
 ---
 
-
+<pre class="highlight"><code>
+{
+  "data": {"name": "dataset"},
+  "transform": [
+    {
+      "calculate": "pbiFormat(datum['$Sales'],'$#,0')",
+      "as": "Formatted Integer"
+    },
+    {
+      "calculate": "pbiFormat(datum['$Sales'],'$#,0,.0#K')",
+      "as": "Formatted Thousands"
+    },
+    {
+      "calculate": "pbiFormat(datum['$Sales'],'$#,0,,.0#M')",
+      "as": "Formatted Millions"
+    },
+    {
+      "calculate": "pbiFormat(datum['$Sales'],'$#,0,,,.0#B')",
+      "as": "Formatted Billions"
+    },
+    {
+      "calculate": "pbiFormat(datum['$Sales'],'$#,0,,,,.0#T')",
+      "as": "Formatted Trillions"
+    }
+  ]
+  ...
+}
+</code></pre>
 Aquí tienes el código formateado para mayor claridad:
 
 <pre class="highlight"><code>

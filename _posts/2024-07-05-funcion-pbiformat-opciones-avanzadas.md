@@ -10,6 +10,9 @@ image:
   alt: "Cross-Filtering y Cross-Highlight Scatter Plot"
 description: "Una guía detallada para crear un diagrama de Pareto usando Deneb y Vega-Lite en Power BI. Esta es la primera parte de la serie."
 ---
+**`pbiFormat()`**: Función para formatear los datos en un formato personalizado en **Deneb** que permite a los usuarios utilizar cadenas de formato de **Power BI** en lugar de la convención de `formato D3`. Esto significa que puedes personalizar cómo se muestran los números y las fechas en tus gráficos.
+
+**Example in vega-lite**:
 
 <pre class="highlight"><code>
 {

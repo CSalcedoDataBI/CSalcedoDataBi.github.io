@@ -42,6 +42,232 @@ description: "Una guía detallada para crear un diagrama de Pareto usando Deneb 
   ...
 }
 </code></pre>
+
+<style>
+  .responsive-table {
+    width: 100%;
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+    table-layout: auto;
+  }
+  table th, table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    word-wrap: break-word;
+  }
+  table th {
+    background-color: #007acc;
+    color: white;
+  }
+  table tr:nth-of-type(even) {
+    background-color: #f9f9f9;
+  }
+  table tr:hover {
+    background-color: #f1f1f1;
+  }
+  code {
+    color: #d63384;
+    background-color: #f8f9fa;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: Consolas, "Courier New", monospace;
+  }
+  @media (max-width: 600px) {
+    table {
+      font-size: 14px;
+    }
+    table th, table td {
+      padding: 8px 10px;
+    }
+  }
+  table th:first-child,
+  table td:first-child {
+    width: 45%;
+  }
+  table th:nth-child(2),
+  table td:nth-child(2) {
+    width: 35%;
+  }
+  table th:last-child,
+  table td:last-child {
+    width: 20%;
+  }
+</style>
+
+<div class="responsive-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Function</th>
+        <th>Formatted</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>pbiFormat(1980.126, '#,0.00')</code></td>
+        <td>1,980.13</td>
+        <td>Positive Number</td>
+      </tr>
+      <tr>
+        <td><code>pbiFormat(-1980.1, '#,0.00')</code></td>
+        <td>-1,980.10</td>
+        <td>Negative Number</td>
+      </tr>
+      <tr>
+        <td><code>pbiFormat(0, '#,0.00')</code></td>
+        <td>0.00</td>
+        <td>Zero Value</td>
+      </tr>
+      <tr>
+        <td><code>pbiFormat(null, '#,0.00')</code></td>
+        <td>(Blank)</td>
+        <td>Blank Value</td>
+      </tr>
+      <tr>
+        <td><code>pbiFormat(1980.126, '#,0.00;(#,0.00)')</code></td>
+        <td>1,980.13</td>
+        <td>Positive with Neg. Format</td>
+      </tr>
+      <tr>
+        <td><code>pbiFormat(-1980.1, '#,0.00;(#,0.00)')</code></td>
+        <td>(1,980.10)</td>
+        <td>Negative with Parentheses</td>
+      </tr>
+      <tr>
+        <td><code>pbiFormat(0, '#,0.00;(#,0.00)')</code></td>
+        <td>0.00</td>
+        <td>Zero with Neg. Format</td>
+      </tr>
+      <tr>
+        <td><code>pbiFormat(null, '#,0.00;(#,0.00)')</code></td>
+        <td>(Blank)</td>
+        <td>Blank with Neg. Format</td>
+      </tr>
+      <tr>
+        <td><code>pbiFormat(1980.12, '#,#.##;(#,##);-')</code></td>
+        <td>1,980.12</td>
+        <td>Positive Custom</td>
+      </tr>
+      <tr>
+        <td><code>pbiFormat(-1980.12, '#,#.##;(#,##);-')</code></td>
+        <td>(1,980.12)</td>
+        <td>Negative Custom</td>
+      </tr>
+      <tr>
+        <td><code>pbiFormat(0, '#,#.##;(#,##);-')</code></td>
+        <td>-</td>
+        <td>Zero Custom</td>
+      </tr>
+      <tr>
+        <td><code>pbiFormat(null, '#,#.##;(#,##);-')</code></td>
+        <td>(Blank)</td>
+        <td>Blank Custom</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .content-section {
+    font-family: Arial, sans-serif;
+    margin: 20px 0;
+  }
+  .content-section h2 {
+    color: #007acc;
+  }
+  .content-section p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .parameter-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+  }
+  .parameter-table th, .parameter-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+  }
+  .parameter-table th {
+    background-color: #007acc;
+    color: white;
+  }
+  .parameter-table tr:nth-of-type(even) {
+    background-color: #f9f9f9;
+  }
+  .parameter-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  .code-block {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: Consolas, "Courier New", monospace;
+    color: #d63384;
+  }
+  .code-inline {
+    background-color: #f8f9fa;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: Consolas, "Courier New", monospace;
+    color: #d63384;
+  }
+</style>
+
+<div class="content-section">
+  <h2>Exploring the Power of pbiFormat Function</h2>
+  <p>
+    The <span class="code-inline">pbiFormat</span> function offers great versatility when used in expression functions, providing more control compared to direct encoding properties. The complete signature of this function is:
+  </p>
+  <div class="code-block">
+    pbiFormat(value, format, options = {})
+  </div>
+  <p>Here are the key parameters:</p>
+  <table class="parameter-table">
+    <thead>
+      <tr>
+        <th>Parameter</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="code-inline">value</span></td>
+        <td>The number to be formatted.</td>
+      </tr>
+      <tr>
+        <td><span class="code-inline">format</span></td>
+        <td>A valid Power BI format string.</td>
+      </tr>
+      <tr>
+        <td><span class="code-inline">options</span></td>
+        <td>An optional object with additional formatting options.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>Important options within the <span class="code-inline">options</span> parameter include:</p>
+  <ul>
+    <li><span class="code-inline">format</span> - Custom format string (overrides the format parameter if specified)</li>
+    <li><span class="code-inline">precision</span> - Maximum decimal places</li>
+    <li><span class="code-inline">value</span> - Value for formatting (e.g., <span class="code-inline">1e3</span> for thousands, <span class="code-inline">1e6</span> for millions)</li>
+    <li><span class="code-inline">cultureSelector</span> - Locale-specific formatting (e.g., <span class="code-inline">en-GB</span>, <span class="code-inline">fr-FR</span>)</li>
+  </ul>
+  <h3>Example Implementation in Vega-Lite</h3>
+  <p>The following Vega-Lite specification demonstrates the use of <span class="code-inline">pbiFormat</span> for dynamic number formatting:</p>
+</div>
+
+   
+
 Aquí tienes el código formateado para mayor claridad:
 
 <pre class="highlight"><code>
@@ -54,12 +280,14 @@ pbiFormat(datum['Sales'], '$#0,0', {
 })
 </code></pre>
 
+
 ### Explicación de cada parte
 
 1. **`pbiFormat()`**: Función para formatear los datos en un formato personalizado en Deneb que permite a los usuarios utilizar cadenas de formato de Power BI en lugar de la convención de formato D3. Esto significa que puedes personalizar cómo se muestran los números y las fechas en tus gráficos.
 2. **`datum['Sales'],`**: El valor de 'Sales' que se va a formatear.
 3. **`'$#0,0',`**: El formato de salida. Aquí se está especificando un formato de moneda.
 4. **`{`**: Apertura del objeto de configuración que contiene `value` y `precision`.
+
 
 #### Bloque `value`
 

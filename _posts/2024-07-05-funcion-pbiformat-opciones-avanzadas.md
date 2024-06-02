@@ -1,47 +1,81 @@
 ---
-title: "Cómo crear un gráfico de tarjeta dinámica con líneas de tendencia en Power BI utilizando Vega-Lite y Deneb"
+title: "Guía detallada del uso de la función pbiFormat en Deneb"
 author: csalcedodatabi
-date: 2024-08-03 23:34:00 +0800
+date: 2024-07-03 23:34:00 +0800
 categories: [Blogging, Tutorial]
-tags: [Deneb, Vega-Lite, Pareto]
+tags: [Deneb, Vega-Lite, pbiFormat]
 pin: false
 image:
   path: /assets/img/post-funcion-pbiformat/pbiFormat.gif
-  alt: "Cross-Filtering y Cross-Highlight Scatter Plot"
-description: "Una guía detallada para crear un diagrama de Pareto usando Deneb y Vega-Lite en Power BI. Esta es la primera parte de la serie."
+  alt: "Entendiendo el uso de pbiFormat"
+description: "Una guía detallada sobre el uso básico y avanzado de la función pbiFormat de Deneb en Power BI"
 ---
-**`pbiFormat()`**: Función para formatear los datos en un formato personalizado en **Deneb** que permite a los usuarios utilizar cadenas de formato de **Power BI** en lugar de la convención de `formato D3`. Esto significa que puedes personalizar cómo se muestran los números y las fechas en tus gráficos.
 
-**Example in vega-lite**:
+**pbiFormat():** Función para formatear los datos en un formato personalizado en **Deneb**, que permite a los usuarios utilizar cadenas de formato de Power BI en lugar de la convención de formato D3. Esto significa que puedes personalizar cómo se muestran los números y las fechas en tus gráficos.
+
+## **Ejemplo básico en Vega-Lite:**
 
 <pre class="highlight"><code>
 {
   "data": {"name": "dataset"},
   "transform": [
     {
-      "calculate": "pbiFormat(datum['$Sales'],'$#,0')",
-      "as": "Formatted Integer"
+      "calculate": "pbiFormat(1980.126, '#,0.00')",
+      "as": "Formatted Positive"
     },
     {
-      "calculate": "pbiFormat(datum['$Sales'],'$#,0,.0#K')",
-      "as": "Formatted Thousands"
+      "calculate": "pbiFormat(-1980.1, '#,0.00')",
+      "as": "Formatted Negative"
     },
     {
-      "calculate": "pbiFormat(datum['$Sales'],'$#,0,,.0#M')",
-      "as": "Formatted Millions"
+      "calculate": "pbiFormat(0, '#,0.00')",
+      "as": "Formatted Zero"
     },
     {
-      "calculate": "pbiFormat(datum['$Sales'],'$#,0,,,.0#B')",
-      "as": "Formatted Billions"
+      "calculate": "pbiFormat(null, '#,0.00')",
+      "as": "Formatted Blank"
     },
     {
-      "calculate": "pbiFormat(datum['$Sales'],'$#,0,,,,.0#T')",
-      "as": "Formatted Trillions"
-    }
-  ]
+      "calculate": "pbiFormat(1980.126, '#,0.00;(#,0.00)')",
+      "as": "Formatted Positive Negative"
+    },
+    {
+      "calculate": "pbiFormat(-1980.1, '#,0.00;(#,0.00)')",
+      "as": "Formatted Negative Positive"
+    },
+    {
+      "calculate": "pbiFormat(0, '#,0.00;(#,0.00)')",
+      "as": "Formatted Zero Negative Positive"
+    },
+    {
+      "calculate": "pbiFormat(null, '#,0.00;(#,0.00)')",
+      "as": "Formatted Blank Negative Positive"
+    },
+    {
+      "calculate": "pbiFormat(1980.12, '#,#.##;(#,#.##);-')",
+      "as": "Formatted Positive Custom"
+    },
+    {
+      "calculate": "pbiFormat(-1980.12, '#,#.##;(#,#.##);-')",
+      "as": "Formatted Negative Custom"
+    },
+    {
+      "calculate": "pbiFormat(0, '#,#.##;(#,#.##);-')",
+      "as": "Formatted Zero Custom"
+    },
+    {
+      "calculate": "pbiFormat(null, '#,#.##;(#,#.##);-')",
+      "as": "Formatted Blank Custom"
+    },...
   ...
 }
 </code></pre>
+
+![Proyectando Resultado](/assets/img/post-funcion-pbiformat/1_pbiFormat.png)
+
+Esta forma básica toma formatos utilizados en Power BI, que también se usan con la función [**DAX FORMAT**](https://dax.guide/format/). Como se puede ver en la línea resaltada, el número es 1980.126 y el formato es #,0.00. Al especificar dos decimales, el número se redondea hacia arriba a 1980.13, lo cual es importante entender.
+
+La siguiente tabla muestra el fragmento de pbiFormat y el formato, por si desea usarlo, ya que la imagen anterior no permite copiar el código.
 
 <style>
   .responsive-table {
@@ -174,6 +208,226 @@ description: "Una guía detallada para crear un diagrama de Pareto usando Deneb 
   </table>
 </div>
 
+### Ejemplo de un Formato más Elegante
+
+En esta sección, presento un ejemplo de un formato de datos más elegante utilizando la función `pbiFormat`. Este método permite dar formato a los valores de ventas en diferentes escalas, desde enteros hasta billones, facilitando así su interpretación visual.
+
+<pre class="highlight"><code>
+{
+  "data": {"name": "dataset"},
+  "transform": [
+    {
+      "calculate": "pbiFormat(datum['$Sales'],'$#,0')",
+      "as": "Formatted Integer"
+    },
+    {
+      "calculate": "pbiFormat(datum['$Sales'],'$#,0,.0#K')",
+      "as": "Formatted Thousands"
+    },
+    {
+      "calculate": "pbiFormat(datum['$Sales'],'$#,0,,.0#M')",
+      "as": "Formatted Millions"
+    },
+    {
+      "calculate": "pbiFormat(datum['$Sales'],'$#,0,,,.0#B')",
+      "as": "Formatted Billions"
+    },
+    {
+      "calculate": "pbiFormat(datum['$Sales'],'$#,0,,,,.0#T')",
+      "as": "Formatted Trillions"
+    },
+    ...
+  ],
+  ...
+}
+</code></pre>
+
+
+la siguiente imagen ilustra el resultado proyectado de aplicar estos formatos:
+
+![Proyectando Resultado](/assets/img/post-funcion-pbiformat/2_pbiFormat.png)
+
+La siguiente tabla muestra el fragmento de <code>pbiFormat</code> y el formato, por si desea usarlo, ya que la imagen anterior no permite copiar el código.
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabla de Formatos</title>
+  <style>
+    .responsive-table {
+      width: 100%;
+      overflow-x: auto;
+      padding: 0;
+      margin: 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 14px;
+      text-align: left;
+      table-layout: auto;
+      border: none; /* Elimina el borde de la tabla */
+      border-spacing: 0;
+    }
+    table th, table td {
+      padding: 1px 1px;
+      border: 1px solid #ddd;
+      word-wrap: break-word;
+    }
+    table th {
+      background-color: #007acc;
+      color: white;
+      border: none; /* Elimina el borde del header */
+    }
+    table tr:nth-of-type(even) {
+      background-color: #f9f9f9;
+    }
+    table tr:hover {
+      background-color: #f1f1f1;
+    }
+    code {
+      color: #d63384;
+      background-color: #f8f9fa;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: Consolas, "Courier New", monospace;
+    }
+    @media (max-width: 600px) {
+      table {
+        font-size: 14px;
+      }
+      table th, table td {
+        padding: 8px 10px;
+      }
+    }
+    table th:first-child,
+    table td:first-child {
+      width: 45%;
+    }
+    table th:nth-child(2),
+    table td:nth-child(2) {
+      width: 35%;
+    }
+    table th:last-child,
+    table td:last-child {
+      width: 20%;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="responsive-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Function</th>
+          <th>Formatted</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>pbiFormat(datum['$Sales'],'$#,0')</code></td>
+          <td>$1,001,001,002,030</td>
+          <td>Formatted Integer</td>
+        </tr>
+        <tr>
+          <td><code>pbiFormat(datum['$Sales'],'$#,0,.0#K')</code></td>
+          <td>$1,001,001,002.03K</td>
+          <td>Formatted Thousands</td>
+        </tr>
+        <tr>
+          <td><code>pbiFormat(datum['$Sales'],'$#,0,,.0#M')</code></td>
+          <td>$1,001,001.0M</td>
+          <td>Formatted Millions</td>
+        </tr>
+        <tr>
+          <td><code>pbiFormat(datum['$Sales'],'$#,0,,,.0#B')</code></td>
+          <td>$1,001.0B</td>
+          <td>Formatted Billions</td>
+        </tr>
+        <tr>
+          <td><code>pbiFormat(datum['$Sales'],'$#,0,,,,.0#T')</code></td>
+          <td>$1.0T</td>
+          <td>Formatted Trillions</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+
+
+## Ejemplo Formateando Fechas
+
+En esta sección, se muestra cómo utilizar la función `pbiFormat` para dar formato a las fechas en diferentes estilos. El siguiente ejemplo transforma un conjunto de datos aplicando varios formatos de fecha y hora.
+
+
+<pre class="highlight"><code>
+{
+  "data": {"name": "dataset"},
+  "transform": [
+    {
+      "calculate": "pbiFormat(datum['Date'],'dd/MM/yyyy hh:mm:ss')",
+      "as": "Formatted DateTime"
+    },
+    {
+      "calculate": "pbiFormat(datum['Date'],'dd/MM/yyyy')",
+      "as": "Formatted Date"
+    },
+    {
+      "calculate": "pbiFormat(datum['Date'],'M - yyyy')",
+      "as": "Formatted Month Year Single Digit"
+    },
+    {
+      "calculate": "pbiFormat(datum['Date'],'MM - yyyy')",
+      "as": "Formatted Month Year Double Digit"
+    },
+    {
+      "calculate": "pbiFormat(datum['Date'],'MMM - yyyy')",
+      "as": "Formatted Month Year Abbreviation"
+    },
+    {
+      "calculate": "pbiFormat(datum['Date'],'yyyy')",
+      "as": "Formatted Year"
+    },
+    {
+      "calculate": "pbiFormat(datum['Date'],'hh:mm:ss')",
+      "as": "Formatted Time"
+    },
+    {
+      "calculate": "pbiFormat(datum['Date'],'M')",
+      "as": "Month Single Digit"
+    },
+    {
+      "calculate": "pbiFormat(datum['Date'],'MM')",
+      "as": "Month Double Digit"
+    },
+    {
+      "calculate": "pbiFormat(datum['Date'],'MMM')",
+      "as": "Month Abbreviation"
+    },
+    {
+      "calculate": "pbiFormat(datum['Date'],'MMMM')",
+      "as": "Month Full"
+    },...
+  ],...
+}
+</code></pre>
+
+
+El siguiente gráfico muestra el resultado proyectado de aplicar estos formatos:
+
+![Proyectando Resultado](/assets/img/post-funcion-pbiformat/3_pbiFormat.png)
+
+
+
+ 
+
+
+
+
 <style>
   .content-section {
     font-family: Arial, sans-serif;
@@ -225,7 +479,7 @@ description: "Una guía detallada para crear un diagrama de Pareto usando Deneb 
 </style>
 
 <div class="content-section">
-  <h2>Exploring the Power of pbiFormat Function</h2>
+  <h2>Exploring avanzado the Power of pbiFormat Function</h2>
   <p>
     The <span class="code-inline">pbiFormat</span> function offers great versatility when used in expression functions, providing more control compared to direct encoding properties. The complete signature of this function is:
   </p>
@@ -266,16 +520,27 @@ description: "Una guía detallada para crear un diagrama de Pareto usando Deneb 
   <p>The following Vega-Lite specification demonstrates the use of <span class="code-inline">pbiFormat</span> for dynamic number formatting:</p>
 </div>
 
-   
+<pre class="highlight"><code>
+{
+  "data": {"name": "dataset"},
+  "transform": [
+    {
+      "calculate": "pbiFormat(datum['$Sales'],datum.$Sales__format,{ value : if(datum['$Sales']>1e12,1e12,if(datum['$Sales']>1e9,1e9,if(datum['$Sales']>1e6,1e6,if(datum['$Sales']>1e3,1e3,0 ) ) ) ), precision: datum['Precision Value']})",
+      "as": "SalesFormated"
+    },...
+  ],...
+}
+</code></pre>
+
 
 Aquí tienes el código formateado para mayor claridad:
 
 <pre class="highlight"><code>
-pbiFormat(datum['Sales'], '$#0,0', {
-    value: if(datum.Sales > 1e12, 1e12,
-              if(datum.Sales > 1e9, 1e9,
-                 if(datum.Sales > 1e6, 1e6,
-                    if(datum.Sales > 1e3, 1e3, 0)))),
+pbiFormat(datum['$Sales'], '$#0,0', {
+    value: if(datum['$Sales'] > 1e12, 1e12,
+              if(datum['$Sales'] > 1e9, 1e9,
+                 if(datum['$Sales'] > 1e6, 1e6,
+                    if(datum['$Sales'] > 1e3, 1e3, 0)))),
     precision: 0
 })
 </code></pre>
@@ -283,8 +548,8 @@ pbiFormat(datum['Sales'], '$#0,0', {
 
 ### Explicación de cada parte
 
-1. **`pbiFormat()`**: Función para formatear los datos en un formato personalizado en Deneb que permite a los usuarios utilizar cadenas de formato de Power BI en lugar de la convención de formato D3. Esto significa que puedes personalizar cómo se muestran los números y las fechas en tus gráficos.
-2. **`datum['Sales'],`**: El valor de 'Sales' que se va a formatear.
+1. **`pbiFormat()`**: Función para formatear los datos en un formato personalizado en Deneb
+2. **`datum['$Sales'],`**: El valor de '$Sales' que se va a formatear.
 3. **`'$#0,0',`**: El formato de salida. Aquí se está especificando un formato de moneda.
 4. **`{`**: Apertura del objeto de configuración que contiene `value` y `precision`.
 
@@ -293,16 +558,16 @@ pbiFormat(datum['Sales'], '$#0,0', {
 
 5. **`value:`**: Define el valor a utilizar basado en condiciones.
 6. **`if(`**: Inicio de la primera condición.
-7. **`datum.Sales > 1e12,`**: Si las ventas son mayores a 1e12 (un billón), entonces...
+7. **`datum['$Sales'] > 1e12,`**: Si las ventas son mayores a 1e12 (un billón), entonces...
 8. **`1e12,`**: El valor será 1e12.
 9. **`if(`**: Si no, entonces evalúa la siguiente condición.
-10. **`datum.Sales > 1e9,`**: Si las ventas son mayores a 1e9 (mil millones), entonces...
+10. **`datum['$Sales'] > 1e9,`**: Si las ventas son mayores a 1e9 (mil millones), entonces...
 11. **`1e9,`**: El valor será 1e9.
 12. **`if(`**: Si no, entonces evalúa la siguiente condición.
-13. **`datum.Sales > 1e6,`**: Si las ventas son mayores a 1e6 (un millón), entonces...
+13. **`datum['$Sales'] > 1e6,`**: Si las ventas son mayores a 1e6 (un millón), entonces...
 14. **`1e6,`**: El valor será 1e6.
 15. **`if(`**: Si no, entonces evalúa la siguiente condición.
-16. **`datum.Sales > 1e3,`**: Si las ventas son mayores a 1e3 (mil), entonces...
+16. **`datum['$Sales'] > 1e3,`**: Si las ventas son mayores a 1e3 (mil), entonces...
 17. **`1e3,`**: El valor será 1e3.
 18. **`0`**: Si ninguna de las condiciones anteriores se cumple, el valor será 0.
 19. **`))),`**: Cierre de las condiciones anidadas y del objeto `value`.

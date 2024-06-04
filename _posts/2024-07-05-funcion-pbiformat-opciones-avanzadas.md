@@ -421,9 +421,136 @@ El siguiente gráfico muestra el resultado proyectado de aplicar estos formatos:
 
 ![Proyectando Resultado](/assets/img/post-funcion-pbiformat/3_pbiFormat.png)
 
+La siguiente tabla muestra el fragmento de pbiFormat y el formato, por si desea usarlo, ya que la imagen anterior no permite copiar el código.
+
+<style>
+  .responsive-table {
+    width: 100%;
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2px 0;
+    font-size: 14px;
+    text-align: left;
+    table-layout: auto;
+  }
+  table th, table td {
+    padding: 2px 5px;
+    border: 1px solid #ddd;
+    word-wrap: break-word;
+  }
+  table th {
+    background-color: #007acc;
+    color: white;
+  }
+  table tr:nth-of-type(even) {
+    background-color: #f9f9f9;
+  }
+  table tr:hover {
+    background-color: #f1f1f1;
+  }
+  code {
+    color: #d63384;
+    background-color: #f8f9fa;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: Consolas, "Courier New", monospace;
+  }
+  @media (max-width: 500px) {
+    table {
+      font-size: 12px;
+    }
+    table th, table td {
+      padding: 8px 10px;
+    }
+  }
+  table th:first-child,
+  table td:first-child {
+    width: 45%;
+  }
+  table th:nth-child(2),
+  table td:nth-child(2) {
+    width: 35%;
+  }
+  table th:last-child,
+  table td:last-child {
+    width: 20%;
+  }
+</style>
+
+<div class="responsive-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Function</th>
+        <th>Formatted</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>pbiFormat(datum['Date'], 'dd/MM/yyyy hh:mm:ss')</code></td>
+        <td>02/01/2020 03:30:00</td>
+        <td>Formatted DateTime</td>
+      </tr>
+      <tr>
+        <td><code>pbiFormat(datum['Date'], 'dd/MM/yyyy')</code></td>
+        <td>02/01/2020</td>
+        <td>Formatted Date</td>
+      </tr>
+      <tr>
+        <td><code>pbiFormat(datum['Date'], 'M - yyyy')</code></td>
+        <td>1 - 2020</td>
+        <td>Formatted Month Year Single Digit</td>
+      </tr>
+      <tr>
+        <td><code>pbiFormat(datum['Date'], 'MM - yyyy')</code></td>
+        <td>01 - 2020</td>
+        <td>Formatted Month Year Double Digit</td>
+      </tr>
+      <tr>
+        <td><code>pbiFormat(datum['Date'], 'MMM - yyyy')</code></td>
+        <td>Jan - 2020</td>
+        <td>Formatted Month Year Abbreviation</td>
+      </tr>
+      <tr>
+        <td><code>pbiFormat(datum['Date'], 'yyyy')</code></td>
+        <td>2020</td>
+        <td>Formatted Year</td>
+      </tr>
+      <tr>
+        <td><code>pbiFormat(datum['Date'], 'hh:mm:ss')</code></td>
+        <td>03:30:00</td>
+        <td>Formatted Time</td>
+      </tr>
+      <tr>
+        <td><code>pbiFormat(datum['Date'], 'M')</code></td>
+        <td>1</td>
+        <td>Month Single Digit</td>
+      </tr>
+      <tr>
+        <td><code>pbiFormat(datum['Date'], 'MM')</code></td>
+        <td>01</td>
+        <td>Month Double Digit</td>
+      </tr>
+      <tr>
+        <td><code>pbiFormat(datum['Date'], 'MMM')</code></td>
+        <td>Jan</td>
+        <td>Month Abbreviation</td>
+      </tr>
+      <tr>
+        <td><code>pbiFormat(datum['Date'], 'MMMM')</code></td>
+        <td>January</td>
+        <td>Month Full</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 
- 
+
 
 
 
@@ -525,7 +652,7 @@ El siguiente gráfico muestra el resultado proyectado de aplicar estos formatos:
   "data": {"name": "dataset"},
   "transform": [
     {
-      "calculate": "pbiFormat(datum['$Sales'],datum.$Sales__format,{ value : if(datum['$Sales']>1e12,1e12,if(datum['$Sales']>1e9,1e9,if(datum['$Sales']>1e6,1e6,if(datum['$Sales']>1e3,1e3,0 ) ) ) ), precision: datum['Precision Value']})",
+      "calculate": "pbiFormat(datum['$Sales'],datum['$Sales__format'],{ value : if(datum['$Sales']>1e12,1e12,if(datum['$Sales']>1e9,1e9,if(datum['$Sales']>1e6,1e6,if(datum['$Sales']>1e3,1e3,0 ) ) ) ), precision: datum['Precision Value']})",
       "as": "SalesFormated"
     },...
   ],...
@@ -536,7 +663,7 @@ El siguiente gráfico muestra el resultado proyectado de aplicar estos formatos:
 Aquí tienes el código formateado para mayor claridad:
 
 <pre class="highlight"><code>
-pbiFormat(datum['$Sales'], '$#0,0', {
+pbiFormat(datum['$Sales'], datum['$Sales__format'], {
     value: if(datum['$Sales'] > 1e12, 1e12,
               if(datum['$Sales'] > 1e9, 1e9,
                  if(datum['$Sales'] > 1e6, 1e6,
@@ -550,7 +677,7 @@ pbiFormat(datum['$Sales'], '$#0,0', {
 
 1. **`pbiFormat()`**: Función para formatear los datos en un formato personalizado en Deneb
 2. **`datum['$Sales'],`**: El valor de '$Sales' que se va a formatear.
-3. **`'$#0,0',`**: El formato de salida. Aquí se está especificando un formato de moneda.
+3. **`datum['$Sales__format'],`**: El formato de salida. Aquí se está especificando un formato de moneda.
 4. **`{`**: Apertura del objeto de configuración que contiene `value` y `precision`.
 
 
@@ -579,3 +706,154 @@ pbiFormat(datum['$Sales'], '$#0,0', {
 22. **`)`**: Cierre de la función `pbiFormat`.
 
 Este formato es más fácil de leer y entender, especialmente cuando se trabaja con múltiples condiciones anidadas.
+
+
+## Ejemplo de formateo de fecha según la cultura
+
+En este ejemplo, se demuestra cómo formatear una fecha utilizando diferentes configuraciones culturales. Utilizamos la función `pbiFormat` para transformar la fecha a varios formatos específicos de diferentes regiones. A continuación, se presenta el código de ejemplo:
+
+<pre class="highlight"><code>
+{
+  "data":{
+    "name":"dataset"
+  },
+  "transform":[
+    {
+      "calculate":"pbiFormat(datum['Date'],'mm/dd/yyyy',{format:'dd MMMM yyyy' ,cultureSelector: 'pt-BR'})",
+      "as":"Formatted_Brazil_pt-BR"
+    },
+    {
+      "calculate":"pbiFormat(datum['Date'],'mm/dd/yyyy',{format:'dd MMMM yyyy' ,cultureSelector: 'ru-RU'})",
+      "as":"Formatted_Russia_ru-RU"
+    },
+    {
+      "calculate":"pbiFormat(datum['Date'],'mm/dd/yyyy',{format:'dd MMMM yyyy' ,cultureSelector: 'en-US'})",
+      "as":"Formatted_USA_en-US"
+    },
+    {
+      "calculate":"pbiFormat(datum['Date'],'mm/dd/yyyy',{format:'MM/dd/yyyy' ,cultureSelector: 'en-GB'})",
+      "as":"Formatted_UK_en-GB"
+    },
+    {
+      "calculate":"pbiFormat(datum['Date'],'',{format:'MM/dd/yyyy hh:mm:ss a',cultureSelector: 'en-US'})",
+      "as":"Formatted_USA_With_Time_en-US"
+    },
+    {
+      "calculate":"pbiFormat(datum['Date'],'',{format:'dd/MM/yyyy HH:mm:ss',cultureSelector: 'en-GB'})",
+      "as":"Formatted_UK_With_Time_en-GB"
+    },...
+  ],...
+}
+</code></pre>
+
+En este código:
+
+- `Formatted_Brazil_pt-BR`: Formatea la fecha según el formato `dd MMMM yyyy` y la cultura `pt-BR` (Brasil).
+- `Formatted_Russia_ru-RU`: Formatea la fecha según el formato `dd MMMM yyyy` y la cultura `ru-RU` (Rusia).
+- `Formatted_USA_en-US`: Formatea la fecha según el formato `dd MMMM yyyy` y la cultura `en-US` (Estados Unidos).
+- `Formatted_UK_en-GB`: Formatea la fecha según el formato `MM/dd/yyyy` y la cultura `en-GB` (Reino Unido).
+- `Formatted_USA_With_Time_en-US`: Formatea la fecha y hora según el formato `MM/dd/yyyy hh:mm:ss a` y la cultura `en-US` (Estados Unidos).
+- `Formatted_UK_With_Time_en-GB`: Formatea la fecha y hora según el formato `dd/MM/yyyy HH:mm:ss` y la cultura `en-GB` (Reino Unido).
+
+Este enfoque permite la representación de fechas de manera consistente y específica a la cultura, lo que es crucial para aplicaciones internacionales.
+
+<style>
+  .responsive-table {
+    width: 100%;
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2px 0;
+    font-size: 14px;
+    text-align: left;
+    table-layout: auto;
+  }
+  table th, table td {
+    padding: 2px 5px;
+    border: 1px solid #ddd;
+    word-wrap: break-word;
+  }
+  table th {
+    background-color: #007acc;
+    color: white;
+  }
+  table tr:nth-of-type(even) {
+    background-color: #f9f9f9;
+  }
+  table tr:hover {
+    background-color: #f1f1f1;
+  }
+  code {
+    color: #d63384;
+    background-color: #f8f9fa;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: Consolas, "Courier New", monospace;
+  }
+  @media (max-width: 500px) {
+    table {
+      font-size: 12px;
+    }
+    table th, table td {
+      padding: 8px 10px;
+    }
+  }
+  table th:first-child,
+  table td:first-child {
+    width: 45%;
+  }
+  table th:nth-child(2),
+  table td:nth-child(2) {
+    width: 35%;
+  }
+  table th:last-child,
+  table td:last-child {
+    width: 20%;
+  }
+</style>
+
+<div class="responsive-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Function</th>
+        <th>Formatted</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>pbiFormat(datum['Date'], 'mm/dd/yyyy', {format: 'dd MMMM yyyy', cultureSelector: 'pt-BR'})</code></td>
+        <td>02 janeiro 2020</td>
+        <td>Formatted_Brazil_pt-BR</td>
+      </tr>
+      <tr>
+        <td><code>pbiFormat(datum['Date'], 'mm/dd/yyyy', {format: 'dd MMMM yyyy', cultureSelector: 'ru-RU'})</code></td>
+        <td>02 января 2020</td>
+        <td>Formatted_Russia_ru-RU</td>
+      </tr>
+      <tr>
+        <td><code>pbiFormat(datum['Date'], 'mm/dd/yyyy', {format: 'dd MMMM yyyy', cultureSelector: 'en-US'})</code></td>
+        <td>02 January 2020</td>
+        <td>Formatted_USA_en-US</td>
+      </tr>
+      <tr>
+        <td><code>pbiFormat(datum['Date'], 'mm/dd/yyyy', {format: 'MM/dd/yyyy', cultureSelector: 'en-GB'})</code></td>
+        <td>01/02/2020</td>
+        <td>Formatted_UK_en-GB</td>
+      </tr>
+      <tr>
+        <td><code>pbiFormat(datum['Date'], '', {format: 'MM/dd/yyyy hh:mm:ss a', cultureSelector: 'en-US'})</code></td>
+        <td>1/2/2020 3:30:00 PM</td>
+        <td>Formatted_USA_With_Time_en-US</td>
+      </tr>
+      <tr>
+        <td><code>pbiFormat(datum['Date'], '', {format: 'dd/MM/yyyy HH:mm:ss', cultureSelector: 'en-GB'})</code></td>
+        <td>02/01/2020 15:30:00</td>
+        <td>Formatted_UK_With_Time_en-GB</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

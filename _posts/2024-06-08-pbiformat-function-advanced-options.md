@@ -1,19 +1,21 @@
 ---
-title: "Guía detallada del uso de la función pbiFormat en Deneb"
-author: csalcedodatabi
-date: 2024-07-03 23:34:00 +0800
-categories: [Blogging, Tutorial]
-tags: [Deneb, Vega-Lite, pbiFormat]
-pin: false
-image:
-  path: /assets/img/post-funcion-pbiformat/pbiFormat.gif
-  alt: "Entendiendo el uso de pbiFormat"
-description: "Una guía detallada sobre el uso básico y avanzado de la función pbiFormat de Deneb en Power BI"
+
+title: "Exploring the Power of the pbiFormat() Function in Deneb"  
+author: csalcedodatabi  
+date: 2024-06-08 12:34:00 +0800  
+categories: [Blogging, Tutorial]  
+tags: [Deneb, Vega-Lite, pbiFormat]  
+pin: false  
+image:  
+  path: /assets/img/post-funcion-pbiformat/pbiFormat.gif  
+  alt: "Understanding the use of pbiFormat"  
+description: "A comprehensive guide on the basic and advanced usage of the pbiFormat function in Deneb for Power BI"  
+
 ---
 
-**pbiFormat():** Función para formatear los datos en un formato personalizado en **Deneb**, que permite a los usuarios utilizar cadenas de formato de Power BI en lugar de la convención de formato D3. Esto significa que puedes personalizar cómo se muestran los números y las fechas en tus gráficos.
+**pbiFormat():** A function to format data into a custom format in **Deneb**, allowing users to use Power BI format strings instead of the ``D3`` format convention. This means you can customize how numbers and dates are displayed in your charts.
 
-## **Ejemplo básico en Vega-Lite:**
+## **Basic Example in Vega-Lite:**
 
 <pre class="highlight"><code>
 {
@@ -71,11 +73,13 @@ description: "Una guía detallada sobre el uso básico y avanzado de la función
 }
 </code></pre>
 
-![Proyectando Resultado](/assets/img/post-funcion-pbiformat/1_pbiFormat.png)
+Here is the revised and translated fragment:
 
-Esta forma básica toma formatos utilizados en Power BI, que también se usan con la función [**DAX FORMAT**](https://dax.guide/format/). Como se puede ver en la línea resaltada, el número es 1980.126 y el formato es #,0.00. Al especificar dos decimales, el número se redondea hacia arriba a 1980.13, lo cual es importante entender.
+![Projecting Result](/assets/img/post-funcion-pbiformat/1_pbiFormat.png)
 
-La siguiente tabla muestra el fragmento de pbiFormat y el formato, por si desea usarlo, ya que la imagen anterior no permite copiar el código.
+This basic form uses formats utilized in Power BI, which are also employed with the [**DAX FORMAT**](https://dax.guide/format/) function. As seen in the highlighted line, the number is 1980.126, and the format is #,0.00. By specifying two decimal places, the number is rounded up to 1980.13, which is important to understand.
+
+The following table shows the pbiFormat snippet and the format, in case you want to use it, as the previous image does not allow copying the code.
 
 <style>
   .responsive-table {
@@ -185,22 +189,22 @@ La siguiente tabla muestra el fragmento de pbiFormat y el formato, por si desea 
         <td>Blank with Neg. Format</td>
       </tr>
       <tr>
-        <td><code>pbiFormat(1980.12, '#,#.##;(#,##);-')</code></td>
+        <td><code>pbiFormat(1980.12, '#,#.##;(#,#.##);-')</code></td>
         <td>1,980.12</td>
         <td>Positive Custom</td>
       </tr>
       <tr>
-        <td><code>pbiFormat(-1980.12, '#,#.##;(#,##);-')</code></td>
+        <td><code>pbiFormat(-1980.12, '#,#.##;(#,#.##);-')</code></td>
         <td>(1,980.12)</td>
         <td>Negative Custom</td>
       </tr>
       <tr>
-        <td><code>pbiFormat(0, '#,#.##;(#,##);-')</code></td>
+        <td><code>pbiFormat(0, '#,#.##;(#,#.##);-')</code></td>
         <td>-</td>
         <td>Zero Custom</td>
       </tr>
       <tr>
-        <td><code>pbiFormat(null, '#,#.##;(#,##);-')</code></td>
+        <td><code>pbiFormat(null, '#,#.##;(#,#.##);-')</code></td>
         <td>(Blank)</td>
         <td>Blank Custom</td>
       </tr>
@@ -208,9 +212,9 @@ La siguiente tabla muestra el fragmento de pbiFormat y el formato, por si desea 
   </table>
 </div>
 
-### Ejemplo de un Formato más Elegante
+### Example of a More Elegant Format
 
-En esta sección, presento un ejemplo de un formato de datos más elegante utilizando la función `pbiFormat`. Este método permite dar formato a los valores de ventas en diferentes escalas, desde enteros hasta billones, facilitando así su interpretación visual.
+In this section, I present an example of a more elegant data format using the `pbiFormat` function. This method allows formatting sales values in different scales, from integers to trillions, thus facilitating their visual interpretation.
 
 <pre class="highlight"><code>
 {
@@ -235,134 +239,117 @@ En esta sección, presento un ejemplo de un formato de datos más elegante utili
     {
       "calculate": "pbiFormat(datum['$Sales'],'$#,0,,,,.0#T')",
       "as": "Formatted Trillions"
-    },
-    ...
-  ],
-  ...
+    }
+  ]
 }
 </code></pre>
 
+The following image illustrates the projected result of applying these formats:
 
-la siguiente imagen ilustra el resultado proyectado de aplicar estos formatos:
+![Projecting Result](/assets/img/post-funcion-pbiformat/2_pbiFormat.png)
 
-![Proyectando Resultado](/assets/img/post-funcion-pbiformat/2_pbiFormat.png)
+The following table shows the <code>pbiFormat</code> snippet and the format, in case you want to use it, as the previous image does not allow copying the code.
 
-La siguiente tabla muestra el fragmento de <code>pbiFormat</code> y el formato, por si desea usarlo, ya que la imagen anterior no permite copiar el código.
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tabla de Formatos</title>
-  <style>
-    .responsive-table {
-      width: 100%;
-      overflow-x: auto;
-      padding: 0;
-      margin: 0;
-    }
+<style>
+  .responsive-table {
+    width: 100%;
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+    table-layout: auto;
+  }
+  table th, table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    word-wrap: break-word;
+  }
+  table th {
+    background-color: #007acc;
+    color: white;
+  }
+  table tr:nth-of-type(even) {
+    background-color: #f9f9f9;
+  }
+  table tr:hover {
+    background-color: #f1f1f1;
+  }
+  code {
+    color: #d63384;
+    background-color: #f8f9fa;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: Consolas, "Courier New", monospace;
+  }
+  @media (max-width: 600px) {
     table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
       font-size: 14px;
-      text-align: left;
-      table-layout: auto;
-      border: none; /* Elimina el borde de la tabla */
-      border-spacing: 0;
     }
     table th, table td {
-      padding: 1px 1px;
-      border: 1px solid #ddd;
-      word-wrap: break-word;
+      padding: 8px 10px;
     }
-    table th {
-      background-color: #007acc;
-      color: white;
-      border: none; /* Elimina el borde del header */
-    }
-    table tr:nth-of-type(even) {
-      background-color: #f9f9f9;
-    }
-    table tr:hover {
-      background-color: #f1f1f1;
-    }
-    code {
-      color: #d63384;
-      background-color: #f8f9fa;
-      padding: 2px 4px;
-      border-radius: 4px;
-      font-family: Consolas, "Courier New", monospace;
-    }
-    @media (max-width: 600px) {
-      table {
-        font-size: 14px;
-      }
-      table th, table td {
-        padding: 8px 10px;
-      }
-    }
-    table th:first-child,
-    table td:first-child {
-      width: 45%;
-    }
-    table th:nth-child(2),
-    table td:nth-child(2) {
-      width: 35%;
-    }
-    table th:last-child,
-    table td:last-child {
-      width: 20%;
-    }
-  </style>
-</head>
-<body>
+  }
+  table th:first-child,
+  table td:first-child {
+    width: 45%;
+  }
+  table th:nth-child(2),
+  table td:nth-child(2) {
+    width: 35%;
+  }
+  table th:last-child,
+  table td:last-child {
+    width: 20%;
+  }
+</style>
 
-  <div class="responsive-table">
-    <table>
-      <thead>
-        <tr>
-          <th>Function</th>
-          <th>Formatted</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>pbiFormat(datum['$Sales'],'$#,0')</code></td>
-          <td>$1,001,001,002,030</td>
-          <td>Formatted Integer</td>
-        </tr>
-        <tr>
-          <td><code>pbiFormat(datum['$Sales'],'$#,0,.0#K')</code></td>
-          <td>$1,001,001,002.03K</td>
-          <td>Formatted Thousands</td>
-        </tr>
-        <tr>
-          <td><code>pbiFormat(datum['$Sales'],'$#,0,,.0#M')</code></td>
-          <td>$1,001,001.0M</td>
-          <td>Formatted Millions</td>
-        </tr>
-        <tr>
-          <td><code>pbiFormat(datum['$Sales'],'$#,0,,,.0#B')</code></td>
-          <td>$1,001.0B</td>
-          <td>Formatted Billions</td>
-        </tr>
-        <tr>
-          <td><code>pbiFormat(datum['$Sales'],'$#,0,,,,.0#T')</code></td>
-          <td>$1.0T</td>
-          <td>Formatted Trillions</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-</body>
+<div class="responsive-table">
+  <table>
+    <thead>
+      <tr>
+        <th>Function</th>
+        <th>Formatted</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>pbiFormat(datum['$Sales'],'$#,0')</code></td>
+        <td>$1,980</td>
+        <td>Integer</td>
+      </tr>
+      <tr>
+        <td><code>pbiFormat(datum['$Sales'],'$#,0,.0#K')</code></td>
+        <td>$1.98K</td>
+        <td>Thousands</td>
+      </tr>
+      <tr>
+        <td><code>pbiFormat(datum['$Sales'],'$#,0,,.0#M')</code></td>
+        <td>$1.98M</td>
+        <td>Millions</td>
+      </tr>
+      <tr>
+        <td><code>pbiFormat(datum['$Sales'],'$#,0,,,.0#B')</code></td>
+        <td>$1.98B</td>
+        <td>Billions</td>
+      </tr>
+      <tr>
+        <td><code>pbiFormat(datum['$Sales'],'$#,0,,,,.0#T')</code></td>
+        <td>$1.98T</td>
+        <td>Trillions</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 
-## Ejemplo Formateando Fechas
+## Example of Formatting Dates
 
-En esta sección, se muestra cómo utilizar la función `pbiFormat` para dar formato a las fechas en diferentes estilos. El siguiente ejemplo transforma un conjunto de datos aplicando varios formatos de fecha y hora.
-
+In this section, we demonstrate how to use the `pbiFormat` function to format dates in different styles. The following example transforms a dataset by applying various date and time formats.
 
 <pre class="highlight"><code>
 {
@@ -411,17 +398,16 @@ En esta sección, se muestra cómo utilizar la función `pbiFormat` para dar for
     {
       "calculate": "pbiFormat(datum['Date'],'MMMM')",
       "as": "Month Full"
-    },...
-  ],...
+    }
+  ]
 }
 </code></pre>
 
+The following graphic shows the projected result of applying these formats:
 
-El siguiente gráfico muestra el resultado proyectado de aplicar estos formatos:
+![Projecting Result](/assets/img/post-funcion-pbiformat/3_pbiFormat.png)
 
-![Proyectando Resultado](/assets/img/post-funcion-pbiformat/3_pbiFormat.png)
-
-La siguiente tabla muestra el fragmento de pbiFormat y el formato, por si desea usarlo, ya que la imagen anterior no permite copiar el código.
+The following table shows the pbiFormat snippet and the format, in case you want to use it, as the previous image does not allow copying the code.
 
 <style>
   .responsive-table {
@@ -549,8 +535,8 @@ La siguiente tabla muestra el fragmento de pbiFormat y el formato, por si desea 
   </table>
 </div>
 
-
-
+>Note: While exploring the use of this function in Deneb, I discovered that when formatting the month in any of its presentations (full month, abbreviated month, etc.), the letter "M" in the format string must be uppercase. As of writing this article, this behavior differs from the DAX FORMAT function.
+{: .prompt-warning }
 
 
 
@@ -606,7 +592,7 @@ La siguiente tabla muestra el fragmento de pbiFormat y el formato, por si desea 
 </style>
 
 <div class="content-section">
-  <h2>Exploring avanzado the Power of pbiFormat Function</h2>
+  <h2>Advanced Exploration of the pbiFormat Function</h2>
   <p>
     The <span class="code-inline">pbiFormat</span> function offers great versatility when used in expression functions, providing more control compared to direct encoding properties. The complete signature of this function is:
   </p>
@@ -652,110 +638,106 @@ La siguiente tabla muestra el fragmento de pbiFormat y el formato, por si desea 
   "data": {"name": "dataset"},
   "transform": [
     {
-      "calculate": "pbiFormat(datum['$Sales'],datum['$Sales__format'],{ value : if(datum['$Sales']>1e12,1e12,if(datum['$Sales']>1e9,1e9,if(datum['$Sales']>1e6,1e6,if(datum['$Sales']>1e3,1e3,0 ) ) ) ), precision: datum['Precision Value']})",
-      "as": "SalesFormated"
+      "calculate": "pbiFormat(datum['$Sales'], datum['$Sales__format'], { value : if(datum['$Sales'] >= 1e12, 1e12, if(datum['$Sales'] >= 1e9, 1e9, if(datum['$Sales'] >= 1e6, 1e6, if(datum['$Sales'] >= 1e3, 1e3, 0 )))), precision: datum['Precision Value'] })",
+      "as": "SalesFormatted"
     },...
   ],...
 }
 </code></pre>
 
+### Explanation of the `pbiFormat` Function
 
-Aquí tienes el código formateado para mayor claridad:
+The `pbiFormat` function in Deneb is used to format data into custom formats. Here’s a concise breakdown of its usage with an example:
 
 <pre class="highlight"><code>
 pbiFormat(datum['$Sales'], datum['$Sales__format'], {
-    value: if(datum['$Sales'] > 1e12, 1e12,
-              if(datum['$Sales'] > 1e9, 1e9,
-                 if(datum['$Sales'] > 1e6, 1e6,
-                    if(datum['$Sales'] > 1e3, 1e3, 0)))),
-    precision: 0
+    value: if(datum['$Sales'] >= 1e12, 1e12,
+              if(datum['$Sales'] >= 1e9, 1e9,
+                 if(datum['$Sales'] >= 1e6, 1e6,
+                    if(datum['$Sales'] >= 1e3, 1e3, 0)))),
+    precision: datum['Precision Value']
 })
 </code></pre>
 
+#### Key Components:
 
-### Explicación de cada parte
+1. **`datum['$Sales']`**: The value to be formatted.
+2. **`datum['$Sales__format']`**: The format string.
+3. **`value`**: Sets the formatting scale based on conditions:
+   - `>= 1e12` (trillion): Use `1e12`
+   - `>= 1e9` (billion): Use `1e9`
+   - `>= 1e6` (million): Use `1e6`
+   - `>= 1e3` (thousand): Use `1e3`
+   - Else: Use `0`
+4. **`precision: datum['Precision Value']`**: A dynamic parameter that adjusts the number of decimal places displayed.
 
-1. **`pbiFormat()`**: Función para formatear los datos en un formato personalizado en Deneb
-2. **`datum['$Sales'],`**: El valor de '$Sales' que se va a formatear.
-3. **`datum['$Sales__format'],`**: El formato de salida. Aquí se está especificando un formato de moneda.
-4. **`{`**: Apertura del objeto de configuración que contiene `value` y `precision`.
+### Note
 
+>For this example, I've used dynamic parameters for both the format and precision. However, you can use fixed formats, such as '#0,0.00', and set precision values like 1, 2, or 3, depending on your needs. As mentioned earlier, these parameters are optional, and the function can be used without them.
+{: .prompt-tip }
 
-#### Bloque `value`
+#### Example Output:
 
-5. **`value:`**: Define el valor a utilizar basado en condiciones.
-6. **`if(`**: Inicio de la primera condición.
-7. **`datum['$Sales'] > 1e12,`**: Si las ventas son mayores a 1e12 (un billón), entonces...
-8. **`1e12,`**: El valor será 1e12.
-9. **`if(`**: Si no, entonces evalúa la siguiente condición.
-10. **`datum['$Sales'] > 1e9,`**: Si las ventas son mayores a 1e9 (mil millones), entonces...
-11. **`1e9,`**: El valor será 1e9.
-12. **`if(`**: Si no, entonces evalúa la siguiente condición.
-13. **`datum['$Sales'] > 1e6,`**: Si las ventas son mayores a 1e6 (un millón), entonces...
-14. **`1e6,`**: El valor será 1e6.
-15. **`if(`**: Si no, entonces evalúa la siguiente condición.
-16. **`datum['$Sales'] > 1e3,`**: Si las ventas son mayores a 1e3 (mil), entonces...
-17. **`1e3,`**: El valor será 1e3.
-18. **`0`**: Si ninguna de las condiciones anteriores se cumple, el valor será 0.
-19. **`))),`**: Cierre de las condiciones anidadas y del objeto `value`.
+The formatted results are displayed as:
 
-#### Bloque `precision`
+- `1000000000026` ➔ `$1.0T`
+- `1000000026` ➔ `$1.0bn`
+- `1000026` ➔ `$1.0M`
+- `1026` ➔ `$1.0K`
+- `926` ➔ `$926.0`
 
-20. **`precision: 0`**: Define la precisión del formato, que en este caso es 0 (sin decimales).
-21. **`}`**: Cierre del objeto de configuración.
-22. **`)`**: Cierre de la función `pbiFormat`.
+This example illustrates how `pbiFormat` dynamically formats sales values into readable scales based on their magnitude, as shown in the following gif image.
 
-Este formato es más fácil de leer y entender, especialmente cuando se trabaja con múltiples condiciones anidadas.
+![Projected Result](/assets/img/post-funcion-pbiformat/pbiFormat.gif )
 
+## Example of Date Formatting by Culture
 
-## Ejemplo de formateo de fecha según la cultura
-
-En este ejemplo, se demuestra cómo formatear una fecha utilizando diferentes configuraciones culturales. Utilizamos la función `pbiFormat` para transformar la fecha a varios formatos específicos de diferentes regiones. A continuación, se presenta el código de ejemplo:
+In this example, we demonstrate how to format a date using different cultural settings. We use the `pbiFormat` function to transform the date into various region-specific formats. Below is the sample code:
 
 <pre class="highlight"><code>
 {
-  "data":{
-    "name":"dataset"
+  "data": {
+    "name": "dataset"
   },
-  "transform":[
+  "transform": [
     {
-      "calculate":"pbiFormat(datum['Date'],'mm/dd/yyyy',{format:'dd MMMM yyyy' ,cultureSelector: 'pt-BR'})",
-      "as":"Formatted_Brazil_pt-BR"
+      "calculate": "pbiFormat(datum['Date'], 'mm/dd/yyyy', {format: 'dd MMMM yyyy', cultureSelector: 'pt-BR'})",
+      "as": "Formatted_Brazil_pt-BR"
     },
     {
-      "calculate":"pbiFormat(datum['Date'],'mm/dd/yyyy',{format:'dd MMMM yyyy' ,cultureSelector: 'ru-RU'})",
-      "as":"Formatted_Russia_ru-RU"
+      "calculate": "pbiFormat(datum['Date'], 'mm/dd/yyyy', {format: 'dd MMMM yyyy', cultureSelector: 'ru-RU'})",
+      "as": "Formatted_Russia_ru-RU"
     },
     {
-      "calculate":"pbiFormat(datum['Date'],'mm/dd/yyyy',{format:'dd MMMM yyyy' ,cultureSelector: 'en-US'})",
-      "as":"Formatted_USA_en-US"
+      "calculate": "pbiFormat(datum['Date'], 'mm/dd/yyyy', {format: 'dd MMMM yyyy', cultureSelector: 'en-US'})",
+      "as": "Formatted_USA_en-US"
     },
     {
-      "calculate":"pbiFormat(datum['Date'],'mm/dd/yyyy',{format:'MM/dd/yyyy' ,cultureSelector: 'en-GB'})",
-      "as":"Formatted_UK_en-GB"
+      "calculate": "pbiFormat(datum['Date'], 'mm/dd/yyyy', {format: 'MM/dd/yyyy', cultureSelector: 'en-GB'})",
+      "as": "Formatted_UK_en-GB"
     },
     {
-      "calculate":"pbiFormat(datum['Date'],'',{format:'MM/dd/yyyy hh:mm:ss a',cultureSelector: 'en-US'})",
-      "as":"Formatted_USA_With_Time_en-US"
+      "calculate": "pbiFormat(datum['Date'], '', {format: 'MM/dd/yyyy hh:mm:ss a', cultureSelector: 'en-US'})",
+      "as": "Formatted_USA_With_Time_en-US"
     },
     {
-      "calculate":"pbiFormat(datum['Date'],'',{format:'dd/MM/yyyy HH:mm:ss',cultureSelector: 'en-GB'})",
-      "as":"Formatted_UK_With_Time_en-GB"
+      "calculate": "pbiFormat(datum['Date'], '', {format: 'dd/MM/yyyy HH:mm:ss', cultureSelector: 'en-GB'})",
+      "as": "Formatted_UK_With_Time_en-GB"
     },...
   ],...
 }
 </code></pre>
 
-En este código:
+In this code:
 
-- `Formatted_Brazil_pt-BR`: Formatea la fecha según el formato `dd MMMM yyyy` y la cultura `pt-BR` (Brasil).
-- `Formatted_Russia_ru-RU`: Formatea la fecha según el formato `dd MMMM yyyy` y la cultura `ru-RU` (Rusia).
-- `Formatted_USA_en-US`: Formatea la fecha según el formato `dd MMMM yyyy` y la cultura `en-US` (Estados Unidos).
-- `Formatted_UK_en-GB`: Formatea la fecha según el formato `MM/dd/yyyy` y la cultura `en-GB` (Reino Unido).
-- `Formatted_USA_With_Time_en-US`: Formatea la fecha y hora según el formato `MM/dd/yyyy hh:mm:ss a` y la cultura `en-US` (Estados Unidos).
-- `Formatted_UK_With_Time_en-GB`: Formatea la fecha y hora según el formato `dd/MM/yyyy HH:mm:ss` y la cultura `en-GB` (Reino Unido).
+- `Formatted_Brazil_pt-BR`: Formats the date as `dd MMMM yyyy` with the `pt-BR` (Brazil) culture.
+- `Formatted_Russia_ru-RU`: Formats the date as `dd MMMM yyyy` with the `ru-RU` (Russia) culture.
+- `Formatted_USA_en-US`: Formats the date as `dd MMMM yyyy` with the `en-US` (United States) culture.
+- `Formatted_UK_en-GB`: Formats the date as `MM/dd/yyyy` with the `en-GB` (United Kingdom) culture.
+- `Formatted_USA_With_Time_en-US`: Formats the date and time as `MM/dd/yyyy hh:mm:ss a` with the `en-US` (United States) culture.
+- `Formatted_UK_With_Time_en-GB`: Formats the date and time as `dd/MM/yyyy HH:mm:ss` with the `en-GB` (United Kingdom) culture.
 
-Este enfoque permite la representación de fechas de manera consistente y específica a la cultura, lo que es crucial para aplicaciones internacionales.
+This approach ensures that dates are consistently and culturally accurately represented, which is crucial for international applications.
 
 <style>
   .responsive-table {
@@ -765,13 +747,13 @@ Este enfoque permite la representación de fechas de manera consistente y espec�
   table {
     width: 100%;
     border-collapse: collapse;
-    margin: 2px 0;
+    margin: 20px 0;
     font-size: 14px;
     text-align: left;
     table-layout: auto;
   }
   table th, table td {
-    padding: 2px 5px;
+    padding: 8px 12px;
     border: 1px solid #ddd;
     word-wrap: break-word;
   }
@@ -799,18 +781,6 @@ Este enfoque permite la representación de fechas de manera consistente y espec�
     table th, table td {
       padding: 8px 10px;
     }
-  }
-  table th:first-child,
-  table td:first-child {
-    width: 45%;
-  }
-  table th:nth-child(2),
-  table td:nth-child(2) {
-    width: 35%;
-  }
-  table th:last-child,
-  table td:last-child {
-    width: 20%;
   }
 </style>
 
@@ -857,3 +827,23 @@ Este enfoque permite la representación de fechas de manera consistente y espec�
     </tbody>
   </table>
 </div>
+
+## Download the Files Used Here
+
+[🔽 pbiFormat_Function.pbix](https://github.com/CSalcedoDataBI/PowerBI-Deneb/raw/main/Exploring_the_Power_of_the_pbiFormat/Files/pbiFormat_Function.pbix) (3.47 MB)
+
+---
+### Conclusion
+
+In conclusion, the `pbiFormat` function is incredibly powerful for dynamically formatting values. This capability allows us to define templates with all necessary logic and reuse them across our projects, eliminating the need to manually format our visuals each time. In this academic case, I have only demonstrated some common examples, but there are many more possibilities worth exploring. Additionally, we haven't covered formatting for X or Y axes, which can be done simply in Vega-Lite, but Vega allows you to leverage the full potential of this function.
+
+### References
+
+For more detailed information and advanced usage, you can refer to the following resources:
+
+- [D3 Format](https://d3js.org/d3-format)
+- [Power BI Custom Format Strings](https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-custom-format-strings?WT.mc_id=DP-MVP-5003712#supported-custom-format-syntax)
+- [Deneb Formatting](https://deneb-viz.github.io/formatting)
+- [DAX FORMAT Function](https://dax.guide/format/)
+
+

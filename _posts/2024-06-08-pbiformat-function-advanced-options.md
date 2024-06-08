@@ -2,7 +2,7 @@
 
 title: "Exploring the Power of the pbiFormat() Function in Deneb"  
 author: csalcedodatabi  
-date: 2024-06-08 12:34:00 +0800  
+date: 2024-06-06 23:34:00 +0800  
 categories: [Blogging, Tutorial]  
 tags: [Deneb, Vega-Lite, pbiFormat]  
 pin: false  

@@ -73,7 +73,7 @@ description: "A comprehensive guide on the basic and advanced usage of the pbiFo
 }
 </code></pre>
 
-Here is the revised and translated fragment:
+The following image illustrates the projected result of applying these formats:
 
 ![Projecting Result](/assets/img/post-funcion-pbiformat/1_pbiFormat.png)
 
@@ -346,7 +346,6 @@ The following table shows the <code>pbiFormat</code> snippet and the format, in 
   </table>
 </div>
 
-
 ## Example of Formatting Dates
 
 In this section, we demonstrate how to use the `pbiFormat` function to format dates in different styles. The following example transforms a dataset by applying various date and time formats.
@@ -538,9 +537,6 @@ The following table shows the pbiFormat snippet and the format, in case you want
 >Note: While exploring the use of this function in Deneb, I discovered that when formatting the month in any of its presentations (full month, abbreviated month, etc.), the letter "M" in the format string must be uppercase. As of writing this article, this behavior differs from the DAX FORMAT function.
 {: .prompt-warning }
 
-
-
-
 <style>
   .content-section {
     font-family: Arial, sans-serif;
@@ -659,7 +655,7 @@ pbiFormat(datum['$Sales'], datum['$Sales__format'], {
 })
 </code></pre>
 
-#### Key Components:
+#### Key Components
 
 1. **`datum['$Sales']`**: The value to be formatted.
 2. **`datum['$Sales__format']`**: The format string.
@@ -676,7 +672,7 @@ pbiFormat(datum['$Sales'], datum['$Sales__format'], {
 >For this example, I've used dynamic parameters for both the format and precision. However, you can use fixed formats, such as '#0,0.00', and set precision values like 1, 2, or 3, depending on your needs. As mentioned earlier, these parameters are optional, and the function can be used without them.
 {: .prompt-tip }
 
-#### Example Output:
+#### Example Output
 
 The formatted results are displayed as:
 
@@ -833,6 +829,7 @@ This approach ensures that dates are consistently and culturally accurately repr
 [🔽 pbiFormat_Function.pbix](https://github.com/CSalcedoDataBI/PowerBI-Deneb/raw/main/Exploring_the_Power_of_the_pbiFormat/Files/pbiFormat_Function.pbix) (3.47 MB)
 
 ---
+
 ### Conclusion
 
 In conclusion, the `pbiFormat` function is incredibly powerful for dynamically formatting values. This capability allows us to define templates with all necessary logic and reuse them across our projects, eliminating the need to manually format our visuals each time. In this academic case, I have only demonstrated some common examples, but there are many more possibilities worth exploring. Additionally, we haven't covered formatting for X or Y axes, which can be done simply in Vega-Lite, but Vega allows you to leverage the full potential of this function.
@@ -845,5 +842,3 @@ For more detailed information and advanced usage, you can refer to the following
 - [Power BI Custom Format Strings](https://learn.microsoft.com/en-us/power-bi/create-reports/desktop-custom-format-strings?WT.mc_id=DP-MVP-5003712#supported-custom-format-syntax)
 - [Deneb Formatting](https://deneb-viz.github.io/formatting)
 - [DAX FORMAT Function](https://dax.guide/format/)
-
-

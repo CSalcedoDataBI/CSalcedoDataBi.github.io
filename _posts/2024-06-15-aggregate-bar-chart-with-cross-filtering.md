@@ -6,7 +6,7 @@ categories: [Blogging, Tutorial]
 tags: [Deneb, Vega-Lite]
 pin: false
 image:
-  path: /assets/img/template-aggregate-bar-chart-with-cross-filtering/aggregate_bar_chart.png
+  path: /assets/img/template-aggregate-bar-chart-with-cross-filtering/aggregate_bar_chart.PNG
   alt: "Interactive bar chart showing US population distribution by age with cross-filtering"
 description: "An in-depth look at the US population distribution by age in 2000 through an interactive bar chart with cross-filtering capabilities."
 ---

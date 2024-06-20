@@ -1,22 +1,25 @@
 ---
-title: "Aggregate Bar Chart With Cross Filtering + Sorted Template"
+title: "Interactive Aggregate Bar Chart Template with Cross-Filtering and Sorting"
 author: csalcedodatabi
-date: 2024-06-14 23:34:00 -0500
-categories: [Blogging, Tutorial]
+date: 2024-06-19 23:34:00 -0500
+categories: [Template, Tutorial]
 tags: [Deneb, Vega-Lite]
 pin: false
 image:
   path: /assets/img/template-aggregate-bar-chart-with-cross-filtering-sorted/aggregate_bar_chart_sorted.gif
-  alt: "Interactive bar chart showing US population distribution by age with cross-filtering"
-description: "An in-depth look at the US population distribution by age in 2000 through an interactive bar chart with cross-filtering capabilities."
+  alt: "Interactive bar chart showing US population distribution by age with cross-filtering and sorting"
+description: "An in-depth look at the US population distribution by age in 2000 through an interactive bar chart with cross-filtering and sorting capabilities."
 ---
 
+### Interactive Aggregate Bar Chart with Cross-Filtering and Sorting
 
-## Download the files used here
+The interactive bar chart below provides a detailed visualization of the US population distribution by age groups in the year 2000. [**Created using Vega-Lite**](https://vega.github.io/vega-lite/examples/bar_aggregate_sort_by_encoding.html) and adapted for Deneb in Power BI, this chart features cross-filtering and sorting capabilities, along with enhanced labeling for improved clarity and usability. Additionally, the use of the ``pbiColor`` function adapts the color of the bars according to the first color defined in the Power BI theme, ensuring a consistent and cohesive visual design.
 
-[🔽 Aggregate_Bar_Chart_With_Cross_Filtering_Sorted.pbix](https://github.com/CSalcedoDataBI/PowerBI-Deneb/raw/main/Responsive_Bar_Chart_With_Cross_Filtering/Files/Responsive_Bar_Chart_With_Cross_Filtering.pbix) (1.84 MB)
+## Download the Files
 
-[🔽 Template_Aggregate_Bar_Chart_With_Cross_Filtering_Sorted.json:](https://github.com/CSalcedoDataBI/PowerBI-Deneb/blob/8d5a3a36caf0f47d3fe1e7232820032c4fbf046e/Responsive_Bar_Chart_With_Cross_Filtering/Files/Responsive_Bar_Chart_With_Cross_Filtering.json) (2.63 KB)
+[🔽 Aggregate_Bar_Chart_With_Cross_Filtering_Sorted.pbix](https://github.com/CSalcedoDataBI/PowerBI-Deneb/raw/main/Aggregate_Bar_Chart_With_Cross_Filtering_Sorted/Aggregate_Bar_Chart_With_Cross_Filtering_Sorted.pbix) (2.01 MB)
+
+[🔽 Template_Aggregate_Bar_Chart_With_Cross_Filtering_Sorted.json](https://github.com/CSalcedoDataBI/PowerBI-Deneb/blob/175aa4aaba79c1eafe408208769bea38afa1c0ff/Aggregate_Bar_Chart_With_Cross_Filtering_Sorted/Template_Aggregate_Bar_Chart_With_Cross_Filtering_Sorted.json) (5.44 KB)
 
 ### Copy Template
 

@@ -4,7 +4,7 @@ author: csalcedodatabi
 date: 2024-05-28 07:30:00 +0800
 categories: [Deneb, Tutorial]
 tags: [Deneb, Vega-Lite, Pareto]
-pin: true
+pin: false
 image:
   path: /assets/img/post-diagrama-pareto-parte-1/Paso_12.gif
   alt: "Diagrama de Pareto Dinámico con Cross-Filtering + etiqueta"

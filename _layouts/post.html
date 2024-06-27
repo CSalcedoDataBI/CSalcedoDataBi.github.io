@@ -14,8 +14,8 @@ tail_includes:
   <header>
     <h1 data-toc-skip>{{ page.title }}</h1>
     {% if page.description %}
-  <p class="post-desc fw-light mb-4">{{ page.description | markdownify | target_blank }}</p>
-{% endif %}
+      <p class="post-desc fw-light mb-4">{{ page.description | markdownify | target_blank }}</p>
+    {% endif %}
 
     <div class="post-meta text-muted">
       <!-- published date -->
@@ -148,20 +148,4 @@ tail_includes:
     <!-- .post-tail-bottom -->
   </div>
   <!-- div.post-tail-wrapper -->
-        </div>
-
-      {% include post-sharing.html lang=lang %}
-    </div>
-    <!-- .post-tail-bottom -->
-  </div>
-  <!-- div.post-tail-wrapper -->
-</article>
-<style>
-  .post-desc {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    max-width: 100%; // Asegura que no desborde
-  }
-</style>
 </article>

@@ -1,7 +1,7 @@
 ---
 title: "Grouped Bar Chart With Cross-Filtering Template"
 author: csalcedodatabi
-date: 2024-06-27 23:34:00 +0800
+date: 2024-06-28 23:34:00 +0800
 categories: [Deneb, Template]
 tags: [Deneb, Vega-Lite, Template]
 pin: false

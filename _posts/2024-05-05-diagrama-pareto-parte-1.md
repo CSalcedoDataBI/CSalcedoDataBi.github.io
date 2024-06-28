@@ -8,7 +8,7 @@ pin: false
 image:
   path: /assets/img/post-diagrama-pareto-parte-1/Paso_12.gif
   alt: "Diagrama de Pareto Dinámico con Cross-Filtering + etiqueta"
-description: "Una guía detallada para crear un diagrama de Pareto usando [**Deneb**](https://deneb-viz.github.io/) y [**Vega-Lite**](https://vega.github.io/vega-lite/) en Power BI. Esta es la primera parte de la serie."
+description: "Una guía detallada para crear un diagrama de Pareto usando [Deneb](https://deneb-viz.github.io/) y [Vega-Lite](https://vega.github.io/vega-lite/) en Power BI. Esta es la primera parte de la serie."
 ---
 ## **Introducción**
 

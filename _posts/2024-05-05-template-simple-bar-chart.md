@@ -8,7 +8,7 @@ pin: false
 image:
   path: /assets/img/template-simple-bar-chart/simple_bar_chart.gif
   alt: "Simple Bar Chart with Cross-Filtering"
-description: "This simple bar chart template is based on the [**official Vega-Lite example**](https://vega.github.io/vega-lite/examples/bar.html) and has been adapted for Deneb in Power BI with added interactivity (Cross-filtering)."
+description: "This simple bar chart template is based on the [official Vega-Lite example](https://vega.github.io/vega-lite/examples/bar.html) and has been adapted for Deneb in Power BI with added interactivity (Cross-filtering)."
 ---
 
 ## Download the files used here

@@ -2,7 +2,7 @@
 title: "Aggregate Bar Chart With Cross Filtering"
 author: csalcedodatabi
 date: 2024-06-14 23:34:00 -0500
-categories: [Blogging, Tutorial]
+categories: [Deneb, Tutorial+Template]
 tags: [Deneb, Vega-Lite]
 pin: false
 image:
@@ -53,6 +53,7 @@ The interactive bar chart below provides a detailed visualization of the US popu
 </code></pre>
 
 #### 2. Selected People Layer
+
 **Description**: This layer displays the highlighted bars that represent only the selected population for each age group. These bars reflect the population that has been selected or filtered through the cross-filtering interaction.
 
 **Purpose**: To highlight the selected subset of the population, allowing for focused analysis and comparison against the overall population
@@ -72,6 +73,7 @@ The interactive bar chart below provides a detailed visualization of the US popu
 </code></pre>
 
 #### 3. Labels Layer
+
 **Description**: This layer adds labels to the bars, showing the population values. The labels are aligned to the right or left based on their position relative to the average population value, and their color changes to ensure readability.
 
 **Purpose**: To provide clear, readable population values directly on the bars for easy reference, enhancing the interpretability of the data.
@@ -136,11 +138,9 @@ The interactive bar chart below provides a detailed visualization of the US popu
 }...
 </code></pre>
 
-
 By breaking down the chart into these three layers, we can appreciate the thoughtful design that provides both an overall view and detailed insights into the population distribution. The dimmed bar layer sets the context, the selected people layer allows for focused analysis, and the labels layer enhances readability. This combination makes the chart an effective tool for visualizing demographic data.
 
 ---
-
 
 ## Download the files used here
 
@@ -159,6 +159,7 @@ Sure, here is an improved version of the references section:
 - [Deneb Interactivity and Selection Guide](https://deneb-viz.github.io/interactivity-selection): This guide explains how to implement interactivity and selection features in Deneb visualizations, enhancing the functionality and user experience of your charts.
 
 ### Copy Template
+
 <pre class="highlight"><code>
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",

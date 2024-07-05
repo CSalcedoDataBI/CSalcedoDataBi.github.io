@@ -2,7 +2,7 @@
 title: "Interactive Aggregate Bar Chart Template with Cross-Filtering and Sorting"
 author: csalcedodatabi
 date: 2024-06-19 23:34:00 -0500
-categories: [Template, Tutorial]
+categories: [Deneb, Template]
 tags: [Deneb, Vega-Lite]
 pin: false
 image:

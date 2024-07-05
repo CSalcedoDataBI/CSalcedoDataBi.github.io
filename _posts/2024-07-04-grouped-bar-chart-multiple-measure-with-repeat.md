@@ -1,36 +1,39 @@
 ---
 title: "Grouped Bar Chart (Multiple Measure with Repeat Template"
 author: csalcedodatabi
-date: 2024-07-28 23:34:00 +0800
+date: 2024-07-5 23:34:00 +0800
 categories: [Deneb, Template]
 tags: [Deneb, Vega-Lite, Template]
 pin: false
 image:
-  path: /assets/img/template-grouped-bar-chart-with-cross-filtering/grouped-bar-chart-with-cross-filtering.gif
-  alt: "Grouped Bar Chart (Multiple Measure with Repeat) With Cross-Filtering"
-description: "This Grouped Bar Chart With Cross-Filtering template is based on the official Vega-Lite example and has been adapted for Deneb in Power BI with added interactivity (cross-filtering)."
+  path: /assets/img/template-grouped-bar-chart-multiple-measure-with-repeat/bar-chart-multiple-measure_1.png
+  alt: "Grouped Bar Chart (Multiple Measure with Repeat)"
+description: "This Grouped Bar Chart template is based on the official Vega-Lite example and has been adapted for Deneb in Power BI. Note that cross-filtering interactivity is not possible due to the use of the 'repeat' function."
 ---
-### Grouped Bar Chart With Cross-Filtering Template
+### Grouped Bar Chart (Multiple Measures with Repeat Template)
 
-This interactive bar chart visualizes data by grouping categories and applying cross-filtering for enhanced data exploration. Based on the [**official Vega-Lite example**](https://vega.github.io/vega-lite/examples/bar_grouped_repeated.html) and adapted for Deneb in Power BI, this chart features advanced cross-filtering and sorting capabilities. Enhanced labeling ensures improved clarity and usability. Additionally, the `pbiColor` function adjusts the bar colors according to the first, second, and third colors defined in the Power BI theme, ensuring a consistent and cohesive visual design.
+Based on the [**official Vega-Lite example**](https://vega.github.io/vega-lite/examples/bar_grouped_repeated.html) and adapted for Deneb in Power BI, this template provides a powerful visualization tool. Note that cross-filtering interactivity is not possible due to the use of the 'repeat' function.
 
-`pbiColor` 👇😍
+`Result` 👇😍
 
-![`pbiColor`](/assets/img/template-grouped-bar-chart-with-cross-filtering/grouped-bar-chart-with-cross-filtering.PNG)
+![`Result`](/assets/img/template-grouped-bar-chart-multiple-measure-with-repeat/bar-chart-multiple-measure_2.png)
 
 
 
 ## Download the files used here
 
-[🔽 Grouped_Bar_Chart_With_Cross_Filtering.pbix](https://github.com/CSalcedoDataBI/PowerBI-Deneb/raw/main/Group_Bar_Chart_With_Cross_Filtering/Files/Group_Bar_Chart_With_Cross_Filtering.pbix) (4.31 MB)
+[🔽 Grouped_Bar_Chart_(Multiple_Measure_With_Repeat.pbix](https://github.com/CSalcedoDataBI/PowerBI-Deneb/raw/main/Grouped_Bar_Chart_(Multiple_Measure_With_Repeat)/Files/Grouped_Bar_Chart_(Multiple_Measure_With_Repeat).pbix) (4.85 MB)
 
-[🔽 Template_Grouped_Bar_Chart_With_Cross_Filtering_VegaLite.json:](https://github.com/CSalcedoDataBI/PowerBI-Deneb/blob/e1bba130571abfe85f9a02dc8d5b1eef97b89c1a/Group_Bar_Chart_With_Cross_Filtering/Files/Group_Bar_Chart_With_Cross_Filtering.json) (4.01 KB)
+[🔽 Template_Grouped_Bar_Chart_(Multiple_Measure_With_Repeat_VegaLite.json:](https://github.com/CSalcedoDataBI/PowerBI-Deneb/blob/6abdad6b2f0d87eccbf5b331dce0f9965d1404d6/Grouped_Bar_Chart_(Multiple_Measure_With_Repeat)/Files/Grouped_Bar_Chart_(Multiple_Measure_With_Repeat).json) (3.17 KB)
 
 ### References
 
-- [Grouped Bar Chart (Multiple Measure with Repeat)](https://vega.github.io/vega-lite/examples/bar_grouped_repeated.html): This example showcases a Grouped Bar Chart (Multiple Measure with Repeat) using Vega-Lite, providing the foundation for creating complex, interactive visualizations.
-- 
-- [Deneb Schemes](https://deneb-viz.github.io/schemes): This resource offers insights into various schemes available in Deneb, helping to customize and improve the visual appeal of your charts.
+### References
+
+- [Grouped Bar Chart (Multiple Measures with Repeat)](https://vega.github.io/vega-lite/examples/bar_grouped_repeated.html): This example showcases a Grouped Bar Chart using Vega-Lite, providing the foundation for creating complex visualizations.
+- [Advanced Options for pbiFormat Function](https://csalcedodatabi.github.io/posts/pbiformat-function-advanced-options/): A detailed guide on using the pbiFormat function for advanced formatting options.
+- [Deneb Formatting](https://deneb-viz.github.io/formatting): A comprehensive resource on formatting techniques in Deneb.
+- [Deneb Schemes](https://deneb-viz.github.io/schemes): This resource offers insights into various schemes available in Deneb, helping to customize and enhance the visual appeal of your charts.
 
 ### Copy Template
 

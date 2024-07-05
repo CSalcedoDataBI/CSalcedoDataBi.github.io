@@ -1,7 +1,7 @@
 ---
 title: "Diagrama de Pareto con Deneb y Vega-Lite en Power BI (Parte 2)"
 author: csalcedodatabi
-date: 2024-07-03 23:34:00 +0800
+date: 2024-10-03 23:34:00 +0800
 categories: [Blogging, Tutorial]
 tags: [Deneb, Vega, Pareto]
 pin: false

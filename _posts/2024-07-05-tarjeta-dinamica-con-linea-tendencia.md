@@ -1,7 +1,7 @@
 ---
 title: "Cómo crear un gráfico de tarjeta dinámica con líneas de tendencia en Power BI utilizando Vega-Lite y Deneb"
 author: csalcedodatabi
-date: 2024-07-03 23:34:00 +0800
+date: 2024-10-03 23:34:00 +0800
 categories: [Blogging, Tutorial]
 tags: [Deneb, Vega-Lite, Pareto]
 pin: false

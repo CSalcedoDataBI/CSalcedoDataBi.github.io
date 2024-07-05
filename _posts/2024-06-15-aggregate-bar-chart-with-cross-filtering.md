@@ -2,7 +2,7 @@
 title: "Aggregate Bar Chart With Cross Filtering"
 author: csalcedodatabi
 date: 2024-06-14 23:34:00 -0500
-categories: [Deneb, Tutorial+Template]
+categories: [Deneb, Template]
 tags: [Deneb, Vega-Lite]
 pin: false
 image:

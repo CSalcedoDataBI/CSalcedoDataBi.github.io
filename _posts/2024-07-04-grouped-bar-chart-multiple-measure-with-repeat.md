@@ -1,7 +1,7 @@
 ---
 title: "Grouped Bar Chart (Multiple Measure with Repeat Template"
 author: csalcedodatabi
-date: 2024-07-5 23:34:00 +0800
+date: 2024-07-5 16:34:00 +0800
 categories: [Deneb, Template]
 tags: [Deneb, Vega-Lite, Template]
 pin: false
@@ -14,11 +14,13 @@ description: "This Grouped Bar Chart template is based on the official Vega-Lite
 
 Based on the [**official Vega-Lite example**](https://vega.github.io/vega-lite/examples/bar_grouped_repeated.html) and adapted for Deneb in Power BI, this template provides a powerful visualization tool. Note that cross-filtering interactivity is not possible due to the use of the 'repeat' function.
 
-`Result` 👇😍
+`official Vega-Lite`👇
+
+![`official Vega-Lite`](/assets/img/template-grouped-bar-chart-multiple-measure-with-repeat/official-vega-lite.png)
+
+`Adapted for Deneb in Power BI` 👇😍
 
 ![`Result`](/assets/img/template-grouped-bar-chart-multiple-measure-with-repeat/bar-chart-multiple-measure_2.png)
-
-
 
 ## Download the files used here
 
@@ -90,7 +92,7 @@ Based on the [**official Vega-Lite example**](https://vega.github.io/vega-lite/e
       "title": "",
       "labelAngle": -45,
       "labelFontSize": 18,
-      "labelExpr": "[split(datum.value,' ')[0],split(datum.value,' ')[1]]",
+      "labelExpr": "[split[datum.value,' '](0),split[datum.value,' '](1)]",
       "labelColor": "black"
     },
     "axisY": {

@@ -28,7 +28,7 @@ Based on the [**official Vega-Lite example**](https://vega.github.io/vega-lite/e
 
 [🔽 Template_Grouped_Bar_Chart_(Multiple_Measure_With_Repeat_VegaLite.json:](https://github.com/CSalcedoDataBI/PowerBI-Deneb/blob/6abdad6b2f0d87eccbf5b331dce0f9965d1404d6/Grouped_Bar_Chart_(Multiple_Measure_With_Repeat)/Files/Grouped_Bar_Chart_(Multiple_Measure_With_Repeat).json) (3.17 KB)
 
-### References
+
 
 ### References
 

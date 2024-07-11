@@ -8,7 +8,7 @@ pin: false
 image:
   path: /assets/img/template-stacked-bar-chart/template_stacked_bar_chart.PNG
   alt: "Stacked Bar Chart"
-description: "This Stacked Bar Chart template, adapted from the [official Vega-Lite example](https://vega.github.io/vega-lite/examples/stacked_bar_weather.html) and has been adapted for Deneb in Power BI. Note that cross-filtering interactivity is not possible due to the use of the 'timeUnit' function."
+description: "This Stacked Bar Chart template, adapted from the [official Vega-Lite example](https://vega.github.io/vega-lite/examples/stacked_bar_weather.html) and has been adapted for Deneb in Power BI. Note that cross-filtering interactivity is not possible due to the use of the 'aggregate' function."
 ---
 
 

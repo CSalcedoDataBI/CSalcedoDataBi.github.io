@@ -1,42 +1,128 @@
 ---
 title: "Tips de Power Query: Función Personalizada para Mejorar la Legibilidad de los Nombres de las Columnas"
 author: csalcedodatabi
-date: 2024-08-04 12:00:00 +0800
+date: 2024-08-18 12:00:00 +0800
 categories: [Power Query, Tips]
 tags: [Power Query, Transformaciones, Nombres de Columnas, Funciones Personalizadas]
 pin: false
 image:
-  path: /assets/img/power-query-tips-1/Eje_2_power_query_tips.PNG
+  path: /assets/img/power-query-tips-2/0_FXCleanColumnHeaders.png
   alt: "Power Query Column Cleaning"
 description: "Aprende a crear una función personalizada en Power Query para mejorar la legibilidad de los nombres de las columnas en tus tablas, separando palabras en notación CamelCase y reemplazando guiones bajos por espacios."
 ---
 
+
 # Tips de Power Query: Función Personalizada para Mejorar la Legibilidad de los Nombres de las Columnas
 
-Continuando con los tips de Power Query, he estado pensando que una de las mejores practica que he identicado durante mi experiencia al trabajar con datos es crear pequeñas funcines personalizada en el lenguaje M, que me ayudan a mejorar a la la ora de trabajar por lo que he creado varlias funciones que cumplen el mismo proposito de limpieza de nombre del post anterior pero en esta ocacisión encasuladas dentro de una fucíon lo cual es muy util para tareas repetitivas, la primera de ella es La función en sí está diseñada para convertir nombres de columnas de estilo camelCase en nombres de columnas con espacios entre las palabras. Aquí tienes la función con algunos comentarios que pueden ayudar a aclarar su propósito:
+En esta entrada, quiero compartir con ustedes una práctica que he encontrado sumamente útil al trabajar con Power Query: crear funciones personalizadas en el lenguaje M. Estas funciones me han ayudado a mejorar la legibilidad de los nombres de las columnas, lo que resulta especialmente útil en tareas repetitivas. En esta ocasión, les mostraré cómo encapsular estas funciones para facilitar su uso.
 
-```powerquery
-// Función que convierte los nombres de columnas en camelCase a nombres con espacios entre las palabras
+## Funciones Personalizadas de Power Query para Limpiar Encabezados de Tablas
+
+A continuación, presento varias funciones personalizadas diseñadas para limpiar y transformar los nombres de las columnas de manera eficiente. Puedes adaptar estas funciones según las necesidades de tus proyectos.
+
+### 1. Transformar nombres de columnas separando palabras en camelCase
+
+- **Función**: `FXCleanColumnHeadersCamelCase`
+![FXCamelCase](/assets/img/power-query-tips-2/1_FXCamelCase.png)
+
+- **Descripción**: Convierte los nombres de columnas en formato camelCase a nombres con espacios entre las palabras.
+- **Código**:
+
+ <pre class="highlight"><code>
+
 (optional CamelCaseTable as nullable table) as table =>
   let
-    // Aplica la transformación a los nombres de las columnas
     transformedCamelCaseTable = Table.TransformColumnNames(
-      CamelCaseTable, 
+      CamelCaseTable,
       each Text.Combine(Splitter.SplitTextByCharacterTransition({"a" .. "z"}, {"A" .. "Z"})(_), " ")
     )
   in
-    // Devuelve la tabla con los nombres de columnas transformados
     transformedCamelCaseTable
-```
+  </code></pre>
+  
+- **Tabla de entrada**:
+![Ejemplo 1: Tabla de entrada](/assets/img/power-query-tips-2/1_ImputCamelCase.png)
 
-Esta función realiza las siguientes tareas:
+- **Tabla de salida**:
+![Ejemplo 1: Tabla de salida](/assets/img/power-query-tips-2/1_ResultCamelCase.png)
 
-1. `Table.TransformColumnNames` aplica una función a cada nombre de columna en la tabla `CamelCaseTable`.
-2. La función anónima `each Text.Combine(Splitter.SplitTextByCharacterTransition({"a" .. "z"}, {"A" .. "Z"})(_), " ")` divide el nombre de la columna en partes basadas en las transiciones de minúsculas a mayúsculas y luego las combina de nuevo con espacios.
+### 2. Transformar nombres de columnas reemplazando guiones bajos con espacios y recortando espacios
 
-Si deseas usar esta función en un contexto de Power Query en Power BI o Excel, puedes copiar y pegar el código y luego aplicarlo a tus tablas según sea necesario.
+- **Función**: `FXCleanColumnHeadersUnderscore`
+![FXUnderscore](/assets/img/power-query-tips-2/FXUnderscore.png)
 
-En resumen, `FXCleanColumnHeadersCamelCase` es un nombre claro y apropiado para la función que has descrito.
+- **Descripción**: Convierte los nombres de columnas con guiones bajos (_) en nombres con espacios y formato de título (cada palabra comienza con mayúscula).
+- **Código**:
+
+<pre class="highlight"><code>
+(optional UnderscoreTable as nullable table) as table =>
+  let
+    transformedUnderscoreTable = Table.TransformColumnNames(
+      UnderscoreTable,
+      each Text.Proper(Text.Trim(Text.Replace(_, "_", " ")))
+    )
+  in
+    transformedUnderscoreTable
+ </code></pre>
+
+- **Tabla de entrada**:
+![Ejemplo 1: Tabla de entrada](/assets/img/power-query-tips-2/2_ImputUnderscore.png)
+
+- **Tabla de salida**:
+![Ejemplo 1: Tabla de salida](/assets/img/power-query-tips-2/2_ResultUnderscore.png)
+
+### 3. Transformar nombres de columnas reemplazando guiones bajos con espacios, excepto los que terminan con "KEY"
+
+- **Función**: `FXCleanColumnHeadersUnderscoreWithKey`
+![FXCamelCase](/assets/img/power-query-tips-2/3_FXUnderscoreWithKey.png)
+
+- **Descripción**: Convierte los nombres de columnas con guiones bajos (_) en nombres con espacios y formato de título, exceptuando aquellos que terminan con "KEY".
+- **Código**:
+
+<pre class="highlight"><code>
+(optional UnderscoreWithKeyTable as nullable table) as table =>
+  let
+    transformedUnderscoreWithKeyTable = Table.TransformColumnNames(
+      UnderscoreWithKeyTable,
+      each if Text.EndsWith(Text.Upper(_), "KEY") then _ else Text.Proper(Text.Replace(_, "_", " "))
+    )
+  in
+    transformedUnderscoreWithKeyTable
+
+</code></pre>
+
+- **Tabla de entrada**:
+![Ejemplo 1: Tabla de entrada](/assets/img/power-query-tips-2/3_ImputUnderscoreWithKey.png)
+
+- **Tabla de salida**:
+![Ejemplo 1: Tabla de salida](/assets/img/power-query-tips-2/3_ResultUnderscoreWithKey.png)
+
+### 4. Transformar nombres de columnas reemplazando guiones bajos con espacios y cambiando "Id" a "ID"
+
+- **Función**: `FXCleanColumnHeadersUnderscoreWithID`
+
+![FXCamelCase](/assets/img/power-query-tips-2/4_FXUnderscoreWithID.png)
+
+- **Descripción**: Convierte los nombres de columnas con guiones bajos (_) en nombres con espacios y formato de título, y reemplaza "Id" por "ID".
+- **Código**:
+
+<pre class="highlight"><code>
+ (optional UnderscoreWithIDTable as nullable table) as table =>
+  let
+    transformedUnderscoreWithIDTable = Table.TransformColumnNames(
+      UnderscoreWithIDTable,
+      each [R1 = Text.Replace(_, "_", " "), P = Text.Proper(R1), R = Text.Replace(P, "Id", "ID")][R]
+    )
+  in
+    transformedUnderscoreWithIDTable
+</code></pre>
+
+- **Tabla de entrada**:
+![Ejemplo 1: Tabla de entrada](/assets/img/power-query-tips-2/4_ImputUnderscoreWithID.png)
+
+- **Tabla de salida**:
+![Ejemplo 1: Tabla de salida](/assets/img/power-query-tips-2/4_ResultUnderscoreWithID.png)
+Tomado del post de [``Aditya Kumar Darak 🇮🇳``](https://www.linkedin.com/feed/update/urn:li:activity:7206158321580433408/)
 
 ### Referencias adicionales
 
@@ -46,6 +132,56 @@ Para más información sobre las funciones utilizadas, puedes consultar la docum
 - [Splitter.SplitTextByCharacterTransition](https://learn.microsoft.com/en-us/powerquery-m/splitter-splittextbycharactertransition)
 - [Text.Combine](https://learn.microsoft.com/en-us/powerquery-m/text-combine)
 
-Estas referencias proporcionarán detalles adicionales sobre los parámetros y el uso de estas funciones en Power Query M.
+## Código Completo
+
+<pre class="highlight"><code>
+FXCleanColumnHeaders = (
+    optional CamelCaseTable as nullable table,
+    optional UnderscoreTable as nullable table,
+    optional UnderscoreWithKeyTable as nullable table,
+    optional UnderscoreWithIDTable as nullable table
+) as table =>
+let
+    // Transformar nombres de columnas separando palabras en camel_case
+    transformedCamelCaseTable = Table.TransformColumnNames(
+        CamelCaseTable,
+        each Text.Combine(Splitter.SplitTextByCharacterTransition({"a".."z"}, {"A".."Z"})(_ ), " ")
+    ),
+
+    // Transformar nombres de columnas reemplazando guiones bajos con espacios y recortando espacios
+    transformedUnderscoreTable = Table.TransformColumnNames(
+        UnderscoreTable,
+        each Text.Proper(Text.Trim(Text.Replace(_, "_", " ")))
+    ),
+
+    // Transformar nombres de columnas reemplazando guiones bajos con espacios, excepto los que terminan con "KEY"
+    transformedUnderscoreWithKeyTable = Table.TransformColumnNames(
+        UnderscoreWithKeyTable,
+        each if Text.EndsWith(Text.Upper(_), "KEY") then _ else Text.Proper(Text.Replace(_, "_", " "))
+    ),
+
+    // Transformar nombres de columnas reemplazando guiones bajos con espacios y cambiando "Id" a "ID"
+    transformedUnderscoreWithIDTable = Table.TransformColumnNames(
+        UnderscoreWithIDTable,
+        each [R1 = Text.Replace(_, "_", " "), P = Text.Proper(R1), R = Text.Replace(P, "Id", "ID")][R]
+    ),
+
+    // Determinar el resultado final basado en las tablas no nulas proporcionadas
+    finalResult =
+        if CamelCaseTable <> null then
+            transformedCamelCaseTable
+        else if UnderscoreTable <> null then
+            transformedUnderscoreTable
+        else if UnderscoreWithKeyTable <> null then
+            transformedUnderscoreWithKeyTable
+        else if UnderscoreWithIDTable <> null then
+            transformedUnderscoreWithIDTable
+        else
+            error "No tables provided or all tables are null."
+in
+    finalResult
+</code></pre>
+
+Espero que encuentres útiles estas funciones y que te ayuden a mejorar la legibilidad de los nombres de las columnas en tus proyectos de Power Query. ¡No dudes en adaptarlas según tus necesidades y compartir tus propias variaciones!
 
 ---

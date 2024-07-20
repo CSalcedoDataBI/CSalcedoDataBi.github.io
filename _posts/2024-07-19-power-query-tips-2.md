@@ -1,7 +1,7 @@
 ---
 title: "Tips de Power Query: Función Personalizada para Mejorar la Legibilidad de los Nombres de las Columnas"
 author: csalcedodatabi
-date: 2024-08-18 12:00:00 +0800
+date: 2024-07-19 12:00:00 +0800
 categories: [Power Query, Tips]
 tags: [Power Query, Transformaciones, Nombres de Columnas, Funciones Personalizadas]
 pin: false
@@ -49,7 +49,7 @@ A continuación, presento varias funciones personalizadas diseñadas para limpia
 ### 2. Transformar nombres de columnas reemplazando guiones bajos con espacios y recortando espacios
 
 - **Función**: `FXCleanColumnHeadersUnderscore`
-![FXUnderscore](/assets/img/power-query-tips-2/FXUnderscore.png)
+![FXUnderscore](/assets/img/power-query-tips-2/2_FXUnderscore.png)
 
 - **Descripción**: Convierte los nombres de columnas con guiones bajos (_) en nombres con espacios y formato de título (cada palabra comienza con mayúscula).
 - **Código**:

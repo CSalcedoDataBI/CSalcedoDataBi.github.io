@@ -7,36 +7,36 @@ categories: [Deneb, Template]
 tags: [Deneb, Vega-Lite, Power BI]
 pin: false
 image: 
-  path: /assets/img/template-stacked-bar-chart-horizontal/image.png
+  path: /assets/img/template-stacked-bar-chart-horizontal/1_image.png
   alt: "Horizontal Stacked Bar Chart"
-description: "This template for a Horizontal Stacked Bar Chart is adapted from the [official Vega-Lite example](https://vega.github.io/vega-lite/examples/stacked_bar_h.html) and customized for Deneb in Power BI. Please note that cross-filtering interactivity is not possible due to the use of the 'aggregate' function."
+description: "This horizontal stacked bar chart template is adapted from the official Vega-Lite example and customized for Deneb in Power BI. Enhancements include the addition of labels, a descriptive title, and sorted data for better clarity. Please note that cross-filtering interactivity is not possible due to the use of the ‘aggregate’ function."
 
 ---
 
 ## Configuration Details ##
-
 The image shows how the chart is configured in Deneb and Power BI, highlighting the following key properties:
 
-### `bandPosition` Property: 0.5
+![Configuration](/assets/img/template-stacked-bar-chart-horizontal/6_configuration_details.png)
 
-Adjusts the position of the bands in the chart, centering the text within each category to improve visual alignment. In this specific case, it is used to center the text. This property handles three values: 0 to position at the beginning, 0.5 to center, and 1 to place at the end.
-
-### Text Format Configuration
+### 1. Text Format Configuration
 
 The format `"#,0"` displays numbers without decimals. For Power BI, `"formatType": "pbiFormat"` is used, configured in Deneb. More information at: [Deneb Viz Formatting](https://deneb-viz.github.io/formatting).
 
-### Color Configuration
+### 2. [`bandPosition`](https://vega.github.io/vega-lite/docs/bandposition.html) Property: 0.5
+
+Adjusts the position of the bands in the chart, centering the text within each category to improve visual alignment. In this specific case, it is used to center the text. This property handles three values: 0 to position at the beginning, 0.5 to center, and 1 to place at the end.
+
+![Result](/assets/img/template-stacked-bar-chart-horizontal/7_bandPosition.png)
+
+### 3. Color Configuration
 
 Based on the `"site"` field, it uses the `"category20"` color scale to visually differentiate the experimental sites. This scheme is specific to VEGA. More information at: [VEGA Schemes](https://vega.github.io/vega/docs/schemes/#categorical).
 
-![Configuration](/assets/img/template-stacked-bar-chart-horizontal/horizontal_stacked_bar_chart.PNG)
+![Result](/assets/img/template-stacked-bar-chart-horizontal/2_horizontal_stacked_bar_chart.png)
 
-## Detailed Visualization ##
+## Result ##
 
-The second image shows the detailed configuration in Deneb, including the specific code and adjusted properties to achieve the final chart design.
-
-![Detailed Configuration](/assets/img/template-stacked-bar-chart-horizontal/template-horizontal_stacked_bar_chart.PNG)
-
+![Result](/assets/img/template-stacked-bar-chart-horizontal/5_result.png)
 
 ## Download the files used here
 

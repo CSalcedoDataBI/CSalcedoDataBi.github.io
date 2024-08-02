@@ -2,7 +2,7 @@
 
 title: "Normalized (Percentage) Stacked Bar Chart Template"  
 author: csalcedodatabi 
-date: 2024-07-24 23:34:00 +0800  
+date: 2024-08-01 23:34:00 +0800  
 categories: [Deneb, Template]  
 tags: [Deneb, Vega-Lite, Power BI]  
 pin: false  

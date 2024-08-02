@@ -33,7 +33,7 @@ Additionally, I have made the following improvements:
 
 ## 👀
 
-![Result](/assets/img/template-normalized-percentage-stacked-bar-chart/3_normalized.png)
+![Result](/assets/img/template-normalized-percentage-stacked-bar-chart/4_normalized.PNG)
 
 ## Download the files used here
 

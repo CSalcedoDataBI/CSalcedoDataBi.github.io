@@ -2,7 +2,7 @@
 
 title: "Dynamic Bar Chart: Encoding Colors with Hexadecimal or Color Names Based on Data Categories Template"
 author: csalcedodatabi
-date: 2024-08-15 23:34:00 +0800
+date: 2024-08-26 23:34:00 +0800
 categories: [Deneb, Template]
 tags: [Deneb, Vega-Lite, Power BI]
 pin: false

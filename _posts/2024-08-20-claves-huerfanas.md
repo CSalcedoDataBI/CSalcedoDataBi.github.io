@@ -1,8 +1,8 @@
 ---
 
-title: "Claves Huérfanas: El Error Silencioso que Sabotea tu Análisis de Datos"
+title: "Claves Huérfanas: El Error Silencioso que Sabotea tu Análisis de Datos (Parte 1)"
 author: csalcedodatabi
-date: 2024-09-15 23:34:00 +0800
+date: 2024-08-28 23:34:00 +0800
 categories: [Deneb, Template]
 tags: [Deneb, Vega-Lite, Power BI]
 pin: false
@@ -133,8 +133,8 @@ Ejecuta este script y obtendrás este resumen:
 ![Modelo](/assets/img/claves-huerfanas/imagen_8.png)
 
 
-Esto deja ver calramente esto deja ver claramente el mismo problema que hemos observado en DaxStudio.
+Esto evidencia claramente el mismo problema que hemos identificado utilizando DAX Studio. En conclusión, creo que uno de los mayores desafíos al trabajar con modelos de datos es la detección temprana de estos problemas de integridad referencial. La dificultad radica en que estos errores pueden permanecer ocultos durante mucho tiempo, afectando la precisión de los análisis sin ser detectados fácilmente. Por esta razón, en una próxima entrada, me gustaría compartir algunas recomendaciones y estrategias prácticas sobre cómo abordar estos problemas de manera efectiva, utilizando herramientas avanzadas y buenas prácticas en el diseño y mantenimiento de modelos de datos.
 
-En conclusion creo que lo mas dificil es idendificarlos y quiero dar algunas recomendaciones de como abrtar este problema 
+
 
 

@@ -8,7 +8,7 @@ tags: [Deneb, Vega-Lite, Power BI]
 pin: false
 image: 
   path: /assets/img/bar-chart-encoding-colors-with-hexadecimal-or-color-names/0_imagen.gif
-  alt: "ynamic Bar Chart Encoding Colors with Hexadecimal or Color Names Based on Data Categories template"
+  alt: "Dynamic Bar Chart Encoding Colors with Hexadecimal or Color Names Based on Data Categories template"
 description: "This template showcases a Dynamic Bar Chart that encodes colors using either Hexadecimal values or Color Names, based on data categories. Adapted from a Vega-Lite example and customized for use with Deneb in Power BI, this visualization provides a flexible and functional tool for visualizing color data in a clear and dynamic manner. Created by Cristobal Salcedo Beltran. For inquiries, please contact csalcedo90@gmail.com"
 
 ---

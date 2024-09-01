@@ -3,8 +3,8 @@
 title: "Claves Huérfanas: El Error Silencioso que Sabotea tu Análisis de Datos (Parte 1)"
 author: csalcedodatabi
 date: 2024-08-31 23:34:00 +0800
-categories: [Deneb, Template]
-tags: [Deneb, Vega-Lite, Power BI]
+categories: [Blogging, Tutorial]
+tags: [MicrosoftFabric, Notebook, Power BI]
 pin: false
 image: 
   path: /assets/img/claves-huerfanas/crear-notebook_7.gif

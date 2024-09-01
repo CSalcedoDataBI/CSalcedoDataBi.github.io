@@ -5,7 +5,7 @@ author: csalcedodatabi
 date: 2024-06-08 01:00:00 +0800  
 categories: [Blogging, Tutorial]  
 tags: [Deneb, Vega-Lite, pbiFormat]  
-pin: true 
+pin: false 
 image:  
   path: /assets/img/post-funcion-pbiformat/pbiFormat.gif  
   alt: "Understanding the use of pbiFormat"  

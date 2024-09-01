@@ -2,7 +2,7 @@
 
 title: "Claves Huérfanas: El Error Silencioso que Sabotea tu Análisis de Datos (Parte 1)"
 author: csalcedodatabi
-date: 2024-08-28 23:34:00 +0800
+date: 2024-08-31 23:34:00 +0800
 categories: [Deneb, Template]
 tags: [Deneb, Vega-Lite, Power BI]
 pin: false
@@ -55,6 +55,8 @@ Recuerdo que cuando comencé a trabajar con modelos de datos, hace algunos años
 
 ### **Herramientas para Identificar Problemas de Integridad Referencial**
 
+### **1. DAX Studio**
+
 Una de las primeras herramientas que encontré, y que me ha sorprendido por su evolución, es DAX Studio. Desde la primera vez que la utilicé, ha mejorado significativamente, permitiendo ahora identificar fácilmente las claves o datos faltantes en tu modelo. 
 
 Recientemente intenté replicar aquel laborioso trabajo que hice en mis inicios para demostrar lo complicado que era. Sin embargo, para mi sorpresa, ahora es mucho más sencillo gracias a las mejoras implementadas en DAX Studio, que además es una herramienta gratuita, lo cual es un gran beneficio para quienes trabajamos con modelos de datos.
@@ -92,6 +94,7 @@ Puedes profundizar un poco más con la siguiente imagen:
 - **Filas Inválidas:** Existen 15 filas con `Segment_KEY` inválidos y 10 filas con `Country_KEY` inválidos en `FactFinancials`.
 - **Integridad Referencial:** Es esencial corregir estos problemas para asegurar un análisis preciso y confiable, donde todos los registros en `FactFinancials` tengan correspondencia en las tablas de dimensiones.
 
+### **2. Notebook en Microsoft Fabric**
 
 La segunda herramienta funciona en un entorno de **Microsoft Fabric**, específicamente en un **Notebook**. Es una biblioteca excelente que permite identificar estos problemas de manera precisa y sencilla.
 
@@ -128,12 +131,17 @@ list_relationship_violations(tables, fabric.list_relationships(dataset))
 
 ```
 
-Ejecuta este script y obtendrás este resumen:
+Al ejecutar este script, obtendrás un resumen similar al que se muestra a continuación:
 
 ![Modelo](/assets/img/claves-huerfanas/imagen_8.png)
 
+Este resultado subraya el mismo problema de integridad referencial que identificamos previamente con DAX Studio. Detectar estos problemas de forma temprana es uno de los mayores desafíos en el manejo de modelos de datos, ya que pueden pasar desapercibidos durante largos periodos y comprometer la precisión de los análisis.
 
-Esto evidencia claramente el mismo problema que hemos identificado utilizando DAX Studio. En conclusión, creo que uno de los mayores desafíos al trabajar con modelos de datos es la detección temprana de estos problemas de integridad referencial. La dificultad radica en que estos errores pueden permanecer ocultos durante mucho tiempo, afectando la precisión de los análisis sin ser detectados fácilmente. Por esta razón, en una próxima entrada, me gustaría compartir algunas recomendaciones y estrategias prácticas sobre cómo abordar estos problemas de manera efectiva, utilizando herramientas avanzadas y buenas prácticas en el diseño y mantenimiento de modelos de datos.
+Por ello, en futuras publicaciones, compartiré recomendaciones y estrategias prácticas para abordar eficazmente estos problemas. Exploraremos el uso de herramientas avanzadas y la aplicación de buenas prácticas en el diseño y mantenimiento de modelos de datos, con el objetivo de garantizar la integridad y confiabilidad en los análisis.
+
+**Referencias:**
+- [DAX Studio](https://daxstudio.org/)
+- [Relaciones en Power BI - Microsoft Learn](https://learn.microsoft.com/en-us/fabric/data-science/tutorial-power-bi-relationships)
 
 
 

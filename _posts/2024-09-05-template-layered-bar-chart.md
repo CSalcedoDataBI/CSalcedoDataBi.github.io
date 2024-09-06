@@ -2,7 +2,7 @@
 
 title: "Mejora tus Visuales en Power BI: Control Avanzado de Ejes con Vega-Lite y Plantilla de Gráfico de Barras Apiladas"
 author: csalcedodatabi
-date: 2024-08-31 23:34:00 +0800
+date: 2024-09-05 23:34:00 +0800
 categories: [Blogging, Tutorial]
 tags: [Power BI, Deneb, Vega-Lite]
 pin: false

@@ -7,7 +7,7 @@ categories: [Blogging, Tutorial+Template]
 tags: [Power BI, Deneb, Vega-Lite]
 pin: false
 image: 
-  path: /assets/img/post-layered_bar_chart/0_image.PNG
+  path: /assets/img/post-layered_bar_chart/0_image.png
   alt: "Gráficos personalizados en Power BI usando Vega-Lite"
 description: "Descubre cómo mejorar la presentación y precisión de tus gráficos en Power BI con el control detallado de los ejes usando Vega-Lite y Deneb. Aprende a formatear y personalizar tus visuales para obtener resultados más efectivos."
 

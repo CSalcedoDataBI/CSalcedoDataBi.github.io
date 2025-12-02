@@ -1,7 +1,7 @@
 ---
 title: "Cómo crear un gráfico de tarjeta dinámica con líneas de tendencia en Power BI utilizando Vega-Lite y Deneb"
 author: csalcedodatabi
-date: 2024-10-03 23:34:00 +0800
+date: 2025-12-01 00:00:00 +0000
 categories: [Blogging, Tutorial]
 tags: [Deneb, Vega-Lite, Pareto]
 pin: false
@@ -30,6 +30,7 @@ En este punto, utilizaremos la transformación de ventana (Window) en Vega-Lite 
 
 // Fragmento de código para las transformaciones de datos contenido en variables:
 
+```json
 "transform": [
     {
       "window": [
@@ -82,12 +83,14 @@ En este punto, utilizaremos la transformación de ventana (Window) en Vega-Lite 
       "as": "__title__"
     }
   ]
+```
 
 Paso 3: Configuración de las capas de visualizaciones:
 Ajustaremos el ancho y la altura del gráfico y crearemos una capa inicial para el fondo y la representación del cambio de sentimiento. Agregaremos etiquetas de texto para mostrar información relevante como el precio actual, el título, la fecha y el cambio porcentual.
 
 // Fragmento de código para la configuración de la visualización
 
+```json
     {
       "transform": [
         {"filter": "datum.__row__ == 1"}
@@ -187,12 +190,13 @@ Ajustaremos el ancho y la altura del gráfico y crearemos una capa inicial para 
         }
       ]
     }
-Creación del gráfico de línea:
+```Creación del gráfico de línea:
 
 Agregaremos una segunda capa para mostrar el gráfico de línea principal. Configuraremos las propiedades del gráfico, como el grosor, el color y la opacidad, y utilizaremos la codificación adecuada para los ejes x e y.
 
 // Fragmento de código para la creación del gráfico de línea:
 
+```json
     {  "mark": {
         "type": "line",
         "strokeWidth": 1.5,
@@ -204,12 +208,13 @@ Agregaremos una segunda capa para mostrar el gráfico de línea principal. Confi
         "y": {"field": "Price__Total"}
       }
     }
-
+```
 Paso 4: Agregar líneas de tendencia:
 Agregaremos una tercera capa para mostrar las líneas de tendencia en el gráfico de línea. Aplicaremos una regresión de "Price__Total" en función de "Date" para obtener las líneas de tendencia. Calcularemos la diferencia entre el último y el primer valor de "Price__Total" y la guardaremos en la columna "SentimentColor", esto para darle color si es menor que cero quiere decir que el cambio tuvo un decrecimiento o tuvo un crecimiento en el caso positivo. Hay que tener en cuenta que esta es otra capa de transformaciones debido a que usamos un método de regresión lineal y solo deja visible la variable X, que en este caso es 'Date', y la variable Y, que en este caso es 'Total_Price'.
 
 // Fragmento de código para agregar líneas de tendencia
 
+```json
     {
   "transform": [
         {
@@ -259,7 +264,7 @@ Agregaremos una tercera capa para mostrar las líneas de tendencia en el gráfic
         }
       }
     }
-
+```
 Paso 5: Ajustes finales:
 En esta etapa final, realizaremos ajustes adicionales para personalizar las etiquetas y estilos del gráfico según tus preferencias. Es importante configurar correctamente los ejes x e y, incluyendo las escalas, los títulos y el formato de las etiquetas. Estos ajustes permitirán mejorar la apariencia y la legibilidad del gráfico.
 
@@ -312,6 +317,7 @@ También quiero agradecer a Daniel Marsh-Patrick, el creador de **Deneb**, por b
 Quiero expresar mi sincero agradecimiento por su contribución y por ser una fuente constante de aprendizaje.
 
 Plantilla:
+```json
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "usermeta": {
@@ -671,3 +677,4 @@ Plantilla:
     }
   }
 }
+```

@@ -145,9 +145,9 @@ baseurl: ""
 # ------------ The following options are not recommended to be modified ------------------
 
 kramdown:
-  syntax_highlighter: rouge
+  syntax_highlighter: None
   syntax_highlighter_opts:
-    disable: false
+    disable: true
     css_class: "highlight"
     default_lang: console
     span:

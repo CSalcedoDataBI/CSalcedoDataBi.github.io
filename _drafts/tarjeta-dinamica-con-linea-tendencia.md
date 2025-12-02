@@ -282,7 +282,7 @@ Espero que este artículo te haya ayudado a crear tu gráfico de tarjeta dinámi
 Descarga de la Plantilla y Visualización
 Para facilitar la implementación de esta funcionalidad en tu propio proyecto, ponemos a tu disposición la plantilla de visualización en Deneb. Puedes descargar el archivo PBIX desde el siguiente enlace:
 
-<https://github.com/CSalcedoDataBI/PowerBI-Deneb/raw/main/Gr%C3%A1fico%20de%20tarjeta%20din%C3%A1mico%20con%20l%C3%ADneas%20de%20tendencia%20en%20Power%20BI%20utilizando%20Vega-Lite%20y%20Deneb.pbix>
+<https://github.com/CSalcedoDataBI/PowerBI-Deneb/raw/refs/heads/main/Tarjetas_Dinamicas/Files/Tarjetas_Dinamicas_Tendencia_Deneb_VegaLite.pbix>
 
 Plantilla .json desde el siguiente enlace:
 
@@ -304,15 +304,15 @@ Me gustaría expresar mi profundo agradecimiento a Brian Julius por ser una fuen
 
 También quiero agradecer a Daniel Marsh-Patrick, el creador de **Deneb**, por brindarnos la oportunidad de utilizar esta poderosa herramienta en Power BI. Su dedicación y trabajo arduo han permitido que los usuarios exploremos nuevas posibilidades en la visualización de datos.
 
-*   Pesante Analytics Llc
-*   Kerry Kolosko
-*   Andrzej Leszkiewicz
-*   Madison Giammaria
-*   Ben Ferry
-*   Davide Bacci
-*   Jefferson Alves
-*   Juan David Bohorquez Giraldo
-*   Imran Haq
+* Pesante Analytics Llc
+* Kerry Kolosko
+* Andrzej Leszkiewicz
+* Madison Giammaria
+* Ben Ferry
+* Davide Bacci
+* Jefferson Alves
+* Juan David Bohorquez Giraldo
+* Imran Haq
 
 Quiero expresar mi sincero agradecimiento por su contribución y por ser una fuente constante de aprendizaje.
 

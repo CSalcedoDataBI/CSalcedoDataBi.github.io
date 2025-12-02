@@ -6,7 +6,7 @@ categories: [Blogging, Tutorial]
 tags: [Deneb, Vega-Lite, Pareto]
 pin: false
 image:
-  path: https://github.com/CSalcedoDataBI/PowerBI-Deneb/blob/main/Tarjetas_Dinamicas/Files/Tarjetas_Dinamicas_Tendencia_Deneb_VegaLite.gif
+  path: https://raw.githubusercontent.com/CSalcedoDataBI/PowerBI-Deneb/ab4175e174ef4c203da0b15153a58766db151556/Tarjetas_Dinamicas/Files/Tarjetas_Dinamicas_Tendencia_Deneb_VegaLite.gif
   alt: "Tarjeta Dinámica con Líneas de Tendencia"
 description: "Una guía detallada para crear un gráfico de tarjeta dinámico con líneas de tendencia en Power BI utilizando Deneb y Vega-Lite."
 ---

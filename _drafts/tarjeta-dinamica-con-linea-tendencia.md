@@ -8,24 +8,21 @@ pin: false
 image:
   path: https://raw.githubusercontent.com/CSalcedoDataBI/PowerBI-Deneb/main/Diagramas_Pareto/FIles/Pareto_Dinamico_Deneb_VegaLite_P1_Encabezado.gif
   alt: "Cross-Filtering y Cross-Highlight Scatter Plot"
-description: "Una guía detallada para crear un diagrama de Pareto usando Deneb y Vega-Lite en Power BI. Esta es la primera parte de la serie."
+description: "Una guía detallada para crear un gráfico de tarjeta dinámico con líneas de tendencia en Power BI utilizando Deneb y Vega-Lite."
 ---
 
 
 Introducción
-En este artículo, exploraremos cómo crear un gráfico de tarjeta dinámico en Power BI utilizando  y . Esta idea está inspirada en el post de Brian Julius, donde demuestra cómo agregar líneas de tendencia dinámicas a las tarjetas visuales en  utilizando M, Python y R. En lugar de utilizar ,  y , utilizaremos  y  para lograr un resultado similar de una manera más visual y programática.
+En este artículo, exploraremos cómo crear un gráfico de tarjeta dinámico en Power BI utilizando **Deneb** y **Vega-Lite**. Esta idea está inspirada en el post de Brian Julius, donde demuestra cómo agregar líneas de tendencia dinámicas a las tarjetas visuales en **Power BI** utilizando M, Python y R. En lugar de utilizar **M, Python** y **R**, utilizaremos **Deneb** y **Vega-Lite** para lograr un resultado similar de una manera más visual y programática.
 
 Paso 1: Configuración inicial
-Comenzaremos con la configuración inicial, donde utilizaremos el código compartido por Brian Julius en Power Query. Lo utilizaremos en una consulta en blanco y eliminaremos los dos pasos finales que requieren paquetes de R. Además, normalizaremos los datos realizando un unpivot para tener una sola columna de categoría y otra con el valor del precio. Aquí puede ver los datos preparados: DatosPreparados.pbix
-
-Puedes encontrar el proyecto inicial de Brian aquí:
-
+Comenzaremos con la configuración inicial, donde utilizaremos el código compartido por Brian Julius en Power Query. Utilizaremos este código en una consulta en blanco y eliminaremos los dos pasos finales que requieren paquetes de R. Además, normalizaremos los datos realizando una operación de 'unpivot' para tener una sola columna de categoría y otra con el valor del precio. Aquí puede ver los datos preparados: `DatosPreparados.pbix`
 Paso 2: Crear Medidas en DAX y Transformaciones de datos en Vega-Lite
 En este paso, crearemos una medida en DAX llamada "Price__Total" utilizando la función SUM para sumar los valores de la columna "Price". Puedes utilizar otro nombre de medida si lo deseas.
 
 Price__Total = SUM (DATOS[Price])
 
-Nota: Puede Usar otro nombre de medida si desea.
+Nota: Puede usar otro nombre de medida si lo desea.
 
 Una vez creada la medida, procederemos a ingresarla en el visual junto con el campo "Date" y el campo "Stock" que contiene la categoría.
 
@@ -85,13 +82,7 @@ En este punto, utilizaremos la transformación de ventana (Window) en Vega-Lite 
       "as": "__title__"
     }
   ]
-Ver imagen:
 
-Minimizar imagen
-Editar imagen
-Borrar imagen
-No hay texto alternativo para esta imagen
-Insertando codigo
 Paso 3: Configuración de las capas de visualizaciones:
 Ajustaremos el ancho y la altura del gráfico y crearemos una capa inicial para el fondo y la representación del cambio de sentimiento. Agregaremos etiquetas de texto para mostrar información relevante como el precio actual, el título, la fecha y el cambio porcentual.
 
@@ -213,15 +204,9 @@ Agregaremos una segunda capa para mostrar el gráfico de línea principal. Confi
         "y": {"field": "Price__Total"}
       }
     }
-Ver imagen:
 
-Minimizar imagen
-Editar imagen
-Borrar imagen
-No hay texto alternativo para esta imagen
-Dos capas de visualizaciones
-Paso 3: Agregar líneas de tendencia:
-Agregaremos una tercera capa para mostrar las líneas de tendencia en el gráfico de línea. Aplicaremos una regresión de "Price__Total" en función de "Date" para obtener las líneas de tendencia. Calcularemos la diferencia entre el último y el primer valor de "Price__Total" y la guardaremos en la columna "SentimentColor", esto para darle color si es menor que cero quiere decir que el cambio tubo un decrecimiento o tubo un crecimiento en el caso positivo, tener en cuenta que esta es otra capa de tranformaciones debido a que usamos un método de regresión lineal y solo deja visible la variable X en este caso es “Date” y la varable Y que en este caso es “Total_Price”.
+Paso 4: Agregar líneas de tendencia:
+Agregaremos una tercera capa para mostrar las líneas de tendencia en el gráfico de línea. Aplicaremos una regresión de "Price__Total" en función de "Date" para obtener las líneas de tendencia. Calcularemos la diferencia entre el último y el primer valor de "Price__Total" y la guardaremos en la columna "SentimentColor", esto para darle color si es menor que cero quiere decir que el cambio tuvo un decrecimiento o tuvo un crecimiento en el caso positivo. Hay que tener en cuenta que esta es otra capa de transformaciones debido a que usamos un método de regresión lineal y solo deja visible la variable X, que en este caso es 'Date', y la variable Y, que en este caso es 'Total_Price'.
 
 // Fragmento de código para agregar líneas de tendencia
 
@@ -274,21 +259,15 @@ Agregaremos una tercera capa para mostrar las líneas de tendencia en el gráfic
         }
       }
     }
-Ver imagen:
 
-Minimizar imagen
-Editar imagen
-Borrar imagen
-No hay texto alternativo para esta imagen
-Tercera capa visual
-Ajustes finales:
+Paso 5: Ajustes finales:
 En esta etapa final, realizaremos ajustes adicionales para personalizar las etiquetas y estilos del gráfico según tus preferencias. Es importante configurar correctamente los ejes x e y, incluyendo las escalas, los títulos y el formato de las etiquetas. Estos ajustes permitirán mejorar la apariencia y la legibilidad del gráfico.
 
-En el caso de Deneb, una ventaja es que podemos utilizar la sintaxis declarativa  de los lenguajes  o  para personalizar y adaptar nuestro visual a nuestras necesidades. Podemos aprovechar las características interactivas de Power BI y lograr una representación más rápida de los datos.
+En el caso de Deneb, una ventaja es que podemos utilizar la sintaxis declarativa de los lenguajes **Vega** o **Vega-Lite** para personalizar y adaptar nuestro visual a nuestras necesidades. Podemos aprovechar las características interactivas de Power BI y lograr una representación más rápida de los datos.
 
-Es importante tener en cuenta que  permite crear visuales como en  y , lo que amplía las posibilidades de personalización y permite realizar tareas más avanzadas. "Con Deneb en Power BI, ¡todo es posible!"
+Es importante tener en cuenta que **Deneb** permite crear visuales como en **Vega** y **Vega-Lite**, lo que amplía las posibilidades de personalización y permite realizar tareas más avanzadas. "Con Deneb en Power BI, ¡todo es posible!"
 
-Para finalizar, me gustaría abrir un tema de discusión y que compartas tus comentarios al respecto. La nueva tarjeta de  permite incluir varios KPI, mientras que en este visual solo podemos ver uno. Sin embargo, con , podemos superar esta limitación y lograr concatenar varias imágenes o, si eres un usuario avanzado en estos lenguajes, realizar infinidad de cosas. Te animo a explorar esta posibilidad y compartir tus desarrollos, creando así una comunidad en esta red social de . Sería gratificante conocer personas interesadas en este material y poder intercambiar conocimientos.
+Para finalizar, me gustaría abrir un tema de discusión y que compartas tus comentarios al respecto. La nueva tarjeta de **Power BI** permite incluir varios KPI, mientras que en este visual solo podemos ver uno. Sin embargo, con **Deneb**, podemos superar esta limitación y lograr concatenar varias imágenes o, si eres un usuario avanzado en estos lenguajes, realizar infinidad de cosas. Te animo a explorar esta posibilidad y compartir tus desarrollos, creando así una comunidad en esta red social de **Power BI**. Sería gratificante conocer personas interesadas en este material y poder intercambiar conocimientos.
 
 Conclusiones:
 En este artículo, hemos explorado cómo crear un gráfico de tarjeta dinámico en Power BI utilizando Vega-Lite y Deneb. Aprovechando las capacidades de diseño y visualización de Vega-Lite y la integración de Deneb en Power BI, podemos lograr visualizaciones impactantes y dinámicas sin la necesidad de utilizar código Python y R. ¡Explora estas herramientas y crea gráficos de tarjeta impresionantes en tus informes de Power BI!
@@ -298,45 +277,37 @@ Espero que este artículo te haya ayudado a crear tu gráfico de tarjeta dinámi
 Descarga de la Plantilla y Visualización
 Para facilitar la implementación de esta funcionalidad en tu propio proyecto, ponemos a tu disposición la plantilla de visualización en Deneb. Puedes descargar el archivo PBIX desde el siguiente enlace:
 
-<https://github.com/cristobalsalcedo90/PowerBI-Deneb/raw/main/Gr%C3%A1fico%20de%20tarjeta%20din%C3%A1mico%20con%20l%C3%ADneas%20de%20tendencia%20en%20Power%20BI%20utilizando%20Vega-Lite%20y%20Deneb.pbix>
+<https://github.com/CSalcedoDataBI/PowerBI-Deneb/raw/main/Gr%C3%A1fico%20de%20tarjeta%20din%C3%A1mico%20con%20l%C3%ADneas%20de%20tendencia%20en%20Power%20BI%20utilizando%20Vega-Lite%20y%20Deneb.pbix>
 
-Plantilla .json edesde el siguiente enlace:
+Plantilla .json desde el siguiente enlace:
 
-PowerBI-Deneb/Gráfico de tarjeta dinámico con líneas de tendencia en Power BI utilizando Vega-Lite y Deneb.json at main · cristobalsalcedo90/PowerBI-Deneb · GitHub
+[Plantilla JSON para Gráfico de Dispersión Etiquetado](https://github.com/CSalcedoDataBI/PowerBI-Deneb/blob/ab4175e174ef4c203da0b15153a58766db151556/Dispersion_Etiquetados/Files/Dispersion_Etiquetada.json)
 
 Referencias y Recursos
-Aquí tienes algunas referencias útiles que puedes consultar para obtener más información sobre el diagrama de Pareto vertical en Power BI utilizando Deneb y Vega Lite:
+Aquí tienes algunas referencias útiles que puedes consultar para obtener más información sobre el gráfico de tarjeta dinámica en Power BI utilizando Deneb y Vega-Lite:
 
 Documentación de D3.js: <https://github.com/d3/d3-format#locale_format>
 
-Post Brian: Publicación | Feed | LinkedIn
+Post Brian: [Perfil de Brian Julius en LinkedIn](https://www.linkedin.com/in/brianjulius/)
 
-Documentación Deneb: Visualización declarativa en Power BI | Deneb (deneb-viz.github.io)
+Documentación Deneb: [Visualización declarativa en Power BI | Deneb](https://deneb-viz.github.io/)
 
 Estas fuentes te proporcionarán información adicional y te ayudarán a explorar más a fondo el tema del diagrama de Pareto vertical.
 
 Agradecimientos:
 Me gustaría expresar mi profundo agradecimiento a Brian Julius por ser una fuente de inspiración y contribuir de manera invaluable a este artículo. Su post sobre la adición de líneas de tendencia dinámicas a las tarjetas visuales en Power BI utilizando M, Python y R ha sido fundamental para el desarrollo de este contenido. Agradezco su conocimiento y generosidad al compartir ideas que han enriquecido significativamente este artículo.
 
-También quiero agradecer a Daniel Marsh-Patrick, el creador de , por brindarnos la oportunidad de utilizar esta poderosa herramienta en Power BI. Su dedicación y trabajo arduo han permitido que los usuarios exploremos nuevas posibilidades en la visualización de datos.
+También quiero agradecer a Daniel Marsh-Patrick, el creador de **Deneb**, por brindarnos la oportunidad de utilizar esta poderosa herramienta en Power BI. Su dedicación y trabajo arduo han permitido que los usuarios exploremos nuevas posibilidades en la visualización de datos.
 
-Pesante Analytics Llc
-
-Kerry Kolosko
-
-Andrzej Leszkiewicz
-
-Madison Giammaria
-
-📊 Ben Ferry
-
-Davide Bacci
-
-Jefferson Alves
-
-Juan David Bohorquez Giraldo
-
-Imran Haq
+*   Pesante Analytics Llc
+*   Kerry Kolosko
+*   Andrzej Leszkiewicz
+*   Madison Giammaria
+*   Ben Ferry
+*   Davide Bacci
+*   Jefferson Alves
+*   Juan David Bohorquez Giraldo
+*   Imran Haq
 
 Quiero expresar mi sincero agradecimiento por su contribución y por ser una fuente constante de aprendizaje.
 

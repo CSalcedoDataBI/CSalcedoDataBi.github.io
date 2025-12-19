@@ -50,7 +50,7 @@ La propiedad `labelExpr` es una de las más útil a la hora de personalizar los 
 
 El `index` es una propiedad que varía entre 0 y 1, representando un rango porcentual del total de valores. Al usar `Index`, podemos establecer condicionales que determinen qué valores mostrar en el gráfico. Por ejemplo, si queremos mostrar solo el primer y último valor, o los valores en los puntos 0, 0.25, 0.5, 0.75 y 1, podemos construir un condicional como el siguiente:
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 datum.index == 0 || datum.index == 0.25 || datum.index == 0.5 
 || datum.index == 0.75 || datum.index == 1
 </code></pre>
@@ -59,7 +59,7 @@ Usamos `datum` para acceder al valor actual y evaluarlo, construyendo un condici
 
 Para controlar los valores del eje `y`, el código sería:
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 ...
 "axisY": {
   "labelExpr": "datum.index == 0 || datum.index == 0.25 
@@ -81,7 +81,7 @@ Una de las nuevas funciones en Deneb 1.7 es [`pbiFormatAutoUnit`](https://deneb-
 
 **Ejemplo de Código Usando `pbiFormatAutoUnit`:**
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 "axisY": {
   "labelExpr": "datum.index == 0 || datum.index == 0.25 || datum.index == 0.5 
   || datum.index == 0.75 || datum.index == 1 ? pbiFormatAutoUnit(datum.value) : '' "
@@ -100,7 +100,7 @@ Después de haber explorado las propiedades y el formato de los ejes, el siguien
 
 Código completo: 
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 {
   "background": "transparent",
   "view": {
@@ -163,7 +163,7 @@ No dudes en experimentar con estas propiedades en tus propios proyectos de Power
 
 ### Copy the Template Below👇✔
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "usermeta": {

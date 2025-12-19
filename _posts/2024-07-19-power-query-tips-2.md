@@ -28,7 +28,7 @@ A continuación, presento varias funciones personalizadas diseñadas para limpia
 - **Descripción**: Convierte los nombres de columnas en formato camelCase a nombres con espacios entre las palabras.
 - **Código**:
 
- <pre class="highlight"><code>
+ <pre class="highlight"><code class="language-json">
 
 (optional CamelCaseTable as nullable table) as table =>
   let
@@ -54,7 +54,7 @@ A continuación, presento varias funciones personalizadas diseñadas para limpia
 - **Descripción**: Convierte los nombres de columnas con guiones bajos (_) en nombres con espacios y formato de título (cada palabra comienza con mayúscula).
 - **Código**:
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 (optional UnderscoreTable as nullable table) as table =>
   let
     transformedUnderscoreTable = Table.TransformColumnNames(
@@ -79,7 +79,7 @@ A continuación, presento varias funciones personalizadas diseñadas para limpia
 - **Descripción**: Convierte los nombres de columnas con guiones bajos (_) en nombres con espacios y formato de título, exceptuando aquellos que terminan con "KEY".
 - **Código**:
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 (optional UnderscoreWithKeyTable as nullable table) as table =>
   let
     transformedUnderscoreWithKeyTable = Table.TransformColumnNames(
@@ -106,7 +106,7 @@ A continuación, presento varias funciones personalizadas diseñadas para limpia
 - **Descripción**: Convierte los nombres de columnas con guiones bajos (_) en nombres con espacios y formato de título, y reemplaza "Id" por "ID".
 - **Código**:
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
  (optional UnderscoreWithIDTable as nullable table) as table =>
   let
     transformedUnderscoreWithIDTable = Table.TransformColumnNames(
@@ -134,7 +134,7 @@ Para más información sobre las funciones utilizadas, puedes consultar la docum
 
 ## Código Completo
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 FXCleanColumnHeaders = (
     optional CamelCaseTable as nullable table,
     optional UnderscoreTable as nullable table,

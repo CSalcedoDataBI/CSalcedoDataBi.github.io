@@ -39,7 +39,7 @@ Based on the [**official Vega-Lite example**](https://vega.github.io/vega-lite/e
 
 ### Copy Template
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "usermeta": {

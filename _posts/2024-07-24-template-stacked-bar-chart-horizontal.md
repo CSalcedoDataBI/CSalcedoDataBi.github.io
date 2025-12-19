@@ -14,6 +14,7 @@ description: "This horizontal stacked bar chart template is adapted from the off
 ---
 
 ## Configuration Details ##
+
 The image shows how the chart is configured in Deneb and Power BI, highlighting the following key properties:
 
 ![Configuration](/assets/img/template-stacked-bar-chart-horizontal/6_configuration_details.png)
@@ -54,7 +55,7 @@ Based on the `"site"` field, it uses the `"category20"` color scale to visually 
 
 ### Copy the Template Below👇✔
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
  {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "usermeta": {

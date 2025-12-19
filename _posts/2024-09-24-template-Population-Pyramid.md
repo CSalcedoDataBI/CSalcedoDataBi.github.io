@@ -41,7 +41,7 @@ Este visual proporciona una representación clara y dinámica de los datos demog
 
 ### Copy the Template Below👇✔
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "usermeta": {

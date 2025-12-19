@@ -54,7 +54,7 @@ This detailed description provides a clear understanding of the functionalities 
 
 ### Copy the Template Below👇✔
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "usermeta": {

@@ -25,7 +25,7 @@ The interactive bar chart below provides a detailed visualization of the US popu
 
 **Purpose**: To show the overall population distribution by age, providing a backdrop against which selected data can be compared.
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 ...
 {
   "description": "Dimmed Bar Layer; displays total population with opacity",
@@ -58,7 +58,7 @@ The interactive bar chart below provides a detailed visualization of the US popu
 
 **Purpose**: To highlight the selected subset of the population, allowing for focused analysis and comparison against the overall population
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 ...
 {
   "description": "Selected People Layer; displays the selected population with full opacity",
@@ -78,7 +78,7 @@ The interactive bar chart below provides a detailed visualization of the US popu
 
 **Purpose**: To provide clear, readable population values directly on the bars for easy reference, enhancing the interpretability of the data.
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 ...
 {
   "transform": [
@@ -160,7 +160,7 @@ Sure, here is an improved version of the references section:
 
 ### Copy Template
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "usermeta": {

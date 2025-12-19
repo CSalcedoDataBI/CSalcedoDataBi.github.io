@@ -17,7 +17,7 @@ description: "A comprehensive guide on the basic and advanced usage of the pbiFo
 
 ## **Basic Example in Vega-Lite:**
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 {
   "data": {"name": "dataset"},
   "transform": [
@@ -216,7 +216,7 @@ The following table shows the pbiFormat snippet and the format, in case you want
 
 In this section, I present an example of a more elegant data format using the `pbiFormat` function. This method allows formatting sales values in different scales, from integers to trillions, thus facilitating their visual interpretation.
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 {
   "data": {"name": "dataset"},
   "transform": [
@@ -350,7 +350,7 @@ The following table shows the <code>pbiFormat</code> snippet and the format, in 
 
 In this section, we demonstrate how to use the `pbiFormat` function to format dates in different styles. The following example transforms a dataset by applying various date and time formats.
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 {
   "data": {"name": "dataset"},
   "transform": [
@@ -629,7 +629,7 @@ The following table shows the pbiFormat snippet and the format, in case you want
   <p>The following Vega-Lite specification demonstrates the use of <span class="code-inline">pbiFormat</span> for dynamic number formatting:</p>
 </div>
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 {
   "data": {"name": "dataset"},
   "transform": [
@@ -645,7 +645,7 @@ The following table shows the pbiFormat snippet and the format, in case you want
 
 The `pbiFormat` function in Deneb is used to format data into custom formats. Here’s a concise breakdown of its usage with an example:
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 pbiFormat(datum['$Sales'], datum['$Sales__format'], {
     value: if(datum['$Sales'] >= 1e12, 1e12,
               if(datum['$Sales'] >= 1e9, 1e9,
@@ -690,7 +690,7 @@ This example illustrates how `pbiFormat` dynamically formats sales values into r
 
 In this example, we demonstrate how to format a date using different cultural settings. We use the `pbiFormat` function to transform the date into various region-specific formats. Below is the sample code:
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 {
   "data": {
     "name": "dataset"

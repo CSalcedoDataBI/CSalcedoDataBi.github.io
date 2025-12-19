@@ -23,7 +23,7 @@ The interactive bar chart below provides a detailed visualization of the US popu
 
 ### Copy Template
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
  {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "usermeta": {

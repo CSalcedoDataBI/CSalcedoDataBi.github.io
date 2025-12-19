@@ -35,13 +35,13 @@ En este paso, nos basaremos en el blog escrito por **Amal BEN REBAI** [How to fi
 
  ``1.`` **Medida: Suma de las Ventas:**
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 Total Ventas = SUM ( financials[ Sales] )
 </code></pre>
 
 ``2.`` **Medida: Acumulado de ventas por producto:**
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 
 Acumulado de ventas Por Producto =
 SUMX (
@@ -59,7 +59,7 @@ SUMX (
 
 ``3.`` **Medida: % Acumulado de ventas por producto:**
   
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 % Acumulado de Ventas por Producto =
 VAR __TotalVentas =
     CALCULATE (
@@ -107,7 +107,7 @@ Para cambiar el eje X al categórico ``"Product"`` y el eje Y a la variable cuan
 Para cambiar la orientación de las etiquetas de la categoría en el eje X de vertical a horizontal y ocultar las etiquetas en el eje Y, sigue estos pasos en el editor de Deneb:
 
 Haz clic en el panel de configuración he inserta el siguiente codigo.
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 {
   "view": {"stroke": "transparent"},
   "line": {
@@ -156,7 +156,7 @@ Para ordenar el gráfico de acuerdo con la variable "Total Ventas" de mayor a me
 
 Agrega la propiedad <kbd>"sort"</kbd> en el eje X, de la siguiente manera:
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 "sort":{
    "field":"Total Ventas",
    "op":"sum",
@@ -186,7 +186,7 @@ Ver imagen .gif para ver como agregar:
 
 Hasta ahora, si has seguido los pasos, te darás cuenta de que dentro del array "layer" existen un objeto visual, con un "mark" de tipo "bar" (gráfico de barras). A continuación, añadiremos un nuevo objeto para el gráfico de línea:
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 {
     "mark":{
         "type":"line",
@@ -228,7 +228,7 @@ Mira la siguiente imagen y observa que la línea está justo a nivel cero:
 >El problema aquí es que estamos usando un eje Y a una escala mayor que la del porcentaje. Debemos activar un segundo eje Y para graficar el porcentaje, que generalmente está a una escala de 0 a 1. Para ello, agrega el siguiente código después del array <kbd>"layer":</kbd>
 {: .prompt-warning }
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 "resolve":{
    "scale":{
       "y":"independent"
@@ -250,7 +250,7 @@ A continuación, añadiremos dos nuevos objetos dentro del array "layer" para ag
 
 Etiquetas para el gráfico de líneas:
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 {
     "mark":{
         "type":"text",
@@ -284,7 +284,7 @@ La propiedad "encoding" en este objeto especifica que el contenido de las etique
 
 Etiquetas para el gráfico de barras:
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 {
     "mark":{
         "type":"text",
@@ -327,7 +327,7 @@ Imagen del gráfico de Pareto con etiquetas😍
 Para mejorar la visualización, agregaremos un color condicional al gráfico de barras. Esto permitirá resaltar las barras que representan el 80% de las ventas acumuladas en un color diferent al de las barras restantes.
 
 Aplicar color condicional al gráfico de barras:
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 ,
 "color":{
     "expr":"datum['% Acumulado de Ventas por Producto']<=0.8?'#7F7F7F':'#D62728'"
@@ -348,7 +348,7 @@ Para activar esta propiedad en Deneb, debemos ir al Editor y en el panel de Conf
 
 Este código da opacidad a la capa del gráfico de barras y activa el tooltip:
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 "opacity": 0.3,
 "tooltip": true,
 </code></pre>
@@ -357,7 +357,7 @@ Este código da opacidad a la capa del gráfico de barras y activa el tooltip:
 
 Agregamos otra capa de gráfico de barras para resaltar solo las barras seleccionadas:
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 {
   "mark": {
     "type": "bar",
@@ -422,7 +422,7 @@ Agradecemos a [**Pesante Analytics Llc**](https://www.linkedin.com/article/edit/
 
 ### Copiar Plantilla
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "usermeta": {

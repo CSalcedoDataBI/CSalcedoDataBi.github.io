@@ -30,7 +30,7 @@ description: "This Gantt chart template, adapted from Vega-Lite and customized f
 
 ### Copy the Template Below👇✔
 
-<pre class="highlight"><code>
+<pre class="highlight"><code class="language-json">
  {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "usermeta": {

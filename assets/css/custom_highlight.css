@@ -166,9 +166,43 @@ code.language-m {
 }
 
 /* -----------------------------------------------------------------------------
- * Default String Color Override (for non-language-specific blocks)
- * This preserves the original red string color for generic code blocks
+ * JavaScript - Dark Theme (for Power Query M workaround)
+ * Since highlight.js doesn't support Power Query M natively, we use JavaScript
+ * as a fallback language with dark theming to match DAX/Power Query aesthetic
  * -------------------------------------------------------------------------- */
-.hljs-string {
-  color: #ff0000 !important;
+.language-javascript.hljs,
+.language-javascript .hljs,
+code.language-javascript {
+  background-color: var(--pq-bg) !important;
+  color: var(--pq-text) !important;
+}
+
+.language-javascript .hljs-keyword {
+  color: var(--pq-keyword) !important;
+}
+
+.language-javascript .hljs-built_in,
+.language-javascript .hljs-title.function_ {
+  color: var(--pq-function) !important;
+}
+
+.language-javascript .hljs-string {
+  color: var(--pq-string) !important;
+}
+
+.language-javascript .hljs-number {
+  color: var(--pq-number) !important;
+}
+
+.language-javascript .hljs-comment {
+  color: var(--pq-comment) !important;
+  font-style: italic;
+}
+
+.language-javascript .hljs-params {
+  color: #9cdcfe !important; /* Light blue for parameters */
+}
+
+.language-javascript .hljs-property {
+  color: #9cdcfe !important;
 }

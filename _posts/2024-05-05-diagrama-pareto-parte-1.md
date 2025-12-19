@@ -35,13 +35,13 @@ En este paso, nos basaremos en el blog escrito por **Amal BEN REBAI** [How to fi
 
  ``1.`` **Medida: Suma de las Ventas:**
 
-<pre class="highlight"><code class="language-json">
+<pre class="highlight"><code class="language-dax">
 Total Ventas = SUM ( financials[ Sales] )
 </code></pre>
 
 ``2.`` **Medida: Acumulado de ventas por producto:**
 
-<pre class="highlight"><code class="language-json">
+<pre class="highlight"><code class="language-dax">
 
 Acumulado de ventas Por Producto =
 SUMX (
@@ -59,7 +59,7 @@ SUMX (
 
 ``3.`` **Medida: % Acumulado de ventas por producto:**
   
-<pre class="highlight"><code class="language-json">
+<pre class="highlight"><code class="language-dax">
 % Acumulado de Ventas por Producto =
 VAR __TotalVentas =
     CALCULATE (

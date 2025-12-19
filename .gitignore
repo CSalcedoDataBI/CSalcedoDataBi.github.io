@@ -21,3 +21,10 @@ package-lock.json
 
 # Misc
 assets/js/dist
+
+# Local/PC-specific files (for multi-PC workflows)
+tools/*.ps1
+tools/*.bat
+tools/*.local.*
+*.local
+.ruby-version.local

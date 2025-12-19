@@ -28,7 +28,8 @@
 
       img {
         @extend %img-radius;
-        width: 100%;  // Asegura que las imágenes se ajusten al contenedor
+
+        width: 100%; // Asegura que las imágenes se ajusten al contenedor
         height: auto; // Mantiene la proporción de la imagen
       }
     }

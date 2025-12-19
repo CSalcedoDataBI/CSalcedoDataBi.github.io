@@ -162,43 +162,62 @@
     color: #90a959;
   }
 
-  /* --- JSON highlighting - Deneb style --- */
+  /* --- JSON highlighting - Vega Editor Theme (Monaco VS Light) --- */
 
   /* Only applies to JSON code blocks, preserving DAX and other languages */
+  /* Uses light theme even in dark mode for Vega-style consistency */
   .language-json {
+    /* Override background to match Vega Editor white theme */
+    .highlight,
+    .highlight .w {
+      background-color: #fffffe !important;
+      color: #000000 !important;
+    }
+
+    /* Property Keys (red) - "$schema", "data", "mark", "encoding" */
     .highlight .nl,    /* Name label / Keys */
-    .highlight .na {
-      /* Name attribute */
-      color: #36acaa !important; /* Teal vibrante */
+    .highlight .na,    /* Name attribute */
+    .highlight .nt {
+      /* Name tag */
+      color: #a31515 !important;
       font-weight: 500;
     }
 
+    /* String Values (blue) - "bar", "A", "B", URLs */
     .highlight .s,     /* String */
     .highlight .s2,    /* String double-quoted */
-    .highlight .s1 {
-      /* String single-quoted */
-      color: #e3116c !important; /* Magenta */
+    .highlight .s1,    /* String single-quoted */
+    .highlight .sb,    /* String backtick */
+    .highlight .sc,    /* String char */
+    .highlight .sd,    /* String doc */
+    .highlight .sh,    /* String heredoc */
+    .highlight .sx {
+      /* String other */
+      color: #0451a5 !important;
     }
 
+    /* Numbers (green) - 28, 55, 43 */
     .highlight .mi,    /* Integer */
     .highlight .mf,    /* Float */
     .highlight .mb,    /* Binary */
     .highlight .mh,    /* Hex */
-    .highlight .mo {
-      /* Octal */
-      color: #90e0ef !important; /* Cyan claro */
+    .highlight .mo,    /* Octal */
+    .highlight .il {
+      /* Integer long */
+      color: #098658 !important;
     }
 
+    /* Constants - true/false/null (blue like VS Code) */
     .highlight .kc {
-      /* Constant (true/false/null) */
-      color: #ffb703 !important; /* Naranja/amarillo */
-      font-weight: 600;
+      color: #0451a5 !important;
+      font-weight: 500;
     }
 
+    /* Brackets and Punctuation (black) - { } [ ] : , */
     .highlight .p,     /* Punctuation */
     .highlight .pi {
       /* Punctuation indicator */
-      color: #b0b0b0; /* Gris claro */
+      color: #000000 !important;
     }
   }
 }

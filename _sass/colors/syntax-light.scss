@@ -211,4 +211,44 @@
     color: #24292f;
     font-weight: bold;
   }
+
+  /* --- JSON highlighting - Deneb style adapted for light mode --- */
+  /* Only applies to JSON code blocks, preserving DAX and other languages */
+  .language-json {
+    .highlight .nl,    /* Name label / Keys */
+    .highlight .na {
+      /* Name attribute */
+      color: #2b8a8a !important; /* Teal oscuro para mejor contraste */
+      font-weight: 600;
+    }
+
+    .highlight .s,     /* String */
+    .highlight .s2,    /* String double-quoted */
+    .highlight .s1 {
+      /* String single-quoted */
+      color: #c70e5b !important; /* Magenta oscuro */
+      font-weight: 500;
+    }
+
+    .highlight .mi,    /* Integer */
+    .highlight .mf,    /* Float */
+    .highlight .mb,    /* Binary */
+    .highlight .mh,    /* Hex */
+    .highlight .mo {
+      /* Octal */
+      color: #0066cc !important; /* Azul para números */
+    }
+
+    .highlight .kc {
+      /* Constant (true/false/null) */
+      color: #d97706 !important; /* Naranja oscuro */
+      font-weight: 600;
+    }
+
+    .highlight .p,     /* Punctuation */
+    .highlight .pi {
+      /* Punctuation indicator */
+      color: #6b7280; /* Gris medio */
+    }
+  }
 } /* light-syntax */

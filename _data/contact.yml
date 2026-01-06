@@ -11,7 +11,3 @@
   icon: "fas fa-envelope"
   noblank: true # open link in current tab
 
-- type: buymeacoffee
-  icon: "fas fa-mug-hot"
-  url: "https://buymeacoffee.com/csalcedodatabi"
-  noblank: true

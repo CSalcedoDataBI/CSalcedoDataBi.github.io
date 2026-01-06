@@ -847,7 +847,7 @@ $btn-mb: 0.5rem;
       line-height: $btn-size;
     }
 
-    #mode-toggle {
+    .mode-toggle {
       @extend %button;
       @extend %sidebar-links;
       @extend %sidebar-link-hover;

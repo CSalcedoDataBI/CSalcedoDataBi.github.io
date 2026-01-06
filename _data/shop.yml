@@ -1,0 +1,20 @@
+# Archivo de configuración de la Tienda
+# Añade aquí tus nuevos productos.
+
+- title: "Plantilla Diagrama de Pareto (Deneb)"
+  description: "Visualización avanzada de Pareto con capas, tooltips y diseño premium. Ideal para análisis ABC."
+  image: "/assets/img/post-diagrama-pareto-parte-1/Paso_12.gif" # Usamos la imagen que ya tienes en el blog
+  price: "Paga lo que quieras"
+  url: "https://buymeacoffee.com/csalcedodatabi/extras" # Cambia esto por el link específico del producto cuando lo crees
+  button_text: "Obtener Plantilla"
+  features:
+    - "Formato .pbix incluido"
+    - "Código JSON de Vega-Lite editable"
+    - "Totalmente personalizable"
+
+- title: "Plantilla de Ayuda al Creador"
+  description: "¿Te sirve mi contenido? Apoya el blog comprando este café virtual. ¡Gracias!"
+  image: "https://c5.patreon.com/external/marketing/reach_page/release_notes/release_notes_hero_image.png" # Placeholder generico o tu logo
+  price: "$5 USD"
+  url: "https://buymeacoffee.com/csalcedodatabi"
+  button_text: "Invitar Café"

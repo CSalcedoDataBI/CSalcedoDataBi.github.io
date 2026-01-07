@@ -58,4 +58,21 @@ Convertir el inicio en una "Landing Page" que convierta visitas en seguidores/cl
 7. **[PENDIENTE]** Actualizar posts antiguos con botones de descarga de la Tienda.
 8. **[PENDIENTE]** Revisar integración de pasarela de pagos (si se requiere algo más allá de BMC).
 
-Este documento servirá como guía maestra para no perder el norte en futuras sesiones.
+## 4. Estado de Cierre (Para retomar sesión)
+
+**Estado Git:**
+
+* Hay **4 commits** guardados localmente (Diseño Premium, About Me, Tienda, Fixes UI).
+* **Acción Requerida:** Ejecutar `git push` al iniciar para publicar todo en internet.
+
+**Estado Funcional:**
+
+* **Formulario:** Configurado con ID `mykzrzpn` (Formspree). Funciona en Sidebar, Footer, About y Shop.
+* **Diseño:** Estilo "Deep Space" aplicado a todo el sitio.
+* **Botones:** Los botones de "Ver Plantilla" en la Home ya son enlaces reales.
+
+**Siguientes Pasos Inmediatos:**
+
+1. Hacer Push al repositorio.
+2. Verificar visualización en celular (Mobile Responsiveness).
+3. Comenzar la integración de pagos reales (PayPal/PayU) para vender más allá de donaciones.

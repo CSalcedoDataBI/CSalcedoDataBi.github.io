@@ -79,9 +79,12 @@ refactor: true
 <!-- Featured Products Section -->
 {% if site.data.shop %}
   <div class="mb-5 mt-5">
-    <!-- Título de Sección Corregido: Color Oscuro para contraste sobre fondo blanco -->
-    <div class="d-flex align-items-center mb-4 pb-2 border-bottom" style="border-color: rgba(0,0,0,0.1) !important;">
-      <h3 class="fst-italic m-0" style="color: #1e293b; font-weight: 800; letter-spacing: -0.5px;">
+    <!-- Título con clase adaptativa para que se vea bien en Dark y Light mode -->
+    <div
+      class="d-flex align-items-center mb-4 pb-2 border-bottom"
+      style="border-color: rgba(128,128,128,0.2) !important;"
+    >
+      <h3 class="fst-italic m-0 section-title-adaptive" style="font-weight: 800; letter-spacing: -0.5px;">
         <i class="fas fa-star text-gradient-cyan me-2"></i>Recursos Destacados
       </h3>
     </div>

@@ -109,3 +109,168 @@ img.hover-zoom:hover {
   width: 100%;
 }
 
+
+/* --- SIDEBAR UNIFICATION (Premium Dark Mode) --- */
+
+/* Left Sidebar - Dark Theme override */
+#sidebar {
+  background: linear-gradient(180deg, #0f172a 0%, #020617 100%) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Profile Section */
+#sidebar .profile-wrapper .site-title a {
+  color: #ffffff !important;
+  text-shadow: 0 0 10px rgba(0, 242, 255, 0.3);
+}
+
+#sidebar .profile-wrapper .site-subtitle {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+#avatar img {
+  border: 2px solid #00f2ff !important;
+  box-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+  background-color: #0f172a; /* Avoid transparency issues */
+}
+
+/* Navigation Links */
+#sidebar .nav-link {
+  color: rgba(255, 255, 255, 0.7) !important;
+  border-radius: 8px;
+  margin: 0 10px;
+  width: auto;
+  transition: all 0.3s ease;
+}
+
+#sidebar .nav-link:hover {
+  color: #00f2ff !important;
+  background: rgba(0, 242, 255, 0.05);
+  transform: translateX(5px);
+}
+
+#sidebar .nav-link i {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+#sidebar .nav-link:hover i {
+  color: #00f2ff !important;
+}
+
+/* Active Link State */
+#sidebar .nav-item.active .nav-link {
+  color: #00f2ff !important;
+  background: rgba(0, 242, 255, 0.1);
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(0, 242, 255, 0.1);
+}
+
+#sidebar .nav-item.active .nav-link i {
+  color: #00f2ff !important;
+}
+
+/* Bottom Icons (Social) */
+#sidebar .sidebar-bottom a {
+  color: rgba(255, 255, 255, 0.5) !important;
+  transition: color 0.3s ease;
+}
+
+#sidebar .sidebar-bottom a:hover {
+  color: #00f2ff !important;
+}
+
+/* Button 'Invítame a un café' fix for dark bg */
+#sidebar .btn-sm {
+    box-shadow: 0 4px 15px rgba(255, 221, 0, 0.3);
+}
+
+/* Right Sidebar (Panel) subtle enhancements */
+#panel-wrapper .panel-heading {
+  color: #334155; /* Dark Slate for headers */
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+#panel-wrapper .tag:hover {
+  background: #00f2ff !important;
+  color: #000 !important;
+}
+
+/* Scrollbar customization for webkit */
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+
+/* --- SMART THEME ADAPTATION (Fixing Contrast Issues) --- */
+
+/* 1. Fix 'Recursos Destacados' visibility in both modes */
+/* Default (Light Mode): Dark Text */
+.section-title-adaptive {
+  color: #1e293b !important;
+}
+
+/* Dark Mode Override: White Text */
+[data-mode='dark'] .section-title-adaptive {
+  color: #ffffff !important;
+}
+
+/* 2. Fix Social Icons Background in Sidebar */
+#sidebar .sidebar-bottom a {
+  background: transparent !important; /* Remove white circles */
+  box-shadow: none !important;
+}
+
+#sidebar .sidebar-bottom a:hover {
+  background: rgba(0, 242, 255, 0.1) !important; /* Subtle glow on hover */
+  transform: translateY(-2px);
+}
+
+/* 3. Smoother Light Mode Background to blend with Dark Hero */
+/* Only applies to light mode to reduce harsh contrast */
+:root:not([data-mode='dark']) body {
+  background-color: #f1f5f9 !important; /* Slate-100 instead of pure white */
+}
+
+/* 4. Fix Mode Toggle Button Visibility */
+.mode-toggle {
+ color: rgba(255, 255, 255, 0.7) !important;
+ border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.mode-toggle:hover {
+ border-color: #00f2ff !important;
+ color: #00f2ff !important;
+}
+
+
+/* --- FIX: Mode Toggle Button Visibility --- */
+#sidebar .mode-toggle {
+  background-color: transparent !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding: 0;
+}
+
+#sidebar .mode-toggle:hover {
+  border-color: #00f2ff !important;
+  color: #00f2ff !important;
+  box-shadow: 0 0 10px rgba(0, 242, 255, 0.3);
+  transform: rotate(15deg); /* Playful animation */
+}
+
+#sidebar .mode-toggle i {
+  font-size: 1rem;
+}
+

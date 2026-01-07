@@ -50,9 +50,12 @@ Convertir el inicio en una "Landing Page" que convierta visitas en seguidores/cl
 ## 3. Hoja de Ruta (Pasos a Seguir)
 
 1. **[HECHO]** Integrar botón "Invítame a un café" en sidebar.
-2. **[PENDIENTE]** Crear página `_tabs/shop.md` (Página de Tienda).
-3. **[PENDIENTE]** Personalizar colores (CSS) con tu marca.
-4. **[PENDIENTE]** Diseñar e insertar el "Banner Hero" en la Home.
-5. **[PENDIENTE]** Actualizar posts antiguos con botones de descarga de la Tienda.
+2. **[HECHO]** Crear página `_tabs/shop.md` (Renombrado a "Recursos/Tienda" con diseño Premium).
+3. **[HECHO]** Personalizar colores (CSS) con tu marca (Implementado Estilo "Deep Space" con Neón Cyan).
+4. **[HECHO]** Diseñar e insertar el "Banner Hero" en la Home.
+5. **[HECHO]** Rediseñar "Acerca de Mí" con perfil profesional y Formulario Modal.
+6. **[HECHO]** Integración de Formulario de Contacto (Formspree) en Sidebar, Footer y Páginas.
+7. **[PENDIENTE]** Actualizar posts antiguos con botones de descarga de la Tienda.
+8. **[PENDIENTE]** Revisar integración de pasarela de pagos (si se requiere algo más allá de BMC).
 
 Este documento servirá como guía maestra para no perder el norte en futuras sesiones.

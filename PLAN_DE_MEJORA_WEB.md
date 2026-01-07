@@ -62,8 +62,9 @@ Convertir el inicio en una "Landing Page" que convierta visitas en seguidores/cl
 
 **Estado Git:**
 
-* Hay **4 commits** guardados localmente (Diseño Premium, About Me, Tienda, Fixes UI).
-* **Acción Requerida:** Ejecutar `git push` al iniciar para publicar todo en internet.
+* Hay **5 commits** guardados localmente (Diseño Premium, About Me, Tienda, Fixes UI, Docs).
+* **⚠️ IMPORTANTE:** NO ejecutar `git push` todavía.
+* **Condición para Push:** El usuario debe subir primero las plantillas a la tienda y validar completamente el diseño/UX de la página.
 
 **Estado Funcional:**
 

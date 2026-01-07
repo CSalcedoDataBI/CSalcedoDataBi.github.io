@@ -1,8 +1,8 @@
 ---
 layout: page
-icon: fas fa-store
+icon: fas fa-cubes
 order: 3
-title: Tienda
+title: Recursos
 ---
 
 <div class="row row-cols-1 row-cols-md-2 g-4">

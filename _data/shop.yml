@@ -1,20 +1,44 @@
-# Archivo de configuración de la Tienda
-# Añade aquí tus nuevos productos.
+# Archivo de configuración de Recursos (Productos)
 
-- title: "Plantilla Diagrama de Pareto (Deneb)"
-  description: "Visualización avanzada de Pareto con capas, tooltips y diseño premium. Ideal para análisis ABC."
-  image: "/assets/img/post-diagrama-pareto-parte-1/Paso_12.gif" # Usamos la imagen que ya tienes en el blog
-  price: "Paga lo que quieras"
-  url: "https://buymeacoffee.com/csalcedodatabi/extras" # Cambia esto por el link específico del producto cuando lo crees
+- title: "Dynamic Top N & Pareto Slicer"
+  description: "Slicer dinámico para controlar análisis de Pareto en Power BI con Deneb. Permite seleccionar el porcentaje acumulado dinámicamente."
+  image: "/assets/img/products/dynamic-top-n-pareto-slicer-for-power-bi.jpg"
+  price: "$14.99 (Sugerido)"
+  url: "https://buymeacoffee.com/csalcedodatabi/extras"
   button_text: "Obtener Plantilla"
   features:
-    - "Formato .pbix incluido"
-    - "Código JSON de Vega-Lite editable"
+    - "Slicer Dinámico Interactivo"
+    - "Cálculo de Pareto en tiempo real"
+    - "Plantilla Deneb JSON incluida"
+    - "Archivo .pbix de ejemplo"
+
+- title: "Top N Dinámico & Pareto 80/20"
+  description: "Solución completa para análisis ABC y Regla 80/20. Identifica visualmente tus productos más importantes."
+  image: "/assets/img/products/top-n-dinamico-pareto-80-20.jpg"
+  price: "$19.99 (Sugerido)"
+  url: "https://buymeacoffee.com/csalcedodatabi/extras"
+  button_text: "Obtener Plantilla"
+  features:
+    - "Análisis ABC Automático"
+    - "Top N con agrupación 'Otros'"
+    - "Visualización de alto impacto"
     - "Totalmente personalizable"
 
-- title: "Plantilla de Ayuda al Creador"
-  description: "¿Te sirve mi contenido? Apoya el blog comprando este café virtual. ¡Gracias!"
-  image: "https://c5.patreon.com/external/marketing/reach_page/release_notes/release_notes_hero_image.png" # Placeholder generico o tu logo
-  price: "$5 USD"
+- title: "Universal KPI Trend Matrix"
+  description: "Matriz visual para comparar múltiples KPIs y sus tendencias en el tiempo de un solo vistazo."
+  image: "/assets/img/products/universal-kpi-trend-matrix-2.jpg"
+  price: "$14.99 (Sugerido)"
+  url: "https://buymeacoffee.com/csalcedodatabi/extras"
+  button_text: "Obtener Plantilla"
+  features:
+    - "Comparativa Multi-KPI"
+    - "Sparklines de tendencia integrados"
+    - "Semáforos de estado"
+    - "Optimizado para Dashboards Ejecutivos"
+
+- title: "Apoya al Creador"
+  description: "¿Te sirve mi contenido? Apoya el blog invitándome a un café. ¡Gracias por tu soporte!"
+  image: "https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
+  price: "Desde $5 USD"
   url: "https://buymeacoffee.com/csalcedodatabi"
   button_text: "Invitar Café"

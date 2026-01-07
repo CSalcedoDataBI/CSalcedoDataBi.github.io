@@ -28,3 +28,7 @@ tools/*.bat
 tools/*.local.*
 *.local
 .ruby-version.local
+
+# Secure Digital Products
+assets/downloads/products/*.zip
+Respaldo_Web_Publico.zip

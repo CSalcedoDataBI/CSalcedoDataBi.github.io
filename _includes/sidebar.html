@@ -73,7 +73,7 @@
         {% when 'email' %}
           {% assign email = site.social.email | split: '@' %}
           {%- capture url -%}
-            javascript:location.href = 'mailto:' + ['{{ email[0] }}','{{ email[1] }}'].join('@')
+            javascript:void(0)
           {%- endcapture -%}
         {% when 'rss' %}
           {% assign url = '/feed.xml' | relative_url %}
@@ -94,6 +94,11 @@
 
           {% if entry.type == 'mastodon' %}
             {% assign link_types = link_types | append: ' me' | strip %}
+          {% endif %}
+
+          {% if entry.type == 'email' %}
+            data-bs-toggle="modal"
+            data-bs-target="#globalContactModal"
           {% endif %}
 
           {% unless link_types == empty %}

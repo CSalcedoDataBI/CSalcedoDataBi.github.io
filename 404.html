@@ -69,8 +69,16 @@
     </div>
 
     <script>
-      // Redirección JavaScript como respaldo
-      window.location.replace('https://csalcedodatabi.com/');
+      // Redirección inteligente que transforma las rutas
+      let path = window.location.pathname;
+
+      // Transformar /posts/[slug]/ a /blog/[slug]/
+      if (path.startsWith('/posts/')) {
+        path = path.replace('/posts/', '/blog/');
+      }
+
+      // Redirigir al nuevo sitio preservando la ruta transformada
+      window.location.replace('https://csalcedodatabi.com' + path);
     </script>
   </body>
 </html>

@@ -1,18 +1,19 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Redirección automática -->
-    <meta http-equiv="refresh" content="0; url=https://csalcedodatabi.com/">
-    <link rel="canonical" href="https://csalcedodatabi.com/">
+    <meta http-equiv="refresh" content="0; url=https://csalcedodatabi.com/" />
+    <link rel="canonical" href="https://csalcedodatabi.com/" />
 
     <title>Redirigiendo a CSalcedoDataBI...</title>
 
     <style>
       body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, sans-serif;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -62,8 +63,19 @@
     </div>
 
     <script>
+      // Unregister Service Workers immediately to clear cache of old site
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .getRegistrations()
+          .then(function (registrations) {
+            for (let registration of registrations) {
+              registration.unregister();
+            }
+          });
+      }
+
       // Redirección JavaScript como respaldo
-      window.location.replace('https://csalcedodatabi.com/');
+      window.location.replace("https://csalcedodatabi.com/");
     </script>
   </body>
 </html>
